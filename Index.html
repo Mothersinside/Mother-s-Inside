@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+< lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mother Insides — Media Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--iv:#FAF7F2;--ch:#F3EADD;--gd:#A6763C;--gs:#C9A574;--es:#1A120D;--mu:#453A2F;--ln:rgba(166,118,60,.30);--lns:rgba(26,18,13,.10)}
+html{scroll-behavior:smooth}
+body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{width:min(1140px,90vw);margin:0 auto;position:relative;z-index:2}
+.sec{padding:clamp(72px,10vw,132px) 0}
+.sec-head{text-align:center;max-width:720px;margin:0 auto clamp(44px,6vw,72px)}
+.eyebrow{font-size:.7rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gd);font-weight:400}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4.8vw,3.5rem);line-height:1.06;margin:16px 0 18px}
+.sec-title em{font-style:italic;color:var(--gd)}
+.sec-sub{color:var(--mu);font-size:.98rem;max-width:600px;margin:0 auto}
+.rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:26px auto}
+.rule i{display:block;height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--gd))}
+.rule i:last-child{background:linear-gradient(90deg,var(--gd),transparent)}
+.rule b{font-size:7px;color:var(--gd);line-height:1;transform:translateY(-1px)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:999px;font-family:Jost,sans-serif;font-size:.76rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.45s cubic-bezier(.22,.7,.28,1)}
+.btn-primary{background:var(--es);color:var(--iv)}
+.btn-primary:hover{background:var(--gd);color:#fff;transform:translateY(-2px)}
+.btn-ghost{border-color:var(--ln);color:var(--es)}
+.btn-ghost:hover{border-color:var(--gd);color:var(--gd);transform:translateY(-2px)}
+.btn-gold{background:var(--gd);color:#fff}
+.btn-gold:hover{background:var(--iv);color:var(--es);transform:translateY(-2px)}
+.hdr{border-bottom:1px solid var(--lns);position:relative;z-index:5}
+.hdr .container{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
+.brandmark{font-family:'Cormorant Garamond',serif;font-size:1.02rem;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
+.brandmark em{font-style:normal;color:var(--gd)}
+.hdr-handle{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.3s}
+.hdr-handle:hover{color:var(--gd)}
+.hero{position:relative;text-align:center;padding:clamp(64px,11vh,120px) 0 clamp(64px,9vh,110px);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:min(1000px,140%);height:760px;background:radial-gradient(ellipse at center,rgba(214,185,140,.3),rgba(243,234,221,.55) 32%,rgba(250,247,242,0) 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:min(560px,80%);height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}
+
+  .pill{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border:1px solid var(--ln);border-radius:999px;background:rgba(255,255,255,.55);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mu);margin-bottom:34px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gd);box-shadow:0 0 0 0 rgba(184,134,75,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,134,75,.55)}70%{box-shadow:0 0 0 9px rgba(184,134,75,0)}100%{box-shadow:0 0 0 0 rgba(184,134,75,0)}}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,9.5vw,6.4rem);line-height:.92;margin-bottom:22px}
+.hero-title em{font-style:italic;color:var(--gd)}
+.hero-tag{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--mu)}
+.creator{margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 16px}
+.creator-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400}
+.creator-name::after{content:'';display:block;height:1px;width:100%;margin-top:6px;background:linear-gradient(90deg,transparent,var(--gd),transparent)}
+.creator-handle{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gd)}
+.hero-bio{max-width:600px;margin:30px auto 0;font-size:1.02rem;line-height:1.85;color:var(--mu)}
+.hero-bio strong{color:var(--es);font-weight:400}
+.hero-actions{margin-top:44px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,28px)}
+.stat-card{position:relative;padding:clamp(30px,4vw,46px);background:linear-gradient(180deg,#fff,#FCF9F4);border:1px solid var(--ln);transition:.6s cubic-bezier(.22,.7,.28,1)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gd),transparent);opacity:0;transition:.6s}
+.stat-card:hover{transform:translateY(-6px);box-shadow:0 34px 60px -44px rgba(35,27,22,.55);border-color:rgba(184,134,75,.5)}
+.stat-card:hover::before{opacity:1}
+.stat-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:22px;margin-bottom:26px;border-bottom:1px solid var(--lns)}
+.stat-plat{font-family:'Cormorant Garamond',serif;font-size:1.32rem;font-weight:500}
+.stat-handle{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gd)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 18px}
+.stat-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.1rem);line-height:1}
+.stat-num .plus{color:var(--gd);font-size:.7em;vertical-align:super}
+.stat-label{display:block;margin-top:10px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.stat-note{margin-top:26px;padding-top:20px;border-top:1px solid var(--lns);font-size:.9rem;color:var(--mu);line-height:1.7}
+.stat-note em{font-style:italic;color:var(--gd)}
+
+  .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,48px);text-align:center}
+.aud-item{position:relative;padding:0 clamp(4px,1vw,14px)}
+.aud-item+.aud-item::before{content:'';position:absolute;left:calc(-1*clamp(13px,2vw,24px));top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--ln),transparent)}
+.aud-title{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:500;margin:12px 0}
+.aud-text{font-size:.94rem;color:var(--mu);line-height:1.8}
+.aud-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.tag{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--ln);border-radius:999px;color:var(--mu);background:rgba(255,255,255,.6);transition:.4s}
+.tag:hover{border-color:var(--gd);color:var(--gd)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,26px)}
+.tier{position:relative;padding:clamp(32px,4vw,46px) clamp(26px,3.4vw,38px);background:linear-gradient(180deg,#fff,#FBF7F1);border:1px solid var(--ln);display:flex;flex-direction:column;transition:.6s cubic-bezier(.22,.7,.28,1)}
+.tier:hover{transform:translateY(-6px);border-color:rgba(184,134,75,.55);box-shadow:0 34px 60px -44px rgba(35,27,22,.5)}
+.tier-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.3em;color:var(--gd)}
+.tier-title{font-family:'Cormorant Garamond',serif;font-size:1.72rem;font-weight:500;line-height:1.2;margin:14px 0 6px}
+.tier-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--lns)}
+.tier-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.tier-list li{position:relative;padding-left:22px;font-size:.93rem;line-height:1.7;color:var(--mu)}
+.tier-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--gd)}
+
+  .cta{background:var(--es);color:var(--iv);text-align:center;padding:clamp(80px,11vw,136px) 0 clamp(52px,7vw,72px);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:min(900px,130%);height:800px;background:radial-gradient(ellipse at center,rgba(184,134,75,.24),rgba(35,27,22,0) 68%);pointer-events:none}
+.cta .eyebrow{color:var(--gs)}
+.cta-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.06;margin:18px auto 20px;max-width:14ch}
+.cta-title em{font-style:italic;color:var(--gs)}
+.cta-sub{max-width:520px;margin:0 auto 42px;color:rgba(250,247,242,.62);font-size:.98rem}
+.cta .rule i{background:linear-gradient(90deg,transparent,var(--gs))}
+.cta .rule i:last-child{background:linear-gradient(90deg,var(--gs),transparent)}
+.cta .rule b{color:var(--gs)}
+.cta-email{display:inline-block;margin-top:26px;font-size:.8rem;letter-spacing:.16em;color:rgba(250,247,242,.66);text-decoration:none;border-bottom:1px solid rgba(214,185,140,.35);padding-bottom:3px;transition:.4s}
+.cta-email:hover{color:var(--gs);border-color:var(--gs)}
+.cta-socials{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.cta-socials a{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,247,242,.6);text-decoration:none;transition:.4s}
+.cta-socials a:hover{color:var(--gs)}
+.footer-bar{margin-top:clamp(60px,8vw,90px);padding-top:26px;border-top:1px solid rgba(250,247,242,.1);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.4)}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.22,.7,.28,1),transform .95s cubic-bezier(.22,.7,.28,1)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+@media(max-width:900px){.audience-grid{grid-template-columns:1fr;gap:44px}.aud-item+.aud-item::before{left:10%;right:10%;top:-22px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}}
+
+  /* 🛠️ SECRET ADMIN PANEL */
+#admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.95);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(5px)}
+#admin-panel.show{display:flex}
+.admin-box{background:var(--iv);padding:30px;border-radius:8px;max-width:450px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.5);position:relative}
+.admin-box h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:10px;color:var(--es)}
+.admin-box label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-top:15px;margin-bottom:5px}
+.admin-box input{width:100%;padding:10px;border:1px solid var(--ln);border-radius:4px;font-family:Jost,sans-serif;background:#fff;color:var(--es)}
+.admin-actions{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}
+.admin-actions button{flex:1;padding:12px;border:none;border-radius:4px;font-family:Jost,sans-serif;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:.75rem;cursor:pointer}
+.btn-save{background:var(--es);color:var(--iv)}
+.btn-close{position:absolute;top:15px;right:20px;font-size:1.5rem;cursor:pointer;color:var(--mu);background:none;border:none}
+  
+  /* Reels Embed CSS */
+.reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;justify-items:center;margin-top:30px}
+.reel-card{position:relative;width:100%;max-width:320px;aspect-ratio:9/16;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:#E8DFD3}
+.reel-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  
+@media(max-width:600px){body{font-size:15px}.hdr .container{padding:18px 0}.brandmark{font-size:.82rem;letter-spacing:.22em}.hdr-handle{font-size:.6rem}.hero-actions .btn{width:100%}.stat-grid{grid-template-columns:1fr;gap:20px}.stat-num{font-size:2.4rem}.footer-bar{justify-content:center;text-align:center}}
+</style>
+</head>
+<body>
+
+  <script>
+/* ============================================================
+   ✏️ YAHAN SAB EDIT KARO — SIRF YE BLOCK
+   ============================================================ */
+const cfg = {
+  name: "Deepika Sharma",
+  handle: "@mothers_inside",
+  tagline: "Pregnancy · Newborn · Mom Life Insights",
+  bio: "Helping mothers navigate pregnancy, newborn care, and safe medical & home remedies with confidence.",
+  email: "deepreacts0@gmail.com",
+  igUrl: "https://www.instagram.com/mothers_inside",
+  fbUrl: "https://www.facebook.com/",
+  year: "2026",
+  statsUrl: "stats.json",
+  reelsUrl: "reels.json"
+};
+</script>
+<header class="hdr">
+<div class="container">
+<div class="brandmark">Mother<em>&nbsp;</em>Insides</div>
+<a class="hdr-handle" data-href="igUrl" target="_blank" rel="noopener" data-txt="handle"></a>
+</div>
+</header>
+<section class="hero">
+<div class="container">
+<span class="pill"><i class="dot"></i>Available for Brand Collaborations · 2026</span>
+<h1 class="hero-title">Mother <em>Insides</em></h1>
+<p class="hero-tag" data-txt="tagline"></p>
+<div class="rule" aria-hidden="true"><i></i><b>◆</b><i></i></div>
+<div class="creator">
+<span class="creator-name" data-txt="name"></span>
+<span class="creator-handle" data-txt="handle"></span>
+</div>
+
+  <p class="hero-bio" data-txt="bio"></p>
+<div class="hero-actions">
+<a class="btn btn-primary" data-href="emailCta">✉ Direct Collab Email</a>
+<a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener">Instagram Profile</a>
+<a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener">Facebook Page</a>
+</div>
+</div>
+</section>
+<section class="sec" id="reach">
+<div class="container">
+<div class="sec-head" data-reveal>
+<p class="eyebrow">02 — Reach &amp; Performance</p>
+<h2 class="sec-title">Live Performance <em>&amp;</em> Reach</h2>
+<p class="sec-sub">Real numbers, real mothers. A high-intent, high-trust community built on medical accuracy and honest recommendations.</p>
+</div>
+<div class="stats-grid">
+<article class="stat-card" data-reveal>
+<div class="stat-top"><span class="stat-plat">Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
+<div class="stat-grid">
+<div><span class="stat-num" data-stat="igFollowers"></span><span class="stat-label">Followers</span></div>
+<div><span class="stat-num" data-stat="igViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
+</div>
+<p class="stat-note">Engagement: <em>High-intent mom audience</em> — saves, shares and DMs driven by practical, trustworthy guidance.</p>
+</article>
+<article class="stat-card" data-reveal>
+<div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
+<div class="stat-grid">
+<div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
+<div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Page Followers</span></div>
+</div>
+<p class="stat-note">Engagement: <em>Active community engagement</em> — comments, shares and repeat viewers across Tier 1 &amp; Tier 2 cities.</p>
+</article>
+</div>
+</div>
+</section>
+
+  <section class="sec" id="audience" style="background:linear-gradient(180deg,rgba(243,234,221,0) 0%,rgba(243,234,221,.55) 50%,rgba(243,234,221,0) 100%)">
+<div class="container">
+<div class="sec-head" data-reveal>
+<p class="eyebrow">03 — Audience</p>
+<h2 class="sec-title">Who Is <em>Watching</em></h2>
+<p class="sec-sub">A focused, decision-making audience of mothers actively researching products for themselves and their babies.</p>
+</div>
+<div class="audience-grid">
+<div class="aud-item" data-reveal>
+<p class="eyebrow">Primary Audience</p>
+<h3 class="aud-title">Expecting &amp; New Mothers</h3>
+<p class="aud-text">Women aged <strong>21–38</strong> navigating pregnancy, the fourth trimester and early motherhood.</p>
+</div>
+<div class="aud-item" data-reveal>
+<p class="eyebrow">Top Locations</p>
+<h3 class="aud-title">Tier 1 &amp; Tier 2 India</h3>
+<p class="aud-text">Metro and emerging-city households with strong purchase intent in maternity and baby care.</p>
+</div>
+<div class="aud-item" data-reveal>
+<p class="eyebrow">Niche Categories</p>
+<h3 class="aud-title">Where I Create Impact</h3>
+<p class="aud-text">Content themes that convert attention into consideration.</p>
+<div class="aud-tags">
+<span class="tag">Maternity Care</span>
+<span class="tag">Baby Skincare</span>
+<span class="tag">Infant Nutrition</span>
+<span class="tag">Safe Home Remedies</span>
+<span class="tag">Medicine Awareness</span>
+</div>
+</div>
+</div>
+</div>
+  </section>
+
+  <!-- Ye Reels ka naya section hai -->
+<section class="sec" id="reels">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">03.5 — Top Performing Reels</p>
+      <h2 class="sec-title">Most <em>Viewed</em> Reels</h2>
+      <p class="sec-sub">A snapshot of the content that resonated most with our mom community.</p>
+    </div>
+    <div class="reels-grid" id="reelsGrid">
+      <p style="color:var(--mu); font-size:0.9rem; text-align:center; grid-column:1/-1;">Reels will load here once you publish them from Admin Panel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Yahan se aapka Partnership section shuru hota hai -->
+<section class="sec" id="partnerships">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">04 — Collaborations</p>
+      ...
+
+  <section class="sec" id="partnerships">
+<div class="container">
+<div class="sec-head" data-reveal>
+<p class="eyebrow">04 — Collaborations</p>
+<h2 class="sec-title">Partnership <em>Tiers</em></h2>
+<p class="sec-sub">Transparent, flexible formats designed for D2C mom, baby, skincare and wellness brands.</p>
+</div>
+<div class="tiers">
+<article class="tier" data-reveal>
+<span class="tier-num">01</span>
+<h3 class="tier-title">Reel Collaboration</h3>
+<p class="tier-sub">Dedicated / Integrated</p>
+<ul class="tier-list">
+<li>High-retention short-form video on Instagram &amp; Facebook</li>
+<li>Tailored script focusing on product benefits + safe home / medicine tips</li>
+<li>Delivered with hook-first storytelling for maximum watch time</li>
+</ul>
+</article>
+<article class="tier" data-reveal>
+<span class="tier-num">02</span>
+<h3 class="tier-title">Story Series</h3>
+<p class="tier-sub">Product Showcase</p>
+<ul class="tier-list">
+<li>3-part interactive Instagram / Facebook story series</li>
+<li>Direct swipe-up / link sticker integration</li>
+<li>Ideal for launches, offers and product education</li>
+</ul>
+</article>
+<article class="tier" data-reveal>
+<span class="tier-num">03</span>
+<h3 class="tier-title">Brand Ambassadorship</h3>
+<p class="tier-sub">Long-Term Partnership</p>
+<ul class="tier-list">
+<li>Monthly recurring content integration</li>
+<li>Built for D2C mom &amp; baby brands scaling trust over time</li>
+<li>Consistent brand presence across reels, stories and posts</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section class="cta" id="contact">
+<div class="container">
+<p class="eyebrow" data-reveal>05 — Let's Talk</p>
+<h2 class="cta-title" data-reveal>Let's Build Something <em>Together</em></h2>
+<div class="rule" aria-hidden="true" data-reveal><i></i><b>◆</b><i></i></div>
+<p class="cta-sub" data-reveal>For collaborations, rates and availability — write directly to the inbox below. Media kit and past performance available on request.</p>
+<div data-reveal>
+<a class="btn btn-gold" data-href="emailCta">Let's Build Something Together</a>
+<br><br>
+<a class="cta-email" data-href="email" data-txt="email"></a>
+</div>
+<div class="cta-socials" data-reveal>
+<a data-href="igUrl" target="_blank" rel="noopener">Instagram</a>
+<a data-href="fbUrl" target="_blank" rel="noopener">Facebook</a>
+<a data-href="email">Email</a>
+</div>
+<div class="footer-bar">
+<span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
+<span data-txt="name"></span> · <span data-txt="handle"></span>
+</div>
+</div>
+</section>
+
+  <!-- 🛠️ SECRET ADMIN PANEL -->
+<div id="admin-panel">
+  <div class="admin-box">
+    <button class="btn-close" onclick="document.getElementById('admin-panel').classList.remove('show')">✕</button>
+    <h3>Owner Settings</h3>
+    <p style="font-size:0.85rem; color:var(--mu); margin-bottom:15px;">Publish karte hi sabhi brands ko naya data dikhne lagega.</p>
+    
+    <label>Instagram Followers</label>
+    <input type="text" id="set-igFollowers" placeholder="e.g. 850+">
+    
+    <label>Instagram Views (30d)</label>
+    <input type="text" id="set-igViews" placeholder="e.g. 185K+">
+    
+    <label>Facebook Followers</label>
+    <input type="text" id="set-fbFollowers" placeholder="e.g. 1.3K+">
+    
+    <label>Facebook Views (30d)</label>
+    <input type="text" id="set-fbViews" placeholder="e.g. 48K+">
+    
+    <label>Top 3 Reel Links (Instagram URL)</label>
+    <input type="text" id="set-reel1" placeholder="https://www.instagram.com/reel/...">
+    <input type="text" id="set-reel2" placeholder="https://www.instagram.com/reel/..." style="margin-top:5px">
+    <input type="text" id="set-reel3" placeholder="https://www.instagram.com/reel/..." style="margin-top:5px">
+
+    <div class="admin-actions">
+      <button class="btn-save" onclick="saveAdminData()">Publish Updates</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ==================== CONFIGURATION ==================== */
+const cfg = {
+  name: "Deepika Sharma",
+  handle: "@mothers_inside",
+  tagline: "Pregnancy · Newborn · Mom Life Insights",
+  bio: "Helping mothers navigate pregnancy, newborn care, and safe medical & home remedies with confidence.",
+  email: "deepreacts0@gmail.com",
+  igUrl: "https://www.instagram.com/mothers_inside",
+  fbUrl: "https://www.facebook.com/",
+  year: "2026",
+  // 👇 Yahan apni JSONBin details ek baar daalein
+  cloudBinId: "6afafe7dffd5d16053c58e33",
+  cloudMasterKey: "$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS",
+  adminPin: "2367" // Apna secret PIN yahan set karein
+};
+
+/* ==================== 1) CONFIG → DOM ==================== */
+document.querySelectorAll('[data-txt]').forEach(el=>{
+  el.textContent = cfg[el.dataset.txt] || '';
+});
+document.querySelectorAll('[data-href]').forEach(el=>{
+  const k = el.dataset.href;
+  if(k === 'email') el.href = 'mailto:' + cfg.email;
+  else if(k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
+  else el.href = cfg[k];
+});
+
+/* ==================== 2) ADMIN PANEL LOGIC ==================== */
+const adminPanel = document.getElementById('admin-panel');
+if(window.location.hash === '#admin') {
+  adminPanel.classList.add('show');
+  
+  if(!sessionStorage.getItem('mi_auth')) {
+    const pin = prompt("Enter Admin PIN:");
+    if(pin === cfg.adminPin) { sessionStorage.setItem('mi_auth', 'true'); } 
+    else { adminPanel.classList.remove('show'); alert('Wrong PIN!'); }
+  }
+
+  let d = JSON.parse(localStorage.getItem('mi_stats') || '{}');
+  if(d.igFollowers) document.getElementById('set-igFollowers').value = d.igFollowers;
+  if(d.igViews) document.getElementById('set-igViews').value = d.igViews;
+  if(d.fbFollowers) document.getElementById('set-fbFollowers').value = d.fbFollowers;
+  if(d.fbViews) document.getElementById('set-fbViews').value = d.fbViews;
+  if(d.reels && d.reels[0]) document.getElementById('set-reel1').value = d.reels[0];
+  if(d.reels && d.reels[1]) document.getElementById('set-reel2').value = d.reels[1];
+  if(d.reels && d.reels[2]) document.getElementById('set-reel3').value = d.reels[2];
+}
+
+window.saveAdminData = async function() {
+  const data = {
+    igFollowers: document.getElementById('set-igFollowers').value,
+    igViews: document.getElementById('set-igViews').value,
+    fbFollowers: document.getElementById('set-fbFollowers').value,
+    fbViews: document.getElementById('set-fbViews').value,
+    reels: [
+      document.getElementById('set-reel1').value,
+      document.getElementById('set-reel2').value,
+      document.getElementById('set-reel3').value
+    ].filter(Boolean)
+  };
+  localStorage.setItem('mi_stats', JSON.stringify(data));
+
+  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
+    try {
+      document.querySelector('.btn-save').textContent = 'Publishing...';
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-Master-Key': cfg.cloudMasterKey },
+        body: JSON.stringify(data)
+      });
+      if(res.ok) { alert('Success! Live update ho gaya.'); window.location.reload(); }
+      else { alert('Cloud Error: Check Bin ID/Key.'); document.querySelector('.btn-save').textContent = 'Publish Updates'; }
+    } catch(e) { alert('Network error. Saved locally only.'); document.querySelector('.btn-save').textContent = 'Publish Updates'; }
+  } else {
+    alert('Local save success! Cloud ID missing hai (sirf aapko dikhega).');
+    window.location.reload();
+  }
+};
+
+/* ==================== 3) FETCH LIVE STATS ==================== */
+function renderStat(el, val){
+  const s = String(val || '');
+  el.innerHTML = s.endsWith('+') ? s.slice(0, -1) + '<span class="plus">+</span>' : s;
+}
+
+async function loadStats(){
+  let data = { igFollowers: '830+', igViews: '183.8K+', fbFollowers: '1.2K+', fbViews: '45K+' };
+  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
+
+  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
+    try {
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`);
+      if (res.ok) {
+        const json = await res.json();
+        data = Object.assign(data, json.record, localData);
+      }
+    } catch(e) { data = Object.assign(data, localData); }
+  } else {
+    data = Object.assign(data, localData);
+  }
+
+  document.querySelectorAll('[data-stat]').forEach(el=>{
+    const v = data[el.dataset.stat];
+    if(v !== undefined && v !== null) renderStat(el, v);
+  });
+}
+loadStats();
+
+  /* ==================== 3.5) FETCH REELS ==================== */
+async function loadReels(){
+  const grid = document.getElementById('reelsGrid');
+  if(!grid) return;
+  
+  let data = { reels: [] };
+  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
+  
+  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
+    try {
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`);
+      if (res.ok) {
+        const json = await res.json();
+        data = Object.assign(data, json.record, localData);
+      }
+    } catch(e) { data = Object.assign(data, localData); }
+  } else {
+    data = Object.assign(data, localData);
+  }
+
+  if(!data.reels || data.reels.length === 0) return;
+
+  // Instagram link se Embed URL banayein
+  const makeEmbed = (url) => {
+    if(!url) return '';
+    let match = url.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+    return match ? `https://www.instagram.com/reel/${match[1]}/embed/` : '';
+  };
+
+  const embeds = data.reels.map(makeEmbed).filter(Boolean);
+  
+  if(embeds.length > 0) {
+    grid.innerHTML = embeds.map(link => `
+      <div class="reel-card">
+        <iframe src="${link}" loading="lazy" scrolling="no" allowtransparency="true"></iframe>
+      </div>
+    `).join('');
+  }
+}
+loadReels();
+
+/* ==================== 4) SCROLL REVEAL ==================== */
+try{
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver((es)=>{
+      es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+    }, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('[data-reveal]').forEach((el,i)=>{
+      el.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
+      obs.observe(el);
+    });
+  } else { document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in')); }
+} catch(e) { document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in')); }
+</script>
+</body>
+</html>
