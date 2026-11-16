@@ -107,6 +107,43 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
 @media(max-width:900px){.audience-grid{grid-template-columns:1fr;gap:44px}.aud-item+.aud-item::before{left:10%;right:10%;top:-22px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}}
 
+/* Logo Style */
+.brand-logo{height:38px;width:38px;border-radius:50%;object-fit:cover;border:1px solid var(--gd);display:none;margin-right:12px}
+.brand-wrap{display:flex;align-items:center}
+
+/* Luxury Motion Graph */
+.stat-card{position:relative;overflow:hidden;z-index:1}
+.stat-graph {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  z-index: -1;
+  opacity: 0.15;
+}
+.stat-graph path {
+  fill: none;
+  stroke: var(--gd);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: drawGraph 2.5s cubic-bezier(0.22, 0.7, 0.28, 1) forwards;
+}
+.stat-graph .area {
+  fill: url(#goldGradient);
+  stroke: none;
+  opacity: 0;
+  animation: fadeArea 2.5s 0.5s forwards;
+}
+@keyframes drawGraph {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fadeArea {
+  to { opacity: 1; }
+                }
+  
   /* 🛠️ SECRET ADMIN PANEL */
 #admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.95);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(5px)}
 #admin-panel.show{display:flex}
@@ -131,7 +168,10 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 
 <header class="hdr">
 <div class="container">
-<div class="brandmark">Mother<em>&nbsp;</em>Insides</div>
+<div class="brandmark brand-wrap">
+  <img id="site-logo" class="brand-logo" src="" alt="Logo">
+  Mother<em>&nbsp;</em>Insides
+</div>
 <a class="hdr-handle" data-href="igUrl" target="_blank" rel="noopener" data-txt="handle"></a>
 </div>
 </header>
@@ -163,6 +203,19 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 </div>
 <div class="stats-grid">
 <article class="stat-card" data-reveal>
+
+<!-- Instagram Graph -->
+<svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="var(--gd)" stop-opacity="1"/>
+      <stop offset="100%" stop-color="var(--gd)" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path class="area" d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20 L200,60 L0,60 Z"/>
+  <path d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20"/>
+</svg>
+  
 <div class="stat-top"><span class="stat-plat">Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
 <div class="stat-grid">
 <div><span class="stat-num" data-stat="igFollowers"></span><span class="stat-label">Followers</span></div>
@@ -171,6 +224,13 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 <p class="stat-note">Engagement: <em>High-intent mom audience</em> — saves, shares and DMs driven by practical, trustworthy guidance.</p>
 </article>
 <article class="stat-card" data-reveal>
+
+<!-- Facebook Graph -->
+<svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+  <path class="area" d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
+  <path d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
+</svg>
+  
 <div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
 <div class="stat-grid">
 <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
@@ -301,6 +361,10 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
     <button class="btn-close" onclick="document.getElementById('admin-panel').classList.remove('show')">✕</button>
     <h3>Owner Settings</h3>
     <p style="font-size:0.85rem; color:var(--mu); margin-bottom:15px;">Publish karte hi sabhi brands ko naya data dikhne lagega.</p>
+
+<label>Upload Logo (Optional)</label>
+<input type="file" id="set-logo" accept="image/*" style="padding:8px; background:#fff; border:1px dashed var(--gd);">
+
     
     <label>Instagram Followers</label>
     <input type="text" id="set-igFollowers" placeholder="e.g. 850+">
@@ -383,6 +447,17 @@ if(d.fbReels && d.fbReels[2]) document.getElementById('set-fbreel3').value = d.f
 }
 
 window.saveAdminData = async function() {
+  // Logo file read karna
+  const logoFile = document.getElementById('set-logo').files[0];
+  let base64Logo = '';
+  if (logoFile) {
+    base64Logo = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result);
+      reader.readAsDataURL(logoFile);
+    });
+  }
+    // ... (aapka purana data){
   const data = {
     igFollowers: document.getElementById('set-igFollowers').value,
     igViews: document.getElementById('set-igViews').value,
@@ -442,6 +517,13 @@ async function loadStats(){
     data = Object.assign(data, localData);
   }
 
+// Logo Load karein
+const logoEl = document.getElementById('site-logo');
+if(data.logoUrl) {
+  logoEl.src = data.logoUrl;
+  logoEl.style.display = 'block';
+}
+  
   document.querySelectorAll('[data-stat]').forEach(el=>{
     const v = data[el.dataset.stat];
     if(v !== undefined && v !== null) renderStat(el, v);
