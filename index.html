@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -129,25 +129,24 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
   stroke-linecap: round;
   stroke-dasharray: 300;
   stroke-dashoffset: 300;
-  .stat-card.in .stat-graph path {
-  animation: drawGraph 2s cubic-bezier(0.22, 0.7, 0.28, 1) forwards;
 }
-
+.stat-card.in .stat-graph path {
+  animation: drawGraph 2s cubic-bezier(0.22, 0.7, 0.28, 1) forwards;
 }
 .stat-graph .area {
   fill: url(#goldGradient);
   stroke: none;
   opacity: 0;
-  .stat-card.in .stat-graph .area {
+}
+.stat-card.in .stat-graph .area {
   animation: fadeArea 2s 0.5s forwards;
-  }
 }
 @keyframes drawGraph {
   to { stroke-dashoffset: 0; }
 }
 @keyframes fadeArea {
   to { opacity: 1; }
-                }
+}
   
   /* 🛠️ SECRET ADMIN PANEL */
 #admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.95);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(5px)}
@@ -238,8 +237,8 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
   
 <div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
 <div class="stat-grid">
+<div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Followers</span></div>
 <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
-<div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Page Followers</span></div>
 </div>
 <p class="stat-note">Engagement: <em>Active community engagement</em> — comments, shares and repeat viewers across Tier 1 &amp; Tier 2 cities.</p>
 </article>
@@ -452,6 +451,8 @@ if(d.fbReels && d.fbReels[2]) document.getElementById('set-fbreel3').value = d.f
 }
 
 window.saveAdminData = async function() {
+  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
+  
   // Logo file read karna (With Auto-Resize)
 const logoFile = document.getElementById('set-logo').files[0];
 let base64Logo = '';
@@ -484,11 +485,11 @@ if (logoFile) {
   }
     // ... (aapka purana data){
   const data = {
-    igFollowers: document.getElementById('set-igFollowers').value,
-    igViews: document.getElementById('set-igViews').value,
-    fbFollowers: document.getElementById('set-fbFollowers').value,
-    fbViews: document.getElementById('set-fbViews').value,
-      reels: [
+  igFollowers: document.getElementById('set-igFollowers').value,
+  igViews: document.getElementById('set-igViews').value,
+  fbFollowers: document.getElementById('set-fbFollowers').value,
+  fbViews: document.getElementById('set-fbViews').value,
+  reels: [
     document.getElementById('set-reel1').value,
     document.getElementById('set-reel2').value,
     document.getElementById('set-reel3').value
@@ -497,9 +498,9 @@ if (logoFile) {
     document.getElementById('set-fbreel1').value,
     document.getElementById('set-fbreel2').value,
     document.getElementById('set-fbreel3').value
-  ].filter(Boolean)
-};
+  ].filter(Boolean),
   logoUrl: base64Logo || JSON.parse(localStorage.getItem('mi_stats') || '{}').logoUrl || ''
+};
   
   localStorage.setItem('mi_stats', JSON.stringify(data));
 
@@ -575,7 +576,14 @@ if(data.logoUrl) {
   document.querySelectorAll('[data-stat]').forEach(el=>{
   const v = data[el.dataset.stat];
   if(v !== undefined && v !== null) {
-    el.dataset.target = v; // Value save kar li
+    el.dataset.target = v; 
+    // Agar card pehle se screen par visible hai, toh turant animate karo
+    let card = el.closest('.stat-card');
+    if(card && card.classList.contains('in') && !el.dataset.animated) {
+      el.textContent = '0+';
+      renderStat(el, v);
+      el.dataset.animated = "true";
+    }
   }
 });
 }
@@ -612,19 +620,23 @@ async function loadReels(){
     return match ? `https://www.instagram.com/reel/${match[1]}/embed/` : '';
   };
 
-  // Facebook link parser (Updated for better compatibility)
+// Facebook link parser
 const makeFBEmbed = (url) => {
   if(!url) return '';
-  
-  // Agar link mein /reel/ ya /videos/ hai, toh usme se sirf Video ID nikaalo
-  let match = url.match(/(?:reel|videos|watch\/\?v=)\/(\d+)/);
+  // Thoda aur behtar Regex taaki har tarah ka link pakad le
+  let match = url.match(/(?:reel|videos|watch(?:\/\?|\?)v=)\/?(\d+)/);
   let videoId = match ? match[1] : null;
   
-  // Agar ID mil gayi, toh Watch URL format banao
+  // Agar link mein direct v=12345 hai
+  if(!videoId) {
+      let fallbackMatch = url.match(/v=(\d+)/);
+      videoId = fallbackMatch ? fallbackMatch[1] : null;
+  }
+
   let finalUrl = videoId ? `https://www.facebook.com/watch/?v=${videoId}` : url;
   
-  // URL ko encode karo aur sirf href parameter rakho
-  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(finalUrl)}`;
+  // Mobile ke liye width aur height fix kar di
+  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=320&height=560`;
 };
 
   const igEmbeds = (data.reels || []).map(makeIGEmbed).filter(Boolean);
@@ -651,14 +663,15 @@ try{
         if(e.isIntersecting){ 
           e.target.classList.add('in'); 
           // Agar ye stat card hai, toh numbers ko 0 se animate karo
-          if(e.target.classList.contains('stat-card')) {
-            e.target.querySelectorAll('[data-stat]').forEach(el => {
-               if (el.dataset.target) {
-                 el.textContent = '0+'; // Start from 0
-                 renderStat(el, el.dataset.target);
-               }
-            });
-          }
+if(e.target.classList.contains('stat-card')) {
+  e.target.querySelectorAll('[data-stat]').forEach(el => {
+     if (el.dataset.target && !el.dataset.animated) {
+       el.textContent = '0+'; // Start from 0
+       renderStat(el, el.dataset.target);
+       el.dataset.animated = "true";
+     }
+  });
+  }
           obs.unobserve(e.target); 
         }
       });
