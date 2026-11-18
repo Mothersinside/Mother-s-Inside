@@ -101,6 +101,11 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .aud-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
 .tag{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--ln);border-radius:999px;color:var(--mu);background:rgba(255,255,255,.04);transition:.4s}
 .tag:hover{border-color:var(--gd);color:var(--gd)}
+.aud-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:22px 26px;margin-top:40px;background:linear-gradient(180deg,#0E0C09 0%,#14110C 60%,rgba(25,22,16,.4) 100%);border:1px solid var(--ln);text-align:center}
+.aud-m-val{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.4vw,1.75rem);font-weight:400;color:var(--gd);line-height:1.2}
+.aud-m-lbl{display:block;margin-top:6px;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+@media(max-width:900px){.aud-metrics{grid-template-columns:1fr;gap:14px}.aud-metrics>div+div{border-top:1px solid var(--lns);padding-top:14px}}
+@media(min-width:901px){.aud-metrics>div+div{border-left:1px solid var(--lns);padding-left:14px}}
 
 /* Ideal Brand Fit Grid */
 .brand-fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,2.2vw,24px)}
@@ -109,6 +114,17 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .bf-cat{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
 .bf-title{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:500;margin-bottom:8px;color:var(--es)}
 .bf-desc{font-size:.9rem;color:var(--mu);line-height:1.7}
+.integ-wrap{margin-top:clamp(44px,6vw,64px);padding-top:clamp(36px,5vw,52px);border-top:1px solid var(--lns)}
+.integ-head{text-align:center;margin-bottom:28px}
+.integ-head h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--es);margin-top:8px}
+.integ-head h3 em{font-style:italic;color:var(--gd)}
+.integ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
+.integ-card{padding:24px 22px;background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);border:1px solid var(--ln)}
+.integ-num{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
+.integ-title{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:500;color:var(--es);margin-bottom:6px}
+.integ-desc{font-size:.86rem;color:var(--mu);line-height:1.65}
+.reel-wrap{width:100%;max-width:320px;display:flex;flex-direction:column;align-items:center}
+.reel-caption{margin-top:10px;font-size:.8rem;color:var(--mu);text-align:center;letter-spacing:.03em;line-height:1.45}
 
 /* Reels & YouTube Grids */
 .reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;justify-items:center;margin-top:30px}
@@ -145,6 +161,10 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .quote-banner{max-width:760px;margin:0 auto 28px;padding:14px 22px;border:1px solid var(--gd);background:linear-gradient(135deg,rgba(201,165,116,.14),rgba(20,17,12,.9));text-align:center;font-size:.86rem;color:var(--es);letter-spacing:.04em}
 .quote-banner strong{color:var(--gd);font-weight:500}
 .quote-banner.expired{border-color:#A85454;background:rgba(168,84,84,.12);color:#F5EFE6}
+.quote-full-link{display:inline-block;margin-top:10px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);text-decoration:none;border-bottom:1px solid var(--ln);padding-bottom:2px}
+.quote-full-link:hover{color:var(--es);border-color:var(--es)}
+body.quote-only-mode .hero,body.quote-only-mode #reach,body.quote-only-mode #audience,body.quote-only-mode #brand-fit,body.quote-only-mode #reels,body.quote-only-mode #youtube-video,body.quote-only-mode #brands,body.quote-only-mode #faq{display:none!important}
+body.quote-only-mode #partnerships{padding-top:clamp(42px,6vw,72px)}
 .btn-outline-gold{background:transparent;border:1px solid var(--gd)!important;color:var(--gd)!important}
 .btn-outline-gold:hover{background:var(--gd)!important;color:#14110D!important}
 .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,26px);margin-top:26px}
@@ -242,6 +262,14 @@ input:checked+.slider:before{transform:translateX(22px)}
   .footer-bar{justify-content:center;text-align:center}
 }
 </style>
+<script>
+try{
+  var _cached=JSON.parse(localStorage.getItem('mi_stats')||'{}');
+  window.__miPrefetch=fetch('https://api.jsonbin.io/v3/b/6afafe7dffd5d16053c58e33/latest',{
+    headers:{'X-Master-Key':'$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS'}
+  }).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+}catch(e){}
+</script>
 </head>
 <body>
 
@@ -249,6 +277,7 @@ input:checked+.slider:before{transform:translateX(22px)}
   <div class="container">
     <div class="brandmark brand-wrap">
       <img id="site-logo" class="brand-logo" src="" alt="Mother Insides Logo">
+      <script>try{var _l=localStorage.getItem('mi_logo_cache')||(JSON.parse(localStorage.getItem('mi_stats')||'{}').logoUrl);if(_l){var _el=document.getElementById('site-logo');_el.src=_l;_el.style.display='block';}}catch(e){}</script>
       Mother<em>&nbsp;</em>Insides
     </div>
   </div>
@@ -270,6 +299,7 @@ input:checked+.slider:before{transform:translateX(22px)}
       <a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram Profile</a>
       <a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook Page</a>
       <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube Channel</a>
+      <a class="btn btn-ghost" id="wa-hero-btn" style="display:none;" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp Collab</a>
     </div>
   </div>
 </section>
@@ -379,6 +409,20 @@ input:checked+.slider:before{transform:translateX(22px)}
         </div>
       </div>
     </div>
+    <div class="aud-metrics" data-reveal>
+      <div>
+        <span class="aud-m-val" id="aud-gender">88% Women</span>
+        <span class="aud-m-lbl">Gender Split</span>
+      </div>
+      <div>
+        <span class="aud-m-val" id="aud-age">68% (25–34)</span>
+        <span class="aud-m-lbl">Top Age Group</span>
+      </div>
+      <div>
+        <span class="aud-m-val" id="aud-cities">Delhi · Mumbai · Pune</span>
+        <span class="aud-m-lbl">Top Cities</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -421,6 +465,35 @@ input:checked+.slider:before{transform:translateX(22px)}
         <h3 class="bf-title">Mom Wellness &amp; Lifestyle</h3>
         <p class="bf-desc">Prenatal &amp; postnatal nutrition, lactation-friendly snacks, skincare for moms, and parenting apps.</p>
       </article>
+    </div>
+
+    <div class="integ-wrap" data-reveal>
+      <div class="integ-head">
+        <p class="eyebrow">Creative Formats</p>
+        <h3>How I Integrate <em>Brands</em></h3>
+      </div>
+      <div class="integ-grid">
+        <div class="integ-card">
+          <p class="integ-num">01 · Walkthrough</p>
+          <h4 class="integ-title">Product &amp; Ingredient Breakdown</h4>
+          <p class="integ-desc">Close-up texture, key ingredients, and practical benefits explained clearly for parents.</p>
+        </div>
+        <div class="integ-card">
+          <p class="integ-num">02 · Checklists</p>
+          <h4 class="integ-title">Hospital Bag &amp; Care Guides</h4>
+          <p class="integ-desc">Save-worthy flatlay and checklist reels featuring your product as a must-have essential.</p>
+        </div>
+        <div class="integ-card">
+          <p class="integ-num">03 · Routine</p>
+          <h4 class="integ-title">Mom Life &amp; Home Integration</h4>
+          <p class="integ-desc">Natural placement inside everyday baby care, skincare, and clean-home routines.</p>
+        </div>
+        <div class="integ-card">
+          <p class="integ-num">04 · Stories</p>
+          <h4 class="integ-title">Unboxing &amp; Launch Frames</h4>
+          <p class="integ-desc">3–4 interactive story frames with product highlights, Link Stickers, and offer codes.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -526,22 +599,22 @@ input:checked+.slider:before{transform:translateX(22px)}
     </div>
     <div class="scope-grid" data-reveal>
       <div class="scope-box">
-        <p class="scope-eyebrow">Pricing Basis</p>
-        <h3 class="scope-title">Base Scope (Starting Rates)</h3>
+        <p class="scope-eyebrow">Standard Campaign</p>
+        <h3 class="scope-title">Base Scope (Included)</h3>
         <ul class="scope-list">
-          <li><strong>Ideal For:</strong> Emerging &amp; indie D2C brands running standard organic campaigns</li>
+          <li><strong>Ideal For:</strong> Standard organic collaborations (single or multi-platform)</li>
           <li><strong>Deliverable:</strong> 1 concept, 30–60 sec video (script, shoot &amp; edit) with 1 revision round</li>
-          <li><strong>Distribution:</strong> Organic native posting on Instagram &amp; Facebook</li>
-          <li><strong>Timeline &amp; Terms:</strong> 5–7 business days turnaround; standard advance/immediate settlement</li>
+          <li><strong>Distribution:</strong> Organic native posting on selected platform(s)</li>
+          <li><strong>Timeline &amp; Payment:</strong> 5–7 business days turnaround; 50% advance &amp; 50% prior to publishing</li>
         </ul>
       </div>
       <div class="scope-box">
-        <p class="scope-eyebrow">Custom Quotes</p>
-        <h3 class="scope-title">When Rates Scale (Larger Campaigns)</h3>
+        <p class="scope-eyebrow">Quoted Separately</p>
+        <h3 class="scope-title">Additional Scope &amp; Terms</h3>
         <ul class="scope-list">
-          <li><strong>Multi-Team Approvals:</strong> Multiple brand stakeholder rounds, legal/compliance checks, or extra edits</li>
-          <li><strong>Production &amp; Hooks:</strong> Multiple hook variations (A/B testing), custom setups, or 48–72 hr express delivery (+25%)</li>
-          <li><strong>Commercial Rights:</strong> Paid ad whitelisting (+30%–50%), raw footage (+25%–40%), or category exclusivity</li>
+          <li><strong>Multi-Team Approvals:</strong> Multiple stakeholder rounds, legal/compliance checks, or extra revisions</li>
+          <li><strong>Production &amp; Rush:</strong> Multiple hook variations (A/B testing), custom setups, or 48–72 hr express delivery</li>
+          <li><strong>Commercial Rights:</strong> Paid ad usage / whitelisting, raw unedited footage, or category exclusivity</li>
           <li><strong>Payment Cycles:</strong> Extended agency/enterprise invoicing terms (Net 30 / Net 60)</li>
         </ul>
       </div>
@@ -579,6 +652,7 @@ input:checked+.slider:before{transform:translateX(22px)}
       <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</a>
       <a data-href="xUrl" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i> X (Twitter)</a>
       <a data-href="email"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
+      <a id="wa-footer-link" style="display:none;" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
     <div class="footer-bar">
       <span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
@@ -633,6 +707,55 @@ input:checked+.slider:before{transform:translateX(22px)}
             <input type="text" id="set-fbViews" placeholder="e.g. 356K+">
           </div>
         </div>
+        <div class="admin-grid-2" style="margin-top:8px">
+          <div>
+            <label for="set-audGender">Audience Gender %</label>
+            <input type="text" id="set-audGender" placeholder="e.g. 88% Women">
+          </div>
+          <div>
+            <label for="set-audAge">Top Age Group %</label>
+            <input type="text" id="set-audAge" placeholder="e.g. 68% (25–34)">
+          </div>
+        </div>
+        <label for="set-audCities">Top Cities</label>
+        <input type="text" id="set-audCities" placeholder="e.g. Delhi · Mumbai · Pune">
+      </div>
+
+      <div class="admin-group">
+        <p class="admin-group-title">WhatsApp Collab Button (Optional)</p>
+        <div class="admin-toggle-row">
+          <span>Show WhatsApp Collab Button</span>
+          <label class="switch">
+            <input type="checkbox" id="set-wa-show">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <label for="set-wa-num">WhatsApp Business Number (with country code)</label>
+        <input type="text" id="set-wa-num" placeholder="e.g. 919876543210">
+      </div>
+
+      <div class="admin-group">
+        <p class="admin-group-title">Main Social Links &amp; Contact Email</p>
+        <div class="admin-grid-2">
+          <div>
+            <label for="set-igUrl">Instagram Profile URL</label>
+            <input type="text" id="set-igUrl" placeholder="https://www.instagram.com/mothers_inside">
+          </div>
+          <div>
+            <label for="set-fbUrl">Facebook Page URL</label>
+            <input type="text" id="set-fbUrl" placeholder="https://www.facebook.com/...">
+          </div>
+          <div>
+            <label for="set-ytUrl">YouTube Channel URL</label>
+            <input type="text" id="set-ytUrl" placeholder="https://youtube.com/@mothers_inside">
+          </div>
+          <div>
+            <label for="set-xUrl">X (Twitter) URL</label>
+            <input type="text" id="set-xUrl" placeholder="https://x.com/mothers_inside">
+          </div>
+        </div>
+        <label for="set-email">Collab Email</label>
+        <input type="text" id="set-email" placeholder="deepreacts0@gmail.com">
       </div>
 
       <div class="admin-group">
@@ -647,7 +770,7 @@ input:checked+.slider:before{transform:translateX(22px)}
         <input type="text" id="set-fbreel1" placeholder="https://www.facebook.com/reel/123456... or /watch/?v=...">
         <input type="text" id="set-fbreel2" placeholder="Facebook Reel / Video URL 2" style="margin-top:8px">
         <input type="text" id="set-fbreel3" placeholder="Facebook Reel / Video URL 3" style="margin-top:8px">
-        <p class="admin-hint">Tip: Facebook <code>/share/r/...</code> links embed nahi hote. Reel ko browser mein kholkar address bar se <code>facebook.com/reel/123456...</code> ya <code>facebook.com/watch/?v=123456...</code> wala direct link paste karein.</p>
+        <p class="admin-hint">Tip: Facebook <code>/share/r/...</code> links embed nahi hote—direct <code>facebook.com/reel/123456...</code> link paste karein. Optional English caption ke liye URL ke baad <code>| Topic · 176K+ Views</code> likh sakti hain.</p>
       </div>
 
       <div class="admin-group">
@@ -677,13 +800,6 @@ input:checked+.slider:before{transform:translateX(22px)}
 
       <div class="admin-group">
         <p class="admin-group-title">Partnership Pricing — All Platforms &amp; Formats</p>
-        <div class="admin-toggle-row">
-          <span>Show Public Prices (Keep OFF for Private-Only)</span>
-          <label class="switch">
-            <input type="checkbox" id="set-pricing-show">
-            <span class="slider"></span>
-          </label>
-        </div>
         <div class="admin-grid-2" style="margin-top:8px">
           <div>
             <label for="set-pSingleInt">Single Platform · Integrated</label>
@@ -826,7 +942,7 @@ function getLocalStats() {
   catch(e) { return {}; }
 }
 function setLocalStats(obj) {
-  try { localStorage.setItem('mi_stats', JSON.stringify(obj)); }
+  try { localStorage.setItem('mi_stats', JSON.stringify(obj)); if(obj && obj.logoUrl) localStorage.setItem('mi_logo_cache', obj.logoUrl); }
   catch(e) {}
 }
 
@@ -862,6 +978,9 @@ function populateAdminForm(d) {
   document.getElementById('set-igViews').value = d.igViews || '';
   document.getElementById('set-fbFollowers').value = d.fbFollowers || '';
   document.getElementById('set-fbViews').value = d.fbViews || '';
+  document.getElementById('set-audGender').value = d.audGender || '88% Women';
+  document.getElementById('set-audAge').value = d.audAge || '68% (25–34)';
+  document.getElementById('set-audCities').value = d.audCities || 'Delhi · Mumbai · Pune';
 
   const reels = Array.isArray(d.reels) ? d.reels : [];
   document.getElementById('set-reel1').value = reels[0] || '';
@@ -873,6 +992,13 @@ function populateAdminForm(d) {
   document.getElementById('set-fbreel2').value = fbReels[1] || '';
   document.getElementById('set-fbreel3').value = fbReels[2] || '';
 
+  document.getElementById('set-wa-show').checked = Boolean(d.waShow);
+  document.getElementById('set-wa-num').value = d.waNum || '';
+  document.getElementById('set-igUrl').value = d.igUrl || cfg.igUrl;
+  document.getElementById('set-fbUrl').value = d.fbUrl || cfg.fbUrl;
+  document.getElementById('set-ytUrl').value = d.ytUrl || cfg.ytUrl;
+  document.getElementById('set-xUrl').value = d.xUrl || cfg.xUrl;
+  document.getElementById('set-email').value = d.email || cfg.email;
   document.getElementById('set-yt-show').checked = Boolean(d.ytShow);
   document.getElementById('set-ytFollowers').value = d.ytFollowers || '';
   document.getElementById('set-ytViews').value = d.ytViews || '';
@@ -882,7 +1008,6 @@ function populateAdminForm(d) {
   document.getElementById('set-yt-video2').value = ytVids[1] || '';
   document.getElementById('set-yt-video3').value = ytVids[2] || '';
 
-  document.getElementById('set-pricing-show').checked = Boolean(d.pricingShow);
   document.getElementById('set-pSingleInt').value = d.pSingleInt || 'Starting at ₹3,000';
   document.getElementById('set-pSingleDed').value = d.pSingleDed || 'Starting at ₹5,000';
   document.getElementById('set-pDualInt').value = d.pDualInt || '₹4,000';
@@ -964,6 +1089,9 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
     igViews: document.getElementById('set-igViews').value.trim(),
     fbFollowers: document.getElementById('set-fbFollowers').value.trim(),
     fbViews: document.getElementById('set-fbViews').value.trim(),
+    audGender: document.getElementById('set-audGender').value.trim(),
+    audAge: document.getElementById('set-audAge').value.trim(),
+    audCities: document.getElementById('set-audCities').value.trim(),
     reels: [
       document.getElementById('set-reel1').value.trim(),
       document.getElementById('set-reel2').value.trim(),
@@ -974,6 +1102,13 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
       document.getElementById('set-fbreel2').value.trim(),
       document.getElementById('set-fbreel3').value.trim()
     ].filter(Boolean),
+    waShow: document.getElementById('set-wa-show').checked,
+    waNum: document.getElementById('set-wa-num').value.trim(),
+    igUrl: document.getElementById('set-igUrl').value.trim() || cfg.igUrl,
+    fbUrl: document.getElementById('set-fbUrl').value.trim() || cfg.fbUrl,
+    ytUrl: document.getElementById('set-ytUrl').value.trim() || cfg.ytUrl,
+    xUrl: document.getElementById('set-xUrl').value.trim() || cfg.xUrl,
+    email: document.getElementById('set-email').value.trim() || cfg.email,
     ytShow: document.getElementById('set-yt-show').checked,
     ytFollowers: document.getElementById('set-ytFollowers').value.trim(),
     ytViews: document.getElementById('set-ytViews').value.trim(),
@@ -982,7 +1117,6 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
       document.getElementById('set-yt-video2').value.trim(),
       document.getElementById('set-yt-video3').value.trim()
     ].filter(Boolean),
-    pricingShow: document.getElementById('set-pricing-show').checked,
     pSingleInt: document.getElementById('set-pSingleInt').value.trim(),
     pSingleDed: document.getElementById('set-pSingleDed').value.trim(),
     pDualInt: document.getElementById('set-pDualInt').value.trim(),
@@ -1201,22 +1335,30 @@ window.addEventListener('hashchange', openAdminIfHash);
 openAdminIfHash();
 
 /* ==================== 3) EMBED PARSERS ==================== */
-function makeIGEmbed(url) {
-  if (!url) return '';
-  const match = url.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
-  return match ? { embed: `https://www.instagram.com/reel/${match[1]}/embed/`, raw: url } : null;
+function splitUrlLabel(entry) {
+  const idx = String(entry || '').indexOf('|');
+  if (idx === -1) return { url: String(entry || '').trim(), label: '' };
+  return { url: entry.slice(0, idx).trim(), label: entry.slice(idx + 1).trim() };
 }
 
-function makeFBEmbed(url) {
+function makeIGEmbed(entry) {
+  const { url, label } = splitUrlLabel(entry);
   if (!url) return null;
-  const raw = url.trim();
+  const match = url.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+  return match ? { embed: `https://www.instagram.com/reel/${match[1]}/embed/`, raw: url, label } : null;
+}
+
+function makeFBEmbed(entry) {
+  const { url, label } = splitUrlLabel(entry);
+  if (!url) return null;
+  const raw = url;
   const reelMatch = raw.match(/\/reel\/(\d+)/);
   const vidMatch = raw.match(/\/videos\/(\d+)/);
   const watchMatch = raw.match(/[?&]v=(\d+)/);
   const numMatch = reelMatch || vidMatch || watchMatch;
 
   if (raw.includes('/share/') && !numMatch) {
-    return { embed: '', raw, isShareLink: true };
+    return { embed: '', raw, label, isShareLink: true };
   }
 
   let canonical = raw;
@@ -1234,7 +1376,8 @@ function makeFBEmbed(url) {
 
   return {
     embed: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(canonical)}&show_text=false&width=320&t=0`,
-    raw
+    raw,
+    label
   };
 }
 
@@ -1352,31 +1495,66 @@ function renderReels(data) {
 
   if (allItems.length === 0) return;
   grid.innerHTML = allItems.map(item => {
+    const cap = item.label ? `<p class="reel-caption">${escapeHtml(item.label)}</p>` : '';
     if (item.isShareLink || !item.embed) {
       return `
-        <div class="reel-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);">
-          <p style="font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:10px;">Facebook Reel</p>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--es);margin-bottom:18px;line-height:1.3;">Watch on Facebook</p>
-          <a class="btn btn-primary" href="${item.raw}" target="_blank" rel="noopener" style="padding:12px 22px;font-size:.68rem;">Open Reel ↗</a>
+        <div class="reel-wrap">
+          <div class="reel-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);">
+            <p style="font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:10px;">Facebook Reel</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--es);margin-bottom:18px;line-height:1.3;">Watch on Facebook</p>
+            <a class="btn btn-primary" href="${item.raw}" target="_blank" rel="noopener" style="padding:12px 22px;font-size:.68rem;">Open Reel ↗</a>
+          </div>
+          ${cap}
         </div>
       `;
     }
     return `
-      <div class="reel-card">
-        <iframe src="${item.embed}" loading="lazy" scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
-        <a class="reel-fallback" href="${item.raw}" target="_blank" rel="noopener">Open Post ↗</a>
+      <div class="reel-wrap">
+        <div class="reel-card">
+          <iframe src="${item.embed}" loading="lazy" scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+          <a class="reel-fallback" href="${item.raw}" target="_blank" rel="noopener">Open Post ↗</a>
+        </div>
+        ${cap}
       </div>
     `;
   }).join('');
 }
 
 function applyMediaKitData(data) {
+  // Update Social Links & Email dynamically for all visitors
+  const activeEmail = data.email || cfg.email;
+  const activeLinks = {
+    igUrl: data.igUrl || cfg.igUrl,
+    fbUrl: data.fbUrl || cfg.fbUrl,
+    ytUrl: data.ytUrl || cfg.ytUrl,
+    xUrl: data.xUrl || cfg.xUrl,
+    email: activeEmail
+  };
+  document.querySelectorAll('[data-href]').forEach(el => {
+    const k = el.dataset.href;
+    if (k === 'email') el.href = 'mailto:' + activeEmail;
+    else if (k === 'emailCta') el.href = 'mailto:' + activeEmail + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
+    else if (activeLinks[k]) el.href = activeLinks[k];
+  });
+  document.querySelectorAll('[data-txt="email"]').forEach(el => {
+    el.textContent = activeEmail;
+  });
+
   // Logo
   const logoEl = document.getElementById('site-logo');
   if (logoEl && data.logoUrl) {
-    logoEl.src = data.logoUrl;
+    if (logoEl.src !== data.logoUrl) logoEl.src = data.logoUrl;
     logoEl.style.display = 'block';
+    try { localStorage.setItem('mi_logo_cache', data.logoUrl); } catch(e) {}
   }
+
+  // Audience % Breakdown
+  const gEl = document.getElementById('aud-gender');
+  const aEl = document.getElementById('aud-age');
+  const cEl = document.getElementById('aud-cities');
+  if (gEl) gEl.textContent = data.audGender || '88% Women';
+  if (aEl) aEl.textContent = data.audAge || '68% (25–34)';
+  if (cEl) cEl.textContent = data.audCities || 'Delhi · Mumbai · Pune';
 
   // Combined views highlight (IG + FB + YouTube when enabled)
   const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews) + (data.ytShow ? parseKValue(data.ytViews) : 0);
@@ -1409,6 +1587,19 @@ function applyMediaKitData(data) {
       }
     }
   });
+
+  // WhatsApp Collab Button (Admin-Controlled)
+  const waHero = document.getElementById('wa-hero-btn');
+  const waFoot = document.getElementById('wa-footer-link');
+  const waDigits = String(data.waNum || '').replace(/[^0-9]/g, '');
+  if (data.waShow && waDigits.length >= 8) {
+    const waHref = `https://wa.me/${waDigits}?text=${encodeURIComponent("Hi Deepika, we'd love to collaborate with Mother Insides!")}`;
+    if (waHero) { waHero.href = waHref; waHero.style.display = 'inline-flex'; }
+    if (waFoot) { waFoot.href = waHref; waFoot.style.display = 'inline-flex'; }
+  } else {
+    if (waHero) waHero.style.display = 'none';
+    if (waFoot) waFoot.style.display = 'none';
+  }
 
   // YouTube (Toggle + Card + up to 3 Videos)
   const ytHeroBtn = document.getElementById('yt-hero-btn');
@@ -1458,21 +1649,29 @@ function applyMediaKitData(data) {
   const urlQuote = getUrlQuote(data);
   const bannerSlot = document.getElementById('quote-banner-slot');
   let activeQuoteRates = null;
-  let showPrices = Boolean(data.pricingShow);
+  let showPrices = false;
+
+  const forceFull = new URLSearchParams(window.location.search).get('full') === '1';
+  if (urlQuote && !forceFull) {
+    document.body.classList.add('quote-only-mode');
+  } else {
+    document.body.classList.remove('quote-only-mode');
+  }
 
   if (urlQuote) {
+    const fullKitHref = window.location.pathname + '?q=' + encodeURIComponent(new URLSearchParams(window.location.search).get('q') || '') + '&full=1';
     const now = Date.now();
     if (urlQuote.exp && urlQuote.exp > 0 && now > urlQuote.exp) {
       showPrices = false;
       if (bannerSlot) {
-        bannerSlot.innerHTML = `<div class="quote-banner expired">This custom rate card${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} has expired. Please write to <strong>${escapeHtml(cfg.email)}</strong> for an updated quote.</div>`;
+        bannerSlot.innerHTML = `<div class="quote-banner expired">This custom rate card${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} has expired. Please write to <strong>${escapeHtml(cfg.email)}</strong> for an updated quote.<br><a class="quote-full-link" href="${fullKitHref}">View Full Media Kit ↗</a></div>`;
       }
     } else {
       showPrices = true;
       activeQuoteRates = urlQuote.r || {};
       if (bannerSlot) {
         const expText = urlQuote.exp ? ` · Valid until ${new Date(urlQuote.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}` : '';
-        bannerSlot.innerHTML = `<div class="quote-banner">Prepared exclusively${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} · Quoted on ${escapeHtml(urlQuote.d || '')}${expText}</div>`;
+        bannerSlot.innerHTML = `<div class="quote-banner">Official Rate Card prepared exclusively${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} · Quoted on ${escapeHtml(urlQuote.d || '')}${expText}<br><a class="quote-full-link" href="${fullKitHref}">View Full Media Kit &amp; Performance ↗</a></div>`;
       }
     }
   } else if (bannerSlot) {
@@ -1532,10 +1731,12 @@ async function loadMediaKitData() {
     igViews: '176K+',
     fbFollowers: '1120',
     fbViews: '356K+',
+    audGender: '88% Women',
+    audAge: '68% (25–34)',
+    audCities: 'Delhi · Mumbai · Pune',
     reels: [],
     fbReels: [],
     ytVideos: [],
-    pricingShow: false,
     pSingleInt: 'Starting at ₹3,000',
     pSingleDed: 'Starting at ₹5,000',
     pDualInt: '₹4,000',
@@ -1556,12 +1757,13 @@ async function loadMediaKitData() {
 
   if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
     try {
-      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, {
-        headers: { 'X-Master-Key': cfg.cloudMasterKey }
-      });
-      if (res.ok) {
-        const json = await res.json();
-        data = Object.assign(data, json.record || {}, localData);
+      const json = window.__miPrefetch
+        ? await window.__miPrefetch
+        : await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, {
+            headers: { 'X-Master-Key': cfg.cloudMasterKey }
+          }).then(r => r.ok ? r.json() : null);
+      if (json && json.record) {
+        data = Object.assign(data, json.record, localData);
       } else {
         data = Object.assign(data, localData);
       }
