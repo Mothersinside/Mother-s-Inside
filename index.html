@@ -999,6 +999,7 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
     brandsShow: document.getElementById('set-brands-show').checked,
     brands: document.getElementById('set-brands').value.trim(),
     faqs: document.getElementById('set-faqs').value.trim(),
+    quotes: (window.__miLatestData && window.__miLatestData.quotes) || prev.quotes || {},
     logoUrl: base64Logo || prev.logoUrl || ''
   };
 
@@ -1042,18 +1043,28 @@ function decodeQuote(token) {
   return JSON.parse(json);
 }
 
-function getUrlQuote() {
+function getUrlQuote(data) {
   try {
     const params = new URLSearchParams(window.location.search);
-    const q = params.get('quote');
-    if (!q) return null;
-    return decodeQuote(q);
+    const shortId = params.get('q');
+    if (shortId && data && data.quotes && data.quotes[shortId]) {
+      return data.quotes[shortId];
+    }
+    const legacy = params.get('quote');
+    if (legacy) return decodeQuote(legacy);
+    return null;
   } catch(e) {
     return null;
   }
 }
 
-function collectCurrentQuotePayload() {
+function makeShortQuoteId(brand) {
+  const slug = String(brand || 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 10) || 'brand';
+  const rand = Math.random().toString(36).slice(2, 6);
+  return `${slug}-${rand}`;
+}
+
+function collectCurrentQuotePayload(existingId) {
   const brand = document.getElementById('q-brand').value.trim() || 'Brand Partner';
   const days = parseInt(document.getElementById('q-expiry').value, 10) || 0;
   const now = new Date();
@@ -1074,10 +1085,29 @@ function collectCurrentQuotePayload() {
     pAddonRaw: document.getElementById('set-pAddonRaw').value.trim() || '+25% to +40%',
     pAddonLink: document.getElementById('set-pAddonLink').value.trim() || '₹500 – ₹1,000'
   };
+  const id = existingId || makeShortQuoteId(brand);
   const payload = { b: brand, d: dateStr, exp, r: rates };
   const baseUrl = window.location.origin + window.location.pathname;
-  const link = `${baseUrl}?quote=${encodeQuote(payload)}`;
-  return { brand, dateStr, days, exp, rates, link };
+  const shortLink = `${baseUrl}?q=${encodeURIComponent(id)}`;
+  return { id, brand, dateStr, days, exp, rates, payload, link: shortLink };
+}
+
+async function persistQuoteToCloud(q) {
+  const prev = getLocalStats();
+  const base = Object.assign({}, prev, window.__miLatestData || {});
+  if (!base.quotes || typeof base.quotes !== 'object') base.quotes = {};
+  base.quotes[q.id] = q.payload;
+  setLocalStats(base);
+  window.__miLatestData = base;
+
+  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-Master-Key': cfg.cloudMasterKey },
+      body: JSON.stringify(base)
+    });
+    if (!res.ok) throw new Error('Cloud sync failed');
+  }
 }
 
 function copyTextSafe(text) {
@@ -1098,16 +1128,33 @@ function fallbackCopy(text) {
   document.body.removeChild(ta);
 }
 
+let lastGeneratedQuote = null;
+
 document.getElementById('btn-copy-quote').addEventListener('click', async () => {
   const qStatus = document.getElementById('quote-gen-status');
+  const btn = document.getElementById('btn-copy-quote');
   const q = collectCurrentQuotePayload();
-  await copyTextSafe(q.link);
-  showStatus(qStatus, `Private link for "${q.brand}" copied! Share this link only with them.`, false);
+  lastGeneratedQuote = q;
+  btn.textContent = 'Saving Link...';
+  try {
+    await persistQuoteToCloud(q);
+    await copyTextSafe(q.link);
+    showStatus(qStatus, `Short private link copied: ${q.link}`, false);
+  } catch(e) {
+    showStatus(qStatus, 'Cloud sync failed. Please check internet and try again.', true);
+  }
+  btn.textContent = 'Copy Private Link';
 });
 
-document.getElementById('btn-dl-quote').addEventListener('click', () => {
+document.getElementById('btn-dl-quote').addEventListener('click', async () => {
   const qStatus = document.getElementById('quote-gen-status');
-  const q = collectCurrentQuotePayload();
+  const q = lastGeneratedQuote && lastGeneratedQuote.brand === (document.getElementById('q-brand').value.trim() || 'Brand Partner')
+    ? lastGeneratedQuote
+    : collectCurrentQuotePayload();
+  if (!lastGeneratedQuote) {
+    try { await persistQuoteToCloud(q); } catch(e) {}
+    lastGeneratedQuote = q;
+  }
   const safeBrand = q.brand.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'Brand';
   const dateSlug = new Date().toISOString().slice(0, 10);
   const expText = q.exp ? new Date(q.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'No Expiry';
@@ -1408,7 +1455,7 @@ function applyMediaKitData(data) {
   }
 
   // Check if URL has a private ?quote= payload
-  const urlQuote = getUrlQuote();
+  const urlQuote = getUrlQuote(data);
   const bannerSlot = document.getElementById('quote-banner-slot');
   let activeQuoteRates = null;
   let showPrices = Boolean(data.pricingShow);
