@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--iv:#191610;--ch:#14110C;--gd:#C9A574;--gs:#DFC092;--es:#F5EFE6;--mu:#B8AC9B;--ln:rgba(201,165,116,.24);--lns:rgba(245,239,230,.10);color-scheme:dark}
@@ -26,6 +27,8 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .rule b{font-size:7px;color:var(--gd);line-height:1;transform:translateY(-1px)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:999px;font-family:Jost,sans-serif;font-size:.76rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.45s cubic-bezier(.22,.7,.28,1)}
+.btn i{font-size:.92rem;color:var(--gd);transition:.3s}
+.btn-primary:hover i,.btn-gold i,.btn-gold:hover i{color:inherit}
 .btn-primary{background:#231C14;color:var(--es);border-color:var(--ln)}
 .btn-primary:hover{background:var(--gd);color:#14110D;border-color:var(--gd);transform:translateY(-2px)}
 .btn-ghost{border-color:var(--ln);color:var(--es);background:rgba(255,255,255,.02)}
@@ -72,7 +75,8 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .stat-card:hover{transform:translateY(-6px);box-shadow:0 34px 60px -44px rgba(35,27,22,.55);border-color:rgba(184,134,75,.5)}
 .stat-card:hover::before{opacity:1}
 .stat-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:22px;margin-bottom:26px;border-bottom:1px solid var(--lns);position:relative;z-index:2}
-.stat-plat{font-family:'Cormorant Garamond',serif;font-size:1.32rem;font-weight:500}
+.stat-plat{font-family:'Cormorant Garamond',serif;font-size:1.32rem;font-weight:500;display:inline-flex;align-items:center;gap:10px}
+.stat-plat i{font-size:1.05rem;color:var(--gd)}
 .stat-handle{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gd)}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 18px;position:relative;z-index:2}
 .stat-num{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(2.1rem,4.6vw,3.1rem);line-height:1}
@@ -125,18 +129,24 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .brand-item span{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
 
 /* Partnership Tiers */
-.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,26px)}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:clamp(18px,2.2vw,24px)}
 .tier{position:relative;padding:clamp(32px,4vw,46px) clamp(26px,3.4vw,38px);background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);border:1px solid var(--ln);display:flex;flex-direction:column;transition:.6s cubic-bezier(.22,.7,.28,1)}
 .tier:hover{transform:translateY(-6px);border-color:rgba(184,134,75,.55);box-shadow:0 34px 60px -44px rgba(35,27,22,.5)}
 .tier-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.3em;color:var(--gd)}
 .tier-title{font-family:'Cormorant Garamond',serif;font-size:1.72rem;font-weight:500;line-height:1.2;margin:14px 0 6px}
 .tier-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--lns)}
-.tier-price{font-family:'Cormorant Garamond',serif;font-size:1.38rem;font-weight:500;color:var(--gd);margin:-10px 0 20px;letter-spacing:.02em;line-height:1.45}
+.tier-price{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:500;color:var(--gd);margin:-10px 0 20px;letter-spacing:.01em;line-height:1.55}
+.tier-price span{display:block;font-size:.72rem;font-family:Jost,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-top:6px}
 .tier-list{list-style:none;display:flex;flex-direction:column;gap:14px}
 .tier-list li{position:relative;padding-left:22px;font-size:.93rem;line-height:1.7;color:var(--mu)}
 .tier-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--gd)}
 .tiers-addons{margin-top:28px;text-align:center;font-size:.82rem;letter-spacing:.08em;color:var(--mu);padding:14px 20px;border:1px dashed var(--ln);background:rgba(255,255,255,.03)}
 .tiers-addons strong{color:var(--es);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;margin-right:6px}
+.quote-banner{max-width:760px;margin:0 auto 28px;padding:14px 22px;border:1px solid var(--gd);background:linear-gradient(135deg,rgba(201,165,116,.14),rgba(20,17,12,.9));text-align:center;font-size:.86rem;color:var(--es);letter-spacing:.04em}
+.quote-banner strong{color:var(--gd);font-weight:500}
+.quote-banner.expired{border-color:#A85454;background:rgba(168,84,84,.12);color:#F5EFE6}
+.btn-outline-gold{background:transparent;border:1px solid var(--gd)!important;color:var(--gd)!important}
+.btn-outline-gold:hover{background:var(--gd)!important;color:#14110D!important}
 .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,26px);margin-top:26px}
 .scope-box{padding:clamp(24px,3vw,34px);background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);border:1px solid var(--ln)}
 .scope-eyebrow{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
@@ -168,9 +178,11 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .cta-email{display:inline-block;margin-top:26px;font-size:.8rem;letter-spacing:.16em;color:var(--es);text-decoration:none;border-bottom:1px solid var(--ln);padding-bottom:3px;transition:.4s}
 .cta-email:hover{color:var(--gs);border-color:var(--gs)}
 .cta-socials{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:44px}
-.cta-socials a{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.4s}
+.cta-socials a{display:inline-flex;align-items:center;gap:7px;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.4s}
+.cta-socials a i{color:var(--gd);font-size:.82rem}
 .cta-socials a:hover{color:var(--gs)}
 .footer-bar{margin-top:clamp(60px,8vw,90px);padding-top:26px;border-top:1px solid var(--lns);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+.footer-disc{margin-top:18px;font-size:.72rem;line-height:1.6;color:rgba(184,172,155,.65);max-width:780px;margin-left:auto;margin-right:auto}
 
 [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.22,.7,.28,1),transform .95s cubic-bezier(.22,.7,.28,1)}
 [data-reveal].in{opacity:1;transform:none}
@@ -254,10 +266,10 @@ input:checked+.slider:before{transform:translateX(22px)}
     </div>
     <p class="hero-bio" data-txt="bio"></p>
     <div class="hero-actions">
-      <a class="btn btn-primary" data-href="emailCta">✉ Direct Collab Email</a>
-      <a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener">Instagram Profile</a>
-      <a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener">Facebook Page</a>
-      <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube Channel</a>
+      <a class="btn btn-primary" data-href="emailCta"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Direct Collab Email</a>
+      <a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram Profile</a>
+      <a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook Page</a>
+      <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube Channel</a>
     </div>
   </div>
 </section>
@@ -298,7 +310,7 @@ input:checked+.slider:before{transform:translateX(22px)}
           <path class="area" d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20 L200,60 L0,60 Z"/>
           <path d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20"/>
         </svg>
-        <div class="stat-top"><span class="stat-plat">Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
+        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
         <div class="stat-grid">
           <div><span class="stat-num" data-stat="igFollowers"></span><span class="stat-label">Followers</span></div>
           <div><span class="stat-num" data-stat="igViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
@@ -311,7 +323,7 @@ input:checked+.slider:before{transform:translateX(22px)}
           <path class="area" d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
           <path d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
         </svg>
-        <div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook</span><span class="stat-handle">Mother Insides</span></div>
         <div class="stat-grid">
           <div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Followers</span></div>
           <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
@@ -324,7 +336,7 @@ input:checked+.slider:before{transform:translateX(22px)}
           <path class="area" d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
           <path d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
         </svg>
-        <div class="stat-top"><span class="stat-plat">YouTube</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</span><span class="stat-handle">Mother Insides</span></div>
         <div class="stat-grid">
           <div><span class="stat-num" data-stat="ytFollowers"></span><span class="stat-label">Subscribers</span></div>
           <div><span class="stat-num" data-stat="ytViews"></span><span class="stat-label">Total Views</span></div>
@@ -459,38 +471,53 @@ input:checked+.slider:before{transform:translateX(22px)}
       <h2 class="sec-title">Partnership <em>Tiers</em></h2>
       <p class="sec-sub">Transparent, flexible formats designed for D2C mom, baby, skincare, and wellness brands.</p>
     </div>
+    <div id="quote-banner-slot"></div>
     <div class="tiers">
       <article class="tier" data-reveal>
         <span class="tier-num">01</span>
-        <h3 class="tier-title">Reel Collaboration</h3>
-        <p class="tier-sub">Dedicated / Integrated</p>
-        <div class="tier-price" id="price-tier1">Integrated: Starting at ₹3,500<br>Dedicated: Starting at ₹6,000</div>
+        <h3 class="tier-title">Single Platform</h3>
+        <p class="tier-sub">IG <em>or</em> FB <em>or</em> YT Short</p>
+        <div class="tier-price" id="price-tier1">Integrated: Starting at ₹3,000<br>Dedicated: Starting at ₹5,000</div>
         <ul class="tier-list">
-          <li>1x High-retention short-form video (30–60s) on Instagram &amp; Facebook</li>
-          <li>Tailored script blending product benefits with relatable everyday mom care tips</li>
-          <li>Hook-first storytelling + 1 round of edits with a 5–7 day turnaround</li>
+          <li>1x short-form video (30–60s) on any <strong>one</strong> chosen platform</li>
+          <li>Tailored script blending product benefits with everyday mom tips</li>
+          <li>Hook-first storytelling + 1 round of edits (5–7 day turnaround)</li>
         </ul>
       </article>
+
       <article class="tier" data-reveal>
         <span class="tier-num">02</span>
-        <h3 class="tier-title">Story Series</h3>
-        <p class="tier-sub">Product Showcase</p>
-        <p class="tier-price" id="price-tier2">Starting at ₹1,500</p>
+        <h3 class="tier-title">Multi-Platform Bundle</h3>
+        <p class="tier-sub">Cross-Platform Reach</p>
+        <div class="tier-price" id="price-tier2">IG+FB Int: ₹4,000 · Ded: ₹7,000<br>All 3 Int: ₹5,500 · Ded: ₹9,500</div>
         <ul class="tier-list">
-          <li>3–4 part interactive Instagram &amp; Facebook story sequence</li>
-          <li>Direct link sticker &amp; custom promo code integration</li>
-          <li>Ideal for product launches, seasonal offers, and unboxing demos</li>
+          <li>Native upload across <strong>IG + FB</strong> or <strong>IG + FB + YT Shorts</strong></li>
+          <li>Maximum organic discovery across all mom communities</li>
+          <li>Unified campaign storytelling + 1 round of edits included</li>
         </ul>
       </article>
-      <article class="tier" data-reveal>
+
+      <article class="tier" id="tier-yt" data-reveal style="display:none;">
         <span class="tier-num">03</span>
-        <h3 class="tier-title">Brand Ambassadorship</h3>
-        <p class="tier-sub">Long-Term Partnership</p>
-        <p class="tier-price" id="price-tier3">Starting at ₹15,000 / mo</p>
+        <h3 class="tier-title">YouTube Long-Form</h3>
+        <p class="tier-sub">5–10 Min In-Depth Video</p>
+        <div class="tier-price" id="price-tier-yt">Long Integration: Starting at ₹5,000<br>Dedicated Long: Starting at ₹10,000</div>
         <ul class="tier-list">
-          <li>Monthly recurring package (2 Reels + 4 Story sets)</li>
-          <li>Built for D2C mom &amp; baby brands scaling parent trust over time</li>
-          <li>Consistent brand presence across reels, stories, and community posts</li>
+          <li>In-depth product demo, mom-tested review &amp; honest walkthrough</li>
+          <li>Pinned comment &amp; clickable description link for direct conversions</li>
+          <li>Built for high-intent search discovery &amp; lasting brand trust</li>
+        </ul>
+      </article>
+
+      <article class="tier" data-reveal>
+        <span class="tier-num">04</span>
+        <h3 class="tier-title">Stories &amp; Retainers</h3>
+        <p class="tier-sub">Launches &amp; Ambassadorship</p>
+        <div class="tier-price" id="price-tier4">Story Series: Starting at ₹1,500<br>Ambassadorship: Starting at ₹15,000 / mo</div>
+        <ul class="tier-list">
+          <li>3–4 interactive Stories with Link Sticker &amp; custom promo code</li>
+          <li>Monthly Ambassadorship: 2 Reels + 4 Story sets for steady trust</li>
+          <li>Ideal for product launches, seasonal sales, and D2C growth</li>
         </ul>
       </article>
     </div>
@@ -547,16 +574,17 @@ input:checked+.slider:before{transform:translateX(22px)}
       <a class="cta-email" data-href="email" data-txt="email"></a>
     </div>
     <div class="cta-socials" data-reveal>
-      <a data-href="igUrl" target="_blank" rel="noopener">Instagram</a>
-      <a data-href="fbUrl" target="_blank" rel="noopener">Facebook</a>
-      <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube</a>
-      <a data-href="xUrl" target="_blank" rel="noopener">X (Twitter)</a>
-      <a data-href="email">Email</a>
+      <a data-href="igUrl" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</a>
+      <a data-href="fbUrl" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook</a>
+      <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</a>
+      <a data-href="xUrl" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i> X (Twitter)</a>
+      <a data-href="email"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
     </div>
     <div class="footer-bar">
       <span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
       <span><span data-txt="name"></span> · <span data-txt="handle"></span></span>
     </div>
+    <p class="footer-disc">Disclaimer: Content on Mother Insides is for informational and parenting awareness purposes only and is not a substitute for professional medical advice. Sponsored collaborations follow standard ASCI disclosure guidelines.</p>
   </div>
 </section>
 
@@ -648,9 +676,9 @@ input:checked+.slider:before{transform:translateX(22px)}
       </div>
 
       <div class="admin-group">
-        <p class="admin-group-title">Partnership Pricing — All 7 Rates (Editable)</p>
+        <p class="admin-group-title">Partnership Pricing — All Platforms &amp; Formats</p>
         <div class="admin-toggle-row">
-          <span>Show Prices on Media Kit</span>
+          <span>Show Public Prices (Keep OFF for Private-Only)</span>
           <label class="switch">
             <input type="checkbox" id="set-pricing-show">
             <span class="slider"></span>
@@ -658,32 +686,82 @@ input:checked+.slider:before{transform:translateX(22px)}
         </div>
         <div class="admin-grid-2" style="margin-top:8px">
           <div>
-            <label for="set-price1">01 · Integrated Reel (IG + FB)</label>
-            <input type="text" id="set-price1" placeholder="Starting at ₹3,500">
+            <label for="set-pSingleInt">Single Platform · Integrated</label>
+            <input type="text" id="set-pSingleInt" placeholder="Starting at ₹3,000">
           </div>
           <div>
-            <label for="set-price2">02 · Dedicated Reel (IG + FB)</label>
-            <input type="text" id="set-price2" placeholder="Starting at ₹6,000">
+            <label for="set-pSingleDed">Single Platform · Dedicated</label>
+            <input type="text" id="set-pSingleDed" placeholder="Starting at ₹5,000">
           </div>
           <div>
-            <label for="set-price3">03 · Story Series (3–4 Stories)</label>
-            <input type="text" id="set-price3" placeholder="Starting at ₹1,500">
+            <label for="set-pDualInt">IG + FB · Integrated</label>
+            <input type="text" id="set-pDualInt" placeholder="₹4,000">
           </div>
           <div>
-            <label for="set-price4">04 · Brand Ambassadorship</label>
-            <input type="text" id="set-price4" placeholder="Starting at ₹15,000 / mo">
+            <label for="set-pDualDed">IG + FB · Dedicated</label>
+            <input type="text" id="set-pDualDed" placeholder="₹7,000">
           </div>
           <div>
-            <label for="set-price5">05 · Paid Ad Usage Rights (30d)</label>
-            <input type="text" id="set-price5" placeholder="+30% to +50%">
+            <label for="set-pTriInt">All 3 (IG+FB+YT) · Integrated</label>
+            <input type="text" id="set-pTriInt" placeholder="₹5,500">
           </div>
           <div>
-            <label for="set-price6">06 · Raw High-Res Footage</label>
-            <input type="text" id="set-price6" placeholder="+25% to +40%">
+            <label for="set-pTriDed">All 3 (IG+FB+YT) · Dedicated</label>
+            <input type="text" id="set-pTriDed" placeholder="₹9,500">
+          </div>
+          <div>
+            <label for="set-pYtLongInt">YouTube Long · Integration</label>
+            <input type="text" id="set-pYtLongInt" placeholder="Starting at ₹5,000">
+          </div>
+          <div>
+            <label for="set-pYtLongDed">YouTube Long · Dedicated</label>
+            <input type="text" id="set-pYtLongDed" placeholder="Starting at ₹10,000">
+          </div>
+          <div>
+            <label for="set-pStory">Story Series (3–4 Stories)</label>
+            <input type="text" id="set-pStory" placeholder="Starting at ₹1,500">
+          </div>
+          <div>
+            <label for="set-pAmb">Brand Ambassadorship (Monthly)</label>
+            <input type="text" id="set-pAmb" placeholder="Starting at ₹15,000 / mo">
+          </div>
+          <div>
+            <label for="set-pAddonAd">Add-on · Paid Ad Rights (30d)</label>
+            <input type="text" id="set-pAddonAd" placeholder="+30% to +50%">
+          </div>
+          <div>
+            <label for="set-pAddonRaw">Add-on · Raw Footage</label>
+            <input type="text" id="set-pAddonRaw" placeholder="+25% to +40%">
           </div>
         </div>
-        <label for="set-price7">07 · Link-in-Bio (7 Days)</label>
-        <input type="text" id="set-price7" placeholder="₹500 – ₹1,000">
+        <label for="set-pAddonLink">Add-on · Link-in-Bio (7 Days)</label>
+        <input type="text" id="set-pAddonLink" placeholder="₹500 – ₹1,000">
+        <p class="admin-hint">YouTube Long-Form card tabhi dikhega jab upar "Show YouTube Section" toggle ON hoga.</p>
+
+        <div style="margin-top:18px;padding:16px;border:1px dashed var(--gd);border-radius:6px;background:rgba(201,165,116,.05);">
+          <p class="admin-group-title" style="margin-bottom:6px;">Private Brand Quote Link &amp; Record</p>
+          <p class="admin-hint" style="margin-bottom:10px;">Upar ke rates is brand ke hisaab se adjust karein, phir private link copy karein aur record apne paas download kar lein.</p>
+          <div class="admin-grid-2">
+            <div>
+              <label for="q-brand">Brand Name</label>
+              <input type="text" id="q-brand" placeholder="e.g. Mamaearth">
+            </div>
+            <div>
+              <label for="q-expiry">Link Validity</label>
+              <select id="q-expiry" style="width:100%;padding:10px 12px;border:1px solid var(--ln);border-radius:5px;font-family:Jost,sans-serif;font-size:.9rem;background:#14110D;color:var(--es);">
+                <option value="7">7 Days</option>
+                <option value="14">14 Days</option>
+                <option value="30">30 Days</option>
+                <option value="0">No Expiry</option>
+              </select>
+            </div>
+          </div>
+          <div class="admin-actions" style="margin-top:14px;">
+            <button class="btn-save" id="btn-copy-quote" type="button">Copy Private Link</button>
+            <button class="btn-outline-gold" id="btn-dl-quote" type="button">Download Brand Quote Record</button>
+          </div>
+          <div class="admin-status" id="quote-gen-status"></div>
+        </div>
       </div>
 
       <div class="admin-group">
@@ -804,14 +882,20 @@ function populateAdminForm(d) {
   document.getElementById('set-yt-video2').value = ytVids[1] || '';
   document.getElementById('set-yt-video3').value = ytVids[2] || '';
 
-  document.getElementById('set-pricing-show').checked = d.pricingShow !== false;
-  document.getElementById('set-price1').value = d.price1 || 'Starting at ₹3,500';
-  document.getElementById('set-price2').value = d.price2 || 'Starting at ₹6,000';
-  document.getElementById('set-price3').value = d.price3 || 'Starting at ₹1,500';
-  document.getElementById('set-price4').value = d.price4 || 'Starting at ₹15,000 / mo';
-  document.getElementById('set-price5').value = d.price5 || '+30% to +50%';
-  document.getElementById('set-price6').value = d.price6 || '+25% to +40%';
-  document.getElementById('set-price7').value = d.price7 || '₹500 – ₹1,000';
+  document.getElementById('set-pricing-show').checked = Boolean(d.pricingShow);
+  document.getElementById('set-pSingleInt').value = d.pSingleInt || 'Starting at ₹3,000';
+  document.getElementById('set-pSingleDed').value = d.pSingleDed || 'Starting at ₹5,000';
+  document.getElementById('set-pDualInt').value = d.pDualInt || '₹4,000';
+  document.getElementById('set-pDualDed').value = d.pDualDed || '₹7,000';
+  document.getElementById('set-pTriInt').value = d.pTriInt || '₹5,500';
+  document.getElementById('set-pTriDed').value = d.pTriDed || '₹9,500';
+  document.getElementById('set-pYtLongInt').value = d.pYtLongInt || 'Starting at ₹5,000';
+  document.getElementById('set-pYtLongDed').value = d.pYtLongDed || 'Starting at ₹10,000';
+  document.getElementById('set-pStory').value = d.pStory || 'Starting at ₹1,500';
+  document.getElementById('set-pAmb').value = d.pAmb || 'Starting at ₹15,000 / mo';
+  document.getElementById('set-pAddonAd').value = d.pAddonAd || '+30% to +50%';
+  document.getElementById('set-pAddonRaw').value = d.pAddonRaw || '+25% to +40%';
+  document.getElementById('set-pAddonLink').value = d.pAddonLink || '₹500 – ₹1,000';
   document.getElementById('set-brands-show').checked = Boolean(d.brandsShow);
   document.getElementById('set-brands').value = d.brands || '';
   document.getElementById('set-faqs').value = d.faqs || '';
@@ -899,13 +983,19 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
       document.getElementById('set-yt-video3').value.trim()
     ].filter(Boolean),
     pricingShow: document.getElementById('set-pricing-show').checked,
-    price1: document.getElementById('set-price1').value.trim(),
-    price2: document.getElementById('set-price2').value.trim(),
-    price3: document.getElementById('set-price3').value.trim(),
-    price4: document.getElementById('set-price4').value.trim(),
-    price5: document.getElementById('set-price5').value.trim(),
-    price6: document.getElementById('set-price6').value.trim(),
-    price7: document.getElementById('set-price7').value.trim(),
+    pSingleInt: document.getElementById('set-pSingleInt').value.trim(),
+    pSingleDed: document.getElementById('set-pSingleDed').value.trim(),
+    pDualInt: document.getElementById('set-pDualInt').value.trim(),
+    pDualDed: document.getElementById('set-pDualDed').value.trim(),
+    pTriInt: document.getElementById('set-pTriInt').value.trim(),
+    pTriDed: document.getElementById('set-pTriDed').value.trim(),
+    pYtLongInt: document.getElementById('set-pYtLongInt').value.trim(),
+    pYtLongDed: document.getElementById('set-pYtLongDed').value.trim(),
+    pStory: document.getElementById('set-pStory').value.trim(),
+    pAmb: document.getElementById('set-pAmb').value.trim(),
+    pAddonAd: document.getElementById('set-pAddonAd').value.trim(),
+    pAddonRaw: document.getElementById('set-pAddonRaw').value.trim(),
+    pAddonLink: document.getElementById('set-pAddonLink').value.trim(),
     brandsShow: document.getElementById('set-brands-show').checked,
     brands: document.getElementById('set-brands').value.trim(),
     faqs: document.getElementById('set-faqs').value.trim(),
@@ -935,6 +1025,129 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
   } else {
     showStatus(saveStatus, 'Saved locally!', false);
   }
+});
+
+function escapeHtml(str) {
+  return String(str || '').replace(/[&<>"']/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+}
+
+function encodeQuote(obj) {
+  const json = JSON.stringify(obj);
+  return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+function decodeQuote(token) {
+  const pad = token.replace(/-/g, '+').replace(/_/g, '/');
+  const json = decodeURIComponent(escape(atob(pad)));
+  return JSON.parse(json);
+}
+
+function getUrlQuote() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('quote');
+    if (!q) return null;
+    return decodeQuote(q);
+  } catch(e) {
+    return null;
+  }
+}
+
+function collectCurrentQuotePayload() {
+  const brand = document.getElementById('q-brand').value.trim() || 'Brand Partner';
+  const days = parseInt(document.getElementById('q-expiry').value, 10) || 0;
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  const exp = days > 0 ? now.getTime() + days * 86400000 : 0;
+  const rates = {
+    pSingleInt: document.getElementById('set-pSingleInt').value.trim() || 'Starting at ₹3,000',
+    pSingleDed: document.getElementById('set-pSingleDed').value.trim() || 'Starting at ₹5,000',
+    pDualInt: document.getElementById('set-pDualInt').value.trim() || '₹4,000',
+    pDualDed: document.getElementById('set-pDualDed').value.trim() || '₹7,000',
+    pTriInt: document.getElementById('set-pTriInt').value.trim() || '₹5,500',
+    pTriDed: document.getElementById('set-pTriDed').value.trim() || '₹9,500',
+    pYtLongInt: document.getElementById('set-pYtLongInt').value.trim() || 'Starting at ₹5,000',
+    pYtLongDed: document.getElementById('set-pYtLongDed').value.trim() || 'Starting at ₹10,000',
+    pStory: document.getElementById('set-pStory').value.trim() || 'Starting at ₹1,500',
+    pAmb: document.getElementById('set-pAmb').value.trim() || 'Starting at ₹15,000 / mo',
+    pAddonAd: document.getElementById('set-pAddonAd').value.trim() || '+30% to +50%',
+    pAddonRaw: document.getElementById('set-pAddonRaw').value.trim() || '+25% to +40%',
+    pAddonLink: document.getElementById('set-pAddonLink').value.trim() || '₹500 – ₹1,000'
+  };
+  const payload = { b: brand, d: dateStr, exp, r: rates };
+  const baseUrl = window.location.origin + window.location.pathname;
+  const link = `${baseUrl}?quote=${encodeQuote(payload)}`;
+  return { brand, dateStr, days, exp, rates, link };
+}
+
+function copyTextSafe(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+  }
+  return Promise.resolve(fallbackCopy(text));
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+document.getElementById('btn-copy-quote').addEventListener('click', async () => {
+  const qStatus = document.getElementById('quote-gen-status');
+  const q = collectCurrentQuotePayload();
+  await copyTextSafe(q.link);
+  showStatus(qStatus, `Private link for "${q.brand}" copied! Share this link only with them.`, false);
+});
+
+document.getElementById('btn-dl-quote').addEventListener('click', () => {
+  const qStatus = document.getElementById('quote-gen-status');
+  const q = collectCurrentQuotePayload();
+  const safeBrand = q.brand.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'Brand';
+  const dateSlug = new Date().toISOString().slice(0, 10);
+  const expText = q.exp ? new Date(q.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'No Expiry';
+  const receiptHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Quote Record — ${escapeHtml(q.brand)}</title>
+<style>body{font-family:system-ui,sans-serif;background:#191610;color:#F5EFE6;padding:32px;max-width:720px;margin:0 auto;line-height:1.6}
+.card{background:#110E0B;border:1px solid rgba(201,165,116,.35);padding:28px;border-radius:8px}
+h1{font-size:1.6rem;color:#C9A574;margin:0 0 6px}p.meta{color:#B8AC9B;font-size:.9rem;margin:0 0 20px}
+table{width:100%;border-collapse:collapse;margin:16px 0}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(245,239,230,.12)}
+th{color:#C9A574;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.link-box{margin-top:18px;padding:12px;background:#191610;border:1px dashed rgba(201,165,116,.35);word-break:break-all;font-size:.82rem;color:#B8AC9B}
+.terms{margin-top:18px;font-size:.85rem;color:#B8AC9B}</style></head><body><div class="card">
+<h1>Mother Insides — Official Rate Quote Record</h1>
+<p class="meta"><strong>Brand:</strong> ${escapeHtml(q.brand)} · <strong>Quoted On:</strong> ${escapeHtml(q.dateStr)} · <strong>Valid Until:</strong> ${escapeHtml(expText)}</p>
+<table><tr><th>Deliverable / Format</th><th>Quoted Price</th></tr>
+<tr><td>Single Platform (IG / FB / YT Short) — Integrated</td><td>${escapeHtml(q.rates.pSingleInt)}</td></tr>
+<tr><td>Single Platform (IG / FB / YT Short) — Dedicated</td><td>${escapeHtml(q.rates.pSingleDed)}</td></tr>
+<tr><td>IG + FB Bundle — Integrated</td><td>${escapeHtml(q.rates.pDualInt)}</td></tr>
+<tr><td>IG + FB Bundle — Dedicated</td><td>${escapeHtml(q.rates.pDualDed)}</td></tr>
+<tr><td>All 3 (IG + FB + YT Short) — Integrated</td><td>${escapeHtml(q.rates.pTriInt)}</td></tr>
+<tr><td>All 3 (IG + FB + YT Short) — Dedicated</td><td>${escapeHtml(q.rates.pTriDed)}</td></tr>
+<tr><td>YouTube Long-Form — Integration</td><td>${escapeHtml(q.rates.pYtLongInt)}</td></tr>
+<tr><td>YouTube Long-Form — Dedicated</td><td>${escapeHtml(q.rates.pYtLongDed)}</td></tr>
+<tr><td>Story Series (3–4 Interactive Stories)</td><td>${escapeHtml(q.rates.pStory)}</td></tr>
+<tr><td>Monthly Brand Ambassadorship</td><td>${escapeHtml(q.rates.pAmb)}</td></tr>
+<tr><td>Add-on: Paid Ad Usage Rights (30 Days)</td><td>${escapeHtml(q.rates.pAddonAd)}</td></tr>
+<tr><td>Add-on: Raw High-Res Footage</td><td>${escapeHtml(q.rates.pAddonRaw)}</td></tr>
+<tr><td>Add-on: Link-in-Bio (7 Days)</td><td>${escapeHtml(q.rates.pAddonLink)}</td></tr></table>
+<div class="terms"><strong>Standard Terms:</strong> 50% advance before production &amp; 50% prior to publishing. Includes 1 round of edits (5–7 business days turnaround).</div>
+<div class="link-box"><strong>Shared Private Link:</strong><br>${escapeHtml(q.link)}</div>
+</div></body></html>`;
+  const blob = new Blob([receiptHtml], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `Mother-Insides-Quote-${safeBrand}-${dateSlug}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showStatus(qStatus, `Quote record for "${q.brand}" downloaded!`, false);
 });
 
 window.addEventListener('hashchange', openAdminIfHash);
@@ -1194,29 +1407,69 @@ function applyMediaKitData(data) {
     if (ytSection) ytSection.style.display = 'none';
   }
 
-  const showPrices = data.pricingShow !== false;
-  const p1 = data.price1 || 'Starting at ₹3,500';
-  const p2 = data.price2 || 'Starting at ₹6,000';
-  const p3 = data.price3 || 'Starting at ₹1,500';
-  const p4 = data.price4 || 'Starting at ₹15,000 / mo';
-  const p5 = data.price5 || '+30% to +50%';
-  const p6 = data.price6 || '+25% to +40%';
-  const p7 = data.price7 || '₹500 – ₹1,000';
+  // Check if URL has a private ?quote= payload
+  const urlQuote = getUrlQuote();
+  const bannerSlot = document.getElementById('quote-banner-slot');
+  let activeQuoteRates = null;
+  let showPrices = Boolean(data.pricingShow);
+
+  if (urlQuote) {
+    const now = Date.now();
+    if (urlQuote.exp && urlQuote.exp > 0 && now > urlQuote.exp) {
+      showPrices = false;
+      if (bannerSlot) {
+        bannerSlot.innerHTML = `<div class="quote-banner expired">This custom rate card${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} has expired. Please write to <strong>${escapeHtml(cfg.email)}</strong> for an updated quote.</div>`;
+      }
+    } else {
+      showPrices = true;
+      activeQuoteRates = urlQuote.r || {};
+      if (bannerSlot) {
+        const expText = urlQuote.exp ? ` · Valid until ${new Date(urlQuote.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}` : '';
+        bannerSlot.innerHTML = `<div class="quote-banner">Prepared exclusively${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} · Quoted on ${escapeHtml(urlQuote.d || '')}${expText}</div>`;
+      }
+    }
+  } else if (bannerSlot) {
+    bannerSlot.innerHTML = '';
+  }
+
+  const rateSrc = activeQuoteRates ? Object.assign({}, data, activeQuoteRates) : data;
+  const pSingleInt = rateSrc.pSingleInt || 'Starting at ₹3,000';
+  const pSingleDed = rateSrc.pSingleDed || 'Starting at ₹5,000';
+  const pDualInt = rateSrc.pDualInt || '₹4,000';
+  const pDualDed = rateSrc.pDualDed || '₹7,000';
+  const pTriInt = rateSrc.pTriInt || '₹5,500';
+  const pTriDed = rateSrc.pTriDed || '₹9,500';
+  const pYtLongInt = rateSrc.pYtLongInt || 'Starting at ₹5,000';
+  const pYtLongDed = rateSrc.pYtLongDed || 'Starting at ₹10,000';
+  const pStory = rateSrc.pStory || 'Starting at ₹1,500';
+  const pAmb = rateSrc.pAmb || 'Starting at ₹15,000 / mo';
+  const pAddonAd = rateSrc.pAddonAd || '+30% to +50%';
+  const pAddonRaw = rateSrc.pAddonRaw || '+25% to +40%';
+  const pAddonLink = rateSrc.pAddonLink || '₹500 – ₹1,000';
 
   const t1El = document.getElementById('price-tier1');
   const t2El = document.getElementById('price-tier2');
-  const t3El = document.getElementById('price-tier3');
+  const ytTierCard = document.getElementById('tier-yt');
+  const ytPriceEl = document.getElementById('price-tier-yt');
+  const t4El = document.getElementById('price-tier4');
   const addonsEl = document.getElementById('addons-text');
 
+  if (ytTierCard) {
+    ytTierCard.style.display = data.ytShow ? 'flex' : 'none';
+    if (data.ytShow) ytTierCard.classList.add('in');
+  }
+
   if (showPrices) {
-    if (t1El) { t1El.innerHTML = `Integrated: ${p1}<br>Dedicated: ${p2}`; t1El.style.display = 'block'; }
-    if (t2El) { t2El.textContent = p3; t2El.style.display = 'block'; }
-    if (t3El) { t3El.textContent = p4; t3El.style.display = 'block'; }
-    if (addonsEl) { addonsEl.textContent = `30-Day Paid Ad Usage Rights (${p5}) · Raw High-Res Footage (${p6}) · Link-in-Bio 7 Days (${p7})`; }
+    if (t1El) { t1El.innerHTML = `Integrated: ${pSingleInt}<br>Dedicated: ${pSingleDed}`; t1El.style.display = 'block'; }
+    if (t2El) { t2El.innerHTML = `IG+FB Int: ${pDualInt} · Ded: ${pDualDed}<br>All 3 Int: ${pTriInt} · Ded: ${pTriDed}`; t2El.style.display = 'block'; }
+    if (ytPriceEl) { ytPriceEl.innerHTML = `Long Integration: ${pYtLongInt}<br>Dedicated Long: ${pYtLongDed}`; ytPriceEl.style.display = 'block'; }
+    if (t4El) { t4El.innerHTML = `Story Series: ${pStory}<br>Ambassadorship: ${pAmb}`; t4El.style.display = 'block'; }
+    if (addonsEl) { addonsEl.textContent = `30-Day Paid Ad Usage Rights (${pAddonAd}) · Raw High-Res Footage (${pAddonRaw}) · Link-in-Bio 7 Days (${pAddonLink})`; }
   } else {
-    if (t1El) t1El.style.display = 'none';
-    if (t2El) t2El.style.display = 'none';
-    if (t3El) t3El.style.display = 'none';
+    if (t1El) { t1El.textContent = 'Custom Quote on Request'; t1El.style.display = 'block'; }
+    if (t2El) { t2El.textContent = 'Custom Quote on Request'; t2El.style.display = 'block'; }
+    if (ytPriceEl) { ytPriceEl.textContent = 'Custom Quote on Request'; ytPriceEl.style.display = 'block'; }
+    if (t4El) { t4El.textContent = 'Custom Quote on Request'; t4El.style.display = 'block'; }
     if (addonsEl) { addonsEl.textContent = '30/90-Day Paid Ad Usage Rights (Whitelisting) · Raw High-Res Footage · Link-in-Bio Placement'; }
   }
 
@@ -1235,14 +1488,20 @@ async function loadMediaKitData() {
     reels: [],
     fbReels: [],
     ytVideos: [],
-    pricingShow: true,
-    price1: 'Starting at ₹3,500',
-    price2: 'Starting at ₹6,000',
-    price3: 'Starting at ₹1,500',
-    price4: 'Starting at ₹15,000 / mo',
-    price5: '+30% to +50%',
-    price6: '+25% to +40%',
-    price7: '₹500 – ₹1,000',
+    pricingShow: false,
+    pSingleInt: 'Starting at ₹3,000',
+    pSingleDed: 'Starting at ₹5,000',
+    pDualInt: '₹4,000',
+    pDualDed: '₹7,000',
+    pTriInt: '₹5,500',
+    pTriDed: '₹9,500',
+    pYtLongInt: 'Starting at ₹5,000',
+    pYtLongDed: 'Starting at ₹10,000',
+    pStory: 'Starting at ₹1,500',
+    pAmb: 'Starting at ₹15,000 / mo',
+    pAddonAd: '+30% to +50%',
+    pAddonRaw: '+25% to +40%',
+    pAddonLink: '₹500 – ₹1,000',
     brandsShow: false,
     ytShow: false
   };
