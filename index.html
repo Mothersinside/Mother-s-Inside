@@ -34,8 +34,8 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .btn-gold:hover{background:var(--gs);color:#14110D;transform:translateY(-2px)}
 
 .hdr{border-bottom:1px solid var(--lns);position:relative;z-index:5}
-.hdr .container{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
-.brandmark{font-family:'Cormorant Garamond',serif;font-size:1.02rem;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
+.hdr .container{display:flex;align-items:center;justify-content:center;padding:24px 0}
+.brandmark{font-family:'Cormorant Garamond',serif;font-size:clamp(1.25rem,2.6vw,1.6rem);letter-spacing:.30em;text-transform:uppercase;font-weight:700;text-align:center}
 .brandmark em{font-style:normal;color:var(--gd)}
 .hdr-handle{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.3s}
 .hdr-handle:hover{color:var(--gd)}
@@ -131,11 +131,20 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .tier-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;letter-spacing:.3em;color:var(--gd)}
 .tier-title{font-family:'Cormorant Garamond',serif;font-size:1.72rem;font-weight:500;line-height:1.2;margin:14px 0 6px}
 .tier-sub{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:24px;padding-bottom:22px;border-bottom:1px solid var(--lns)}
+.tier-price{font-family:'Cormorant Garamond',serif;font-size:1.38rem;font-weight:500;color:var(--gd);margin:-10px 0 20px;letter-spacing:.02em;line-height:1.45}
 .tier-list{list-style:none;display:flex;flex-direction:column;gap:14px}
 .tier-list li{position:relative;padding-left:22px;font-size:.93rem;line-height:1.7;color:var(--mu)}
 .tier-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--gd)}
 .tiers-addons{margin-top:28px;text-align:center;font-size:.82rem;letter-spacing:.08em;color:var(--mu);padding:14px 20px;border:1px dashed var(--ln);background:rgba(255,255,255,.03)}
 .tiers-addons strong{color:var(--es);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;margin-right:6px}
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,26px);margin-top:26px}
+.scope-box{padding:clamp(24px,3vw,34px);background:linear-gradient(180deg,#0E0C09 0%,#14110C 58%,rgba(25,22,16,.35) 100%);border:1px solid var(--ln)}
+.scope-eyebrow{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
+.scope-title{font-family:'Cormorant Garamond',serif;font-size:1.38rem;font-weight:500;color:var(--es);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--lns)}
+.scope-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.scope-list li{position:relative;padding-left:18px;font-size:.88rem;line-height:1.65;color:var(--mu)}
+.scope-list li::before{content:'';position:absolute;left:0;top:.62em;width:6px;height:1px;background:var(--gd)}
+.scope-list li strong{color:var(--es);font-weight:500}
 
 /* FAQ CSS */
 .faq-list{max-width:800px;margin:0 auto}
@@ -206,11 +215,12 @@ input:checked+.slider:before{transform:translateX(22px)}
   .aud-item+.aud-item::before{left:10%;right:10%;top:-22px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}
   .reach-highlight{grid-template-columns:1fr;gap:14px}
   .rh-item+.rh-item{border-left:none;border-top:1px solid var(--lns);padding-top:14px}
+  .scope-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   body{font-size:15px}
   .hdr .container{padding:18px 0}
-  .brandmark{font-size:.82rem;letter-spacing:.22em}
+  .brandmark{font-size:1.12rem;letter-spacing:.22em}
   .hdr-handle{font-size:.6rem}
   .hero-actions .btn{width:100%}
   .stat-grid{grid-template-columns:1fr;gap:20px}
@@ -454,6 +464,7 @@ input:checked+.slider:before{transform:translateX(22px)}
         <span class="tier-num">01</span>
         <h3 class="tier-title">Reel Collaboration</h3>
         <p class="tier-sub">Dedicated / Integrated</p>
+        <div class="tier-price" id="price-tier1">Integrated: Starting at ₹3,500<br>Dedicated: Starting at ₹6,000</div>
         <ul class="tier-list">
           <li>1x High-retention short-form video (30–60s) on Instagram &amp; Facebook</li>
           <li>Tailored script blending product benefits with relatable everyday mom care tips</li>
@@ -464,6 +475,7 @@ input:checked+.slider:before{transform:translateX(22px)}
         <span class="tier-num">02</span>
         <h3 class="tier-title">Story Series</h3>
         <p class="tier-sub">Product Showcase</p>
+        <p class="tier-price" id="price-tier2">Starting at ₹1,500</p>
         <ul class="tier-list">
           <li>3–4 part interactive Instagram &amp; Facebook story sequence</li>
           <li>Direct link sticker &amp; custom promo code integration</li>
@@ -474,6 +486,7 @@ input:checked+.slider:before{transform:translateX(22px)}
         <span class="tier-num">03</span>
         <h3 class="tier-title">Brand Ambassadorship</h3>
         <p class="tier-sub">Long-Term Partnership</p>
+        <p class="tier-price" id="price-tier3">Starting at ₹15,000 / mo</p>
         <ul class="tier-list">
           <li>Monthly recurring package (2 Reels + 4 Story sets)</li>
           <li>Built for D2C mom &amp; baby brands scaling parent trust over time</li>
@@ -481,8 +494,30 @@ input:checked+.slider:before{transform:translateX(22px)}
         </ul>
       </article>
     </div>
-    <div class="tiers-addons" data-reveal>
-      <strong>Available Add-ons:</strong> 30/90-Day Paid Ad Usage Rights (Whitelisting) · Raw High-Res Footage · Link-in-Bio Placement
+    <div class="tiers-addons" id="tiers-addons-box" data-reveal>
+      <strong>Available Add-ons:</strong> <span id="addons-text">30-Day Paid Ad Usage Rights (+30% to +50%) · Raw High-Res Footage (+25% to +40%) · Link-in-Bio 7 Days (₹500 – ₹1,000)</span>
+    </div>
+    <div class="scope-grid" data-reveal>
+      <div class="scope-box">
+        <p class="scope-eyebrow">Pricing Basis</p>
+        <h3 class="scope-title">Base Scope (Starting Rates)</h3>
+        <ul class="scope-list">
+          <li><strong>Ideal For:</strong> Emerging &amp; indie D2C brands running standard organic campaigns</li>
+          <li><strong>Deliverable:</strong> 1 concept, 30–60 sec video (script, shoot &amp; edit) with 1 revision round</li>
+          <li><strong>Distribution:</strong> Organic native posting on Instagram &amp; Facebook</li>
+          <li><strong>Timeline &amp; Terms:</strong> 5–7 business days turnaround; standard advance/immediate settlement</li>
+        </ul>
+      </div>
+      <div class="scope-box">
+        <p class="scope-eyebrow">Custom Quotes</p>
+        <h3 class="scope-title">When Rates Scale (Larger Campaigns)</h3>
+        <ul class="scope-list">
+          <li><strong>Multi-Team Approvals:</strong> Multiple brand stakeholder rounds, legal/compliance checks, or extra edits</li>
+          <li><strong>Production &amp; Hooks:</strong> Multiple hook variations (A/B testing), custom setups, or 48–72 hr express delivery (+25%)</li>
+          <li><strong>Commercial Rights:</strong> Paid ad whitelisting (+30%–50%), raw footage (+25%–40%), or category exclusivity</li>
+          <li><strong>Payment Cycles:</strong> Extended agency/enterprise invoicing terms (Net 30 / Net 60)</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -613,6 +648,45 @@ input:checked+.slider:before{transform:translateX(22px)}
       </div>
 
       <div class="admin-group">
+        <p class="admin-group-title">Partnership Pricing — All 7 Rates (Editable)</p>
+        <div class="admin-toggle-row">
+          <span>Show Prices on Media Kit</span>
+          <label class="switch">
+            <input type="checkbox" id="set-pricing-show">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="admin-grid-2" style="margin-top:8px">
+          <div>
+            <label for="set-price1">01 · Integrated Reel (IG + FB)</label>
+            <input type="text" id="set-price1" placeholder="Starting at ₹3,500">
+          </div>
+          <div>
+            <label for="set-price2">02 · Dedicated Reel (IG + FB)</label>
+            <input type="text" id="set-price2" placeholder="Starting at ₹6,000">
+          </div>
+          <div>
+            <label for="set-price3">03 · Story Series (3–4 Stories)</label>
+            <input type="text" id="set-price3" placeholder="Starting at ₹1,500">
+          </div>
+          <div>
+            <label for="set-price4">04 · Brand Ambassadorship</label>
+            <input type="text" id="set-price4" placeholder="Starting at ₹15,000 / mo">
+          </div>
+          <div>
+            <label for="set-price5">05 · Paid Ad Usage Rights (30d)</label>
+            <input type="text" id="set-price5" placeholder="+30% to +50%">
+          </div>
+          <div>
+            <label for="set-price6">06 · Raw High-Res Footage</label>
+            <input type="text" id="set-price6" placeholder="+25% to +40%">
+          </div>
+        </div>
+        <label for="set-price7">07 · Link-in-Bio (7 Days)</label>
+        <input type="text" id="set-price7" placeholder="₹500 – ₹1,000">
+      </div>
+
+      <div class="admin-group">
         <p class="admin-group-title">Past Collaborations (Toggle On/Off)</p>
         <div class="admin-toggle-row">
           <span>Show Past Collaborations Section</span>
@@ -664,6 +738,7 @@ const DEFAULT_FAQS = [
   { q: "What is your typical turnaround time for a Reel collaboration?", a: "Standard turnaround is 5–7 business days after receiving the product and finalized brief, including 1 round of revisions." },
   { q: "Do you cross-post Reels on both Instagram and Facebook?", a: "Yes. Every Reel collaboration is published natively on Instagram and cross-posted to the Mother Insides Facebook page for maximum organic reach." },
   { q: "Are paid ad usage rights (whitelisting) or raw footage available?", a: "Yes, 30-day or 90-day paid ad usage rights and raw unedited clips can be added to any package on request." },
+  { q: "What are your payment and reshoot terms?", a: "Standard bookings require 50% advance before production and 50% prior to publishing (Net 30 available for registered agencies). Full concept reshoots after script approval are billed separately, and campaign products are non-returnable." },
   { q: "How do brands book a campaign or request the rate card?", a: "Click the Direct Collab Email button or write to deepreacts0@gmail.com with your product details, campaign timeline, and deliverables." }
 ];
 
@@ -729,6 +804,14 @@ function populateAdminForm(d) {
   document.getElementById('set-yt-video2').value = ytVids[1] || '';
   document.getElementById('set-yt-video3').value = ytVids[2] || '';
 
+  document.getElementById('set-pricing-show').checked = d.pricingShow !== false;
+  document.getElementById('set-price1').value = d.price1 || 'Starting at ₹3,500';
+  document.getElementById('set-price2').value = d.price2 || 'Starting at ₹6,000';
+  document.getElementById('set-price3').value = d.price3 || 'Starting at ₹1,500';
+  document.getElementById('set-price4').value = d.price4 || 'Starting at ₹15,000 / mo';
+  document.getElementById('set-price5').value = d.price5 || '+30% to +50%';
+  document.getElementById('set-price6').value = d.price6 || '+25% to +40%';
+  document.getElementById('set-price7').value = d.price7 || '₹500 – ₹1,000';
   document.getElementById('set-brands-show').checked = Boolean(d.brandsShow);
   document.getElementById('set-brands').value = d.brands || '';
   document.getElementById('set-faqs').value = d.faqs || '';
@@ -815,6 +898,14 @@ document.getElementById('admin-save-btn').addEventListener('click', async () => 
       document.getElementById('set-yt-video2').value.trim(),
       document.getElementById('set-yt-video3').value.trim()
     ].filter(Boolean),
+    pricingShow: document.getElementById('set-pricing-show').checked,
+    price1: document.getElementById('set-price1').value.trim(),
+    price2: document.getElementById('set-price2').value.trim(),
+    price3: document.getElementById('set-price3').value.trim(),
+    price4: document.getElementById('set-price4').value.trim(),
+    price5: document.getElementById('set-price5').value.trim(),
+    price6: document.getElementById('set-price6').value.trim(),
+    price7: document.getElementById('set-price7').value.trim(),
     brandsShow: document.getElementById('set-brands-show').checked,
     brands: document.getElementById('set-brands').value.trim(),
     faqs: document.getElementById('set-faqs').value.trim(),
@@ -1027,18 +1118,20 @@ function applyMediaKitData(data) {
     logoEl.style.display = 'block';
   }
 
-  // Combined 30d views highlight (also animated)
-  const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews);
+  // Combined views highlight (IG + FB + YouTube when enabled)
+  const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews) + (data.ytShow ? parseKValue(data.ytViews) : 0);
   const combEl = document.getElementById('combined-views');
   if (combEl && totalV > 0) {
-    const kVal = Math.round(totalV / 1000) + 'K+';
-    combEl.dataset.target = kVal;
+    const fmtTotal = totalV >= 1000000
+      ? (totalV / 1000000).toFixed(1).replace(/\.0$/, '') + 'M+'
+      : Math.round(totalV / 1000) + 'K+';
+    combEl.dataset.target = fmtTotal;
     const rhBox = combEl.closest('.reach-highlight');
     if (rhBox && rhBox.classList.contains('in')) {
-      renderStat(combEl, kVal);
+      renderStat(combEl, fmtTotal);
       combEl.dataset.animated = "true";
     } else {
-      combEl.innerHTML = '0K<span class="plus">+</span>';
+      combEl.innerHTML = (totalV >= 1000000 ? '0M' : '0K') + '<span class="plus">+</span>';
     }
   }
 
@@ -1101,6 +1194,32 @@ function applyMediaKitData(data) {
     if (ytSection) ytSection.style.display = 'none';
   }
 
+  const showPrices = data.pricingShow !== false;
+  const p1 = data.price1 || 'Starting at ₹3,500';
+  const p2 = data.price2 || 'Starting at ₹6,000';
+  const p3 = data.price3 || 'Starting at ₹1,500';
+  const p4 = data.price4 || 'Starting at ₹15,000 / mo';
+  const p5 = data.price5 || '+30% to +50%';
+  const p6 = data.price6 || '+25% to +40%';
+  const p7 = data.price7 || '₹500 – ₹1,000';
+
+  const t1El = document.getElementById('price-tier1');
+  const t2El = document.getElementById('price-tier2');
+  const t3El = document.getElementById('price-tier3');
+  const addonsEl = document.getElementById('addons-text');
+
+  if (showPrices) {
+    if (t1El) { t1El.innerHTML = `Integrated: ${p1}<br>Dedicated: ${p2}`; t1El.style.display = 'block'; }
+    if (t2El) { t2El.textContent = p3; t2El.style.display = 'block'; }
+    if (t3El) { t3El.textContent = p4; t3El.style.display = 'block'; }
+    if (addonsEl) { addonsEl.textContent = `30-Day Paid Ad Usage Rights (${p5}) · Raw High-Res Footage (${p6}) · Link-in-Bio 7 Days (${p7})`; }
+  } else {
+    if (t1El) t1El.style.display = 'none';
+    if (t2El) t2El.style.display = 'none';
+    if (t3El) t3El.style.display = 'none';
+    if (addonsEl) { addonsEl.textContent = '30/90-Day Paid Ad Usage Rights (Whitelisting) · Raw High-Res Footage · Link-in-Bio Placement'; }
+  }
+
   renderReels(data);
   renderBrands(data.brands, data.brandsShow);
   renderFAQs(data.faqs);
@@ -1116,6 +1235,14 @@ async function loadMediaKitData() {
     reels: [],
     fbReels: [],
     ytVideos: [],
+    pricingShow: true,
+    price1: 'Starting at ₹3,500',
+    price2: 'Starting at ₹6,000',
+    price3: 'Starting at ₹1,500',
+    price4: 'Starting at ₹15,000 / mo',
+    price5: '+30% to +50%',
+    price6: '+25% to +40%',
+    price7: '₹500 – ₹1,000',
     brandsShow: false,
     ytShow: false
   };
