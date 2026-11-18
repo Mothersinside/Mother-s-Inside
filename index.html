@@ -549,10 +549,11 @@ if(d.fbReels && d.fbReels[2]) document.getElementById('set-fbreel3').value = d.f
 if(d.ytFollowers) document.getElementById('set-ytFollowers').value = d.ytFollowers;
 if(d.ytViews) document.getElementById('set-ytViews').value = d.ytViews;
 if(d.ytVideo) document.getElementById('set-yt-video').value = d.ytVideo;
-}
-
   if(d.brands) document.getElementById('set-brands').value = d.brands;
 if(d.faqs) document.getElementById('set-faqs').value = d.faqs;
+}
+
+  
 
 window.saveAdminData = async function() {
   let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
@@ -633,9 +634,17 @@ ytVideo: document.getElementById('set-yt-video').value,
 
 /* ==================== 3) FETCH LIVE STATS ==================== */
 function renderStat(el, val){
-  const s = String(val || '');
-  const numMatch = s.match(/^([\d.]+)([KMB]?)(\+?)$/);
-  if (!numMatch) { el.innerHTML = s; return; }
+  let s = String(val || '').trim();
+  if(!s) return;
+  
+  // Commas hata kar aur numbers extract karne ke liye
+  let cleanS = s.replace(/,/g, '');
+  const numMatch = cleanS.match(/^([\d.]+)\s*([KMB]?)\s*(\+?)$/i);
+  
+  if (!numMatch) { 
+    el.innerHTML = s; 
+    return; 
+  }
   
   let target = parseFloat(numMatch[1]);
   let suffix = (numMatch[2] || '') + (numMatch[3] || '');
@@ -656,7 +665,7 @@ function renderStat(el, val){
     if (progress < 1) window.requestAnimationFrame(step);
   }
   window.requestAnimationFrame(step);
-  }
+}
 
 async function loadStats(){
   let data = { igFollowers: '830+', igViews: '183.8K+', fbFollowers: '1.2K+', fbViews: '45K+' };
@@ -708,6 +717,19 @@ if (data.ytShow) {
   if(ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
   if(ytFooterLink) ytFooterLink.style.display = 'inline-block';
   if(ytCard) ytCard.style.display = 'block';
+
+  if(ytCard) {
+  ytCard.style.display = 'block';
+  ytCard.classList.add('in'); // Animation ke liye
+  // YouTube numbers ko animate karo
+  ytCard.querySelectorAll('[data-stat]').forEach(el => {
+    if (el.dataset.target && !el.dataset.animated) {
+      el.textContent = '0+';
+      renderStat(el, el.dataset.target);
+      el.dataset.animated = "true";
+    }
+  });
+  }
   
   if (ytSection && ytContainer && data.ytVideo) {
     ytSection.style.display = 'block';
@@ -817,20 +839,15 @@ async function loadReels(){
   };
 
 // Facebook link parser
-// Facebook link parser
 const makeFBEmbed = (url) => {
   if(!url) return '';
-  
-  // Sirf numbers nikaalne par focus karein (Reel ID/Video ID)
   let match = url.match(/(\d{10,})/); 
   let videoId = match ? match[1] : null;
-  
-  if(!videoId) return ''; // Agar ID nahi mili toh empty return karein
+  if(!videoId) return '';
 
-  // Canonical Watch URL banayein
-  let finalUrl = `https://www.facebook.com/watch/?v=${videoId}`;
+  let finalUrl = `https://www.facebook.com/reel/${videoId}`;
   
-  return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=320&height=560`;
+  return `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=320`;
 };
 
   const igEmbeds = (data.reels || []).map(makeIGEmbed).filter(Boolean);
