@@ -164,6 +164,33 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;justify-items:center;margin-top:30px}
 .reel-card{position:relative;width:100%;max-width:320px;aspect-ratio:9/16;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:#E8DFD3}
 .reel-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Toggle Switch Style */
+.switch { position: relative; display: inline-block; width: 46px; height: 24px; margin-left: auto;}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--gd); }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* YouTube Video Embed */
+.yt-video-wrapper { max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; border: 1px solid var(--ln); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1); }
+.yt-video-wrapper iframe { width: 100%; height: 100%; border: none; }
+  
+/* Past Brands CSS */
+.brands-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; margin-top: 40px; }
+.brand-item img { max-height: 50px; max-width: 140px; object-fit: contain; filter: grayscale(100%) opacity(0.5); transition: all 0.4s ease; }
+.brand-item img:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+
+/* FAQ CSS */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--ln); }
+.faq-question { padding: 24px 0; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s; }
+.faq-question:hover { color: var(--gd); }
+.faq-question::after { content: '+'; font-family: 'Jost', sans-serif; font-size: 1.5rem; color: var(--gd); transition: transform 0.3s; }
+.faq-item.active .faq-question::after { content: '−'; transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; color: var(--mu); font-size: 0.95rem; line-height: 1.8; padding-right: 30px; }
+.faq-item.active .faq-answer { padding-bottom: 24px; }
   
 @media(max-width:600px){body{font-size:15px}.hdr .container{padding:18px 0}.brandmark{font-size:.82rem;letter-spacing:.22em}.hdr-handle{font-size:.6rem}.hero-actions .btn{width:100%}.stat-grid{grid-template-columns:1fr;gap:20px}.stat-num{font-size:2.4rem}.footer-bar{justify-content:center;text-align:center}}
 </style>
@@ -176,7 +203,6 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
   <img id="site-logo" class="brand-logo" src="" alt="Logo">
   Mother<em>&nbsp;</em>Insides
 </div>
-<a class="hdr-handle" data-href="igUrl" target="_blank" rel="noopener" data-txt="handle"></a>
 </div>
 </header>
 <section class="hero">
@@ -195,6 +221,7 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 <a class="btn btn-primary" data-href="emailCta">✉ Direct Collab Email</a>
 <a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener">Instagram Profile</a>
 <a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener">Facebook Page</a>
+  <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube Channel</a>
 </div>
 </div>
 </section>
@@ -241,6 +268,20 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
 </div>
 <p class="stat-note">Engagement: <em>Active community engagement</em> — comments, shares and repeat viewers across Tier 1 &amp; Tier 2 cities.</p>
+</article>
+
+<!-- YouTube Card (Initially Hidden) -->
+<article class="stat-card" id="yt-card" data-reveal style="display:none;">
+  <svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+    <path class="area" d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
+    <path d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
+  </svg>
+  <div class="stat-top"><span class="stat-plat">YouTube</span><span class="stat-handle">Mother Insides</span></div>
+  <div class="stat-grid">
+    <div><span class="stat-num" data-stat="ytFollowers"></span><span class="stat-label">Subscribers</span></div>
+    <div><span class="stat-num" data-stat="ytViews"></span><span class="stat-label">Total Views</span></div>
+  </div>
+  <p class="stat-note">Engagement: <em>In-depth video guides</em> and detailed product reviews.</p>
 </article>
 </div>
 </div>
@@ -291,6 +332,40 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
     <div class="reels-grid" id="reelsGrid">
       <p style="color:var(--mu); font-size:0.9rem; text-align:center; grid-column:1/-1;">Reels will load here once you publish them from Admin Panel.</p>
     </div>
+  </div>
+</section>
+
+  <!-- YouTube Video Section -->
+<section class="sec" id="youtube-video" style="display:none;">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">03.6 — Featured Video</p>
+      <h2 class="sec-title">Watch on <em>YouTube</em></h2>
+    </div>
+    <div class="yt-video-wrapper" id="ytVideoContainer" data-reveal></div>
+  </div>
+</section>
+
+<!-- Past Brands Section -->
+<section class="sec" id="brands">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">03.8 — Trusted By</p>
+      <h2 class="sec-title">Past <em>Collaborations</em></h2>
+      <p class="sec-sub">Brands that have trusted Mother Insides for authentic storytelling.</p>
+    </div>
+    <div class="brands-grid" id="brandsGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="sec" id="faq" style="background:linear-gradient(180deg,rgba(243,234,221,0) 0%,rgba(243,234,221,.55) 50%,rgba(243,234,221,0) 100%)">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">04.5 — Questions</p>
+      <h2 class="sec-title">Brand <em>FAQ</em></h2>
+    </div>
+    <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
@@ -350,6 +425,8 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 <div class="cta-socials" data-reveal>
 <a data-href="igUrl" target="_blank" rel="noopener">Instagram</a>
 <a data-href="fbUrl" target="_blank" rel="noopener">Facebook</a>
+  <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube</a>
+<a data-href="xUrl" target="_blank" rel="noopener">X (Twitter)</a>
 <a data-href="email">Email</a>
 </div>
 <div class="footer-bar">
@@ -392,6 +469,24 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 <input type="text" id="set-fbreel2" placeholder="Facebook Video URL" style="margin-top:5px">
 <input type="text" id="set-fbreel3" placeholder="Facebook Video URL" style="margin-top:5px">
 
+    <!-- YouTube Toggle & Stats -->
+<label style="display:flex; align-items:center; justify-content:space-between; margin-top:15px;">
+  Show YouTube Section?
+  <label class="switch">
+    <input type="checkbox" id="set-yt-show">
+    <span class="slider"></span>
+  </label>
+</label>
+<input type="text" id="set-ytFollowers" placeholder="YouTube Subscribers" style="margin-bottom:5px;">
+<input type="text" id="set-ytViews" placeholder="YouTube Views" style="margin-bottom:5px;">
+<input type="text" id="set-yt-video" placeholder="YouTube Video URL (for Embed)" style="margin-bottom:15px;">
+
+    <label>Past Brands (Format: Brand Name | Image URL)</label>
+<textarea id="set-brands" rows="3" style="width:100%; padding:10px; border:1px solid var(--ln); border-radius:4px; font-family:Jost,sans-serif; background:#fff; color:var(--es); margin-bottom:10px;" placeholder="Mamaearth | https://logo-url.png"></textarea>
+
+<label>FAQs (Format: Question | Answer)</label>
+<textarea id="set-faqs" rows="4" style="width:100%; padding:10px; border:1px solid var(--ln); border-radius:4px; font-family:Jost,sans-serif; background:#fff; color:var(--es); margin-bottom:10px;" placeholder="TAT? | 3-5 days"></textarea>
+
     <div class="admin-actions">
       <button class="btn-save" onclick="saveAdminData()">Publish Updates</button>
     </div>
@@ -408,6 +503,8 @@ const cfg = {
   email: "deepreacts0@gmail.com",
   igUrl: "https://www.instagram.com/mothers_inside",
   fbUrl: "https://www.facebook.com/share/1A4pG5oqd1/",
+ytUrl: "https://youtube.com/@mothers_inside", // Apna YouTube channel link dalein
+xUrl: "https://x.com/mothers_inside",         // Apna X (Twitter) link dalein
   year: "2026",
   // 👇 Yahan apni JSONBin details ek baar daalein
   cloudBinId: "6afafe7dffd5d16053c58e33",
@@ -448,7 +545,14 @@ if(window.location.hash.toLowerCase() === '#admin') {
   if(d.fbReels && d.fbReels[0]) document.getElementById('set-fbreel1').value = d.fbReels[0];
 if(d.fbReels && d.fbReels[1]) document.getElementById('set-fbreel2').value = d.fbReels[1];
 if(d.fbReels && d.fbReels[2]) document.getElementById('set-fbreel3').value = d.fbReels[2];
+  if(d.ytShow) document.getElementById('set-yt-show').checked = d.ytShow;
+if(d.ytFollowers) document.getElementById('set-ytFollowers').value = d.ytFollowers;
+if(d.ytViews) document.getElementById('set-ytViews').value = d.ytViews;
+if(d.ytVideo) document.getElementById('set-yt-video').value = d.ytVideo;
 }
+
+  if(d.brands) document.getElementById('set-brands').value = d.brands;
+if(d.faqs) document.getElementById('set-faqs').value = d.faqs;
 
 window.saveAdminData = async function() {
   let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
@@ -499,6 +603,12 @@ if (logoFile) {
     document.getElementById('set-fbreel2').value,
     document.getElementById('set-fbreel3').value
   ].filter(Boolean),
+    ytShow: document.getElementById('set-yt-show').checked,
+ytFollowers: document.getElementById('set-ytFollowers').value,
+ytViews: document.getElementById('set-ytViews').value,
+ytVideo: document.getElementById('set-yt-video').value,
+    brands: document.getElementById('set-brands').value,
+    faqs: document.getElementById('set-faqs').value,
   logoUrl: base64Logo || JSON.parse(localStorage.getItem('mi_stats') || '{}').logoUrl || ''
 };
   
@@ -586,6 +696,92 @@ if(data.logoUrl) {
     }
   }
 });
+// YouTube Toggle & Video & Links
+const ytHeroBtn = document.getElementById('yt-hero-btn');
+const ytFooterLink = document.getElementById('yt-footer-link');
+const ytCard = document.getElementById('yt-card');
+const ytSection = document.getElementById('youtube-video');
+const ytContainer = document.getElementById('ytVideoContainer');
+
+if (data.ytShow) {
+  // Agar toggle ON hai, toh sab kuch dikhao
+  if(ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
+  if(ytFooterLink) ytFooterLink.style.display = 'inline-block';
+  if(ytCard) ytCard.style.display = 'block';
+  
+  if (ytSection && ytContainer && data.ytVideo) {
+    ytSection.style.display = 'block';
+    let vidId = data.ytVideo.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/);
+    if(vidId && vidId[1]) {
+      ytContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${vidId[1]}" allowfullscreen></iframe>`;
+    }
+  }
+} else {
+  // Agar toggle OFF hai, toh sab kuch chhupa do
+  if(ytHeroBtn) ytHeroBtn.style.display = 'none';
+  if(ytFooterLink) ytFooterLink.style.display = 'none';
+  if(ytCard) ytCard.style.display = 'none';
+  if(ytSection) ytSection.style.display = 'none';
+}
+  
+// Render Past Brands
+function renderBrands(brandText) {
+  const grid = document.getElementById('brandsGrid');
+  if(!grid || !brandText) return;
+  const brands = brandText.split('\n').map(line => {
+     const [name, url] = line.split('|').map(s => s.trim());
+     return { name, url };
+  }).filter(b => b.url);
+
+  if(brands.length === 0) return;
+  grid.innerHTML = brands.map(b => `
+    <div class="brand-item" title="${b.name}">
+      <img src="${b.url}" alt="${b.name}" loading="lazy">
+    </div>
+  `).join('');
+}
+
+// Render FAQs
+function renderFAQs(faqText) {
+  const list = document.getElementById('faqList');
+  if(!list || !faqText) return;
+  const faqs = faqText.split('\n').map(line => {
+     const [q, a] = line.split('|').map(s => s.trim());
+     return { q, a };
+  }).filter(f => f.q && f.a);
+
+  if(faqs.length === 0) return;
+  list.innerHTML = faqs.map((f) => `
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">${f.q}</div>
+      <div class="faq-answer">${f.a}</div>
+    </div>
+  `).join('');
+}
+
+// FAQ Click Toggle Function
+window.toggleFaq = function(el) {
+  const item = el.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const isActive = item.classList.contains('active');
+  
+  // Baaki sab close karo
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    i.querySelector('.faq-answer').style.maxHeight = null;
+  });
+
+  // Agar pehle se open nahi tha, toh open karo
+  if (!isActive) {
+    item.classList.add('active');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+};
+
+// Data call karo
+renderBrands(data.brands);
+renderFAQs(data.faqs);
+  
 }
 loadStats();
 
@@ -621,21 +817,19 @@ async function loadReels(){
   };
 
 // Facebook link parser
+// Facebook link parser
 const makeFBEmbed = (url) => {
   if(!url) return '';
-  // Thoda aur behtar Regex taaki har tarah ka link pakad le
-  let match = url.match(/(?:reel|videos|watch(?:\/\?|\?)v=)\/?(\d+)/);
+  
+  // Sirf numbers nikaalne par focus karein (Reel ID/Video ID)
+  let match = url.match(/(\d{10,})/); 
   let videoId = match ? match[1] : null;
   
-  // Agar link mein direct v=12345 hai
-  if(!videoId) {
-      let fallbackMatch = url.match(/v=(\d+)/);
-      videoId = fallbackMatch ? fallbackMatch[1] : null;
-  }
+  if(!videoId) return ''; // Agar ID nahi mili toh empty return karein
 
-  let finalUrl = videoId ? `https://www.facebook.com/watch/?v=${videoId}` : url;
+  // Canonical Watch URL banayein
+  let finalUrl = `https://www.facebook.com/watch/?v=${videoId}`;
   
-  // Mobile ke liye width aur height fix kar di
   return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=320&height=560`;
 };
 
