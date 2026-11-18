@@ -689,6 +689,7 @@ try{
     <div class="admin-status" id="wa-modal-status"></div>
     <div class="admin-actions">
       <button class="btn-save" id="wa-send-btn" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Open WhatsApp</button>
+      <button class="btn-outline-gold" id="wa-copy-btn" type="button">Copy Message</button>
       <button class="btn-cancel" id="wa-cancel-btn" type="button">Cancel</button>
     </div>
   </div>
@@ -1411,8 +1412,20 @@ document.getElementById('wa-hero-btn').addEventListener('click', openWaModal);
 document.getElementById('wa-footer-link').addEventListener('click', openWaModal);
 document.getElementById('wa-close-btn').addEventListener('click', () => waModal.classList.remove('show'));
 document.getElementById('wa-cancel-btn').addEventListener('click', () => waModal.classList.remove('show'));
-waUserIn.addEventListener('input', updateWaPreview);
-waBrandIn.addEventListener('input', updateWaPreview);
+['input', 'keyup', 'change'].forEach(evt => {
+  waUserIn.addEventListener(evt, updateWaPreview);
+  waBrandIn.addEventListener(evt, updateWaPreview);
+});
+document.getElementById('wa-copy-btn').addEventListener('click', async () => {
+  const uName = waUserIn.value.trim();
+  const bName = waBrandIn.value.trim();
+  if (!uName || !bName) {
+    showStatus(waModalStatus, 'Please enter both your name and brand name.', true);
+    return;
+  }
+  await copyTextSafe(buildWaMessage());
+  showStatus(waModalStatus, 'Message copied! You can paste it directly on WhatsApp.', false);
+});
 
 document.getElementById('wa-send-btn').addEventListener('click', () => {
   const uName = waUserIn.value.trim();
@@ -1464,8 +1477,10 @@ document.querySelectorAll('[data-href="emailCta"], [data-href="email"]').forEach
 });
 document.getElementById('em-close-btn').addEventListener('click', () => emModal.classList.remove('show'));
 document.getElementById('em-cancel-btn').addEventListener('click', () => emModal.classList.remove('show'));
-emUserIn.addEventListener('input', updateEmPreview);
-emBrandIn.addEventListener('input', updateEmPreview);
+['input', 'keyup', 'change'].forEach(evt => {
+  emUserIn.addEventListener(evt, updateEmPreview);
+  emBrandIn.addEventListener(evt, updateEmPreview);
+});
 
 document.getElementById('em-send-btn').addEventListener('click', () => {
   const uName = emUserIn.value.trim();
@@ -1738,6 +1753,46 @@ function applyMediaKitData(data) {
     logoEl.style.display = 'block';
     try { localStorage.setItem('mi_logo_cache', data.logoUrl); } catch(e) {}
   }
+
+  // Audience % Breakdown
+  const gEl = document.getElementById('aud-gender');
+  const aEl = document.getElementById('aud-age');
+  const cEl = document.getElementById('aud-cities');
+  if (gEl) gEl.textContent = data.audGender || '88% Women';
+  if (aEl) aEl.textContent = data.audAge || '68% (25–34)';
+  if (cEl) cEl.textContent = data.audCities || 'Delhi · Mumbai · Pune';
+
+  // Combined views highlight (IG + FB + YouTube when enabled)
+  const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews) + (data.ytShow ? parseKValue(data.ytViews) : 0);
+  const combEl = document.getElementById('combined-views');
+  if (combEl && totalV > 0) {
+    const fmtTotal = totalV >= 1000000
+      ? (totalV / 1000000).toFixed(1).replace(/\.0$/, '') + 'M+'
+      : Math.round(totalV / 1000) + 'K+';
+    combEl.dataset.target = fmtTotal;
+    const rhBox = combEl.closest('.reach-highlight');
+    if (rhBox && rhBox.classList.contains('in')) {
+      renderStat(combEl, fmtTotal);
+      combEl.dataset.animated = "true";
+    } else {
+      combEl.innerHTML = (totalV >= 1000000 ? '0M' : '0K') + '<span class="plus">+</span>';
+    }
+  }
+
+  // Stats (IG, FB, YT - animate when card is in view or upon scroll)
+  document.querySelectorAll('[data-stat]').forEach(el => {
+    const v = data[el.dataset.stat];
+    if (v !== undefined && v !== null && v !== '') {
+      el.dataset.target = v;
+      const card = el.closest('.stat-card');
+      if (card && card.classList.contains('in')) {
+        renderStat(el, v);
+        el.dataset.animated = "true";
+      } else if (!el.dataset.animated) {
+        el.textContent = '0';
+      }
+    }
+  });
 
   // WhatsApp Collab Button & Interactive Name/Brand Modal
   const waHero = document.getElementById('wa-hero-btn');
