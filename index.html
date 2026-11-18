@@ -13,8 +13,9 @@
 html{scroll-behavior:smooth}
 body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;font-weight:400;font-size:16px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .container{width:min(1140px,90vw);margin:0 auto;position:relative;z-index:2}
-.sec{padding:clamp(72px,10vw,132px) 0}
-.sec-head{text-align:center;max-width:720px;margin:0 auto clamp(44px,6vw,72px)}
+.sec{padding:clamp(72px,10vw,124px) 0}
+.sec-alt{background:linear-gradient(180deg,rgba(243,234,221,0) 0%,rgba(243,234,221,.55) 50%,rgba(243,234,221,0) 100%)}
+.sec-head{text-align:center;max-width:720px;margin:0 auto clamp(44px,6vw,68px)}
 .eyebrow{font-size:.7rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gd);font-weight:400}
 .sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4.8vw,3.5rem);line-height:1.06;margin:16px 0 18px}
 .sec-title em{font-style:italic;color:var(--gd)}
@@ -24,24 +25,27 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .rule i:last-child{background:linear-gradient(90deg,var(--gd),transparent)}
 .rule b{font-size:7px;color:var(--gd);line-height:1;transform:translateY(-1px)}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:999px;font-family:Jost,sans-serif;font-size:.76rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.45s cubic-bezier(.22,.7,.28,1)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 32px;border-radius:999px;font-family:Jost,sans-serif;font-size:.76rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.45s cubic-bezier(.22,.7,.28,1)}
 .btn-primary{background:var(--es);color:var(--iv)}
 .btn-primary:hover{background:var(--gd);color:#fff;transform:translateY(-2px)}
 .btn-ghost{border-color:var(--ln);color:var(--es)}
 .btn-ghost:hover{border-color:var(--gd);color:var(--gd);transform:translateY(-2px)}
 .btn-gold{background:var(--gd);color:#fff}
 .btn-gold:hover{background:var(--iv);color:var(--es);transform:translateY(-2px)}
+
 .hdr{border-bottom:1px solid var(--lns);position:relative;z-index:5}
 .hdr .container{display:flex;align-items:center;justify-content:space-between;padding:24px 0}
 .brandmark{font-family:'Cormorant Garamond',serif;font-size:1.02rem;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
 .brandmark em{font-style:normal;color:var(--gd)}
 .hdr-handle{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:.3s}
 .hdr-handle:hover{color:var(--gd)}
+.brand-logo{height:38px;width:38px;border-radius:50%;object-fit:cover;border:1px solid var(--gd);display:none;margin-right:12px}
+.brand-wrap{display:flex;align-items:center}
+
 .hero{position:relative;text-align:center;padding:clamp(64px,11vh,120px) 0 clamp(64px,9vh,110px);overflow:hidden}
 .hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:min(1000px,140%);height:760px;background:radial-gradient(ellipse at center,rgba(214,185,140,.3),rgba(243,234,221,.55) 32%,rgba(250,247,242,0) 70%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:min(560px,80%);height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}
-
-  .pill{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border:1px solid var(--ln);border-radius:999px;background:rgba(255,255,255,.55);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mu);margin-bottom:34px}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:8px 20px;border:1px solid var(--ln);border-radius:999px;background:rgba(255,255,255,.55);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mu);margin-bottom:34px}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--gd);box-shadow:0 0 0 0 rgba(184,134,75,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(184,134,75,.55)}70%{box-shadow:0 0 0 9px rgba(184,134,75,0)}100%{box-shadow:0 0 0 0 rgba(184,134,75,0)}}
 .hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,9.5vw,6.4rem);line-height:.92;margin-bottom:22px}
@@ -51,11 +55,19 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .creator-name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400}
 .creator-name::after{content:'';display:block;height:1px;width:100%;margin-top:6px;background:linear-gradient(90deg,transparent,var(--gd),transparent)}
 .creator-handle{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gd)}
-.hero-bio{max-width:600px;margin:30px auto 0;font-size:1.02rem;line-height:1.85;color:var(--mu)}
-.hero-bio strong{color:var(--es);font-weight:400}
+.hero-bio{max-width:620px;margin:30px auto 0;font-size:1.02rem;line-height:1.85;color:var(--mu)}
 .hero-actions{margin-top:44px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
+/* Organic Discovery Banner */
+.reach-highlight{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px 28px;margin-bottom:28px;background:linear-gradient(135deg,#fff,#F8F2E8);border:1px solid var(--ln);text-align:center}
+.rh-item{padding:4px 10px}
+.rh-item+.rh-item{border-left:1px solid var(--lns)}
+.rh-val{display:block;font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.15rem);font-weight:400;color:var(--es);line-height:1.1}
+.rh-val em{font-style:normal;color:var(--gd)}
+.rh-lbl{display:block;margin-top:6px;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu)}
+
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,28px)}
-.stat-card{position:relative;padding:clamp(30px,4vw,46px);background:linear-gradient(180deg,#fff,#FCF9F4);border:1px solid var(--ln);transition:.6s cubic-bezier(.22,.7,.28,1)}
+.stat-card{position:relative;overflow:hidden;z-index:1;padding:clamp(30px,4vw,46px);background:linear-gradient(180deg,#fff,#FCF9F4);border:1px solid var(--ln);transition:.6s cubic-bezier(.22,.7,.28,1)}
 .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gd),transparent);opacity:0;transition:.6s}
 .stat-card:hover{transform:translateY(-6px);box-shadow:0 34px 60px -44px rgba(35,27,22,.55);border-color:rgba(184,134,75,.5)}
 .stat-card:hover::before{opacity:1}
@@ -69,7 +81,15 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .stat-note{margin-top:26px;padding-top:20px;border-top:1px solid var(--lns);font-size:.9rem;color:var(--mu);line-height:1.7;position:relative;z-index:2}
 .stat-note em{font-style:italic;color:var(--gd)}
 
-  .audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,48px);text-align:center}
+.stat-graph{position:absolute;bottom:0;left:0;width:100%;height:60px;z-index:0;opacity:0.15}
+.stat-graph path{fill:none;stroke:var(--gd);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300}
+.stat-card.in .stat-graph path{animation:drawGraph 2s cubic-bezier(0.22,0.7,0.28,1) forwards}
+.stat-graph .area{fill:url(#goldGradient);stroke:none;opacity:0}
+.stat-card.in .stat-graph .area{animation:fadeArea 2s 0.5s forwards}
+@keyframes drawGraph{to{stroke-dashoffset:0}}
+@keyframes fadeArea{to{opacity:1}}
+
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,4vw,48px);text-align:center}
 .aud-item{position:relative;padding:0 clamp(4px,1vw,14px)}
 .aud-item+.aud-item::before{content:'';position:absolute;left:calc(-1*clamp(13px,2vw,24px));top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--ln),transparent)}
 .aud-title{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:500;margin:12px 0}
@@ -77,6 +97,34 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .aud-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
 .tag{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:7px 14px;border:1px solid var(--ln);border-radius:999px;color:var(--mu);background:rgba(255,255,255,.6);transition:.4s}
 .tag:hover{border-color:var(--gd);color:var(--gd)}
+
+/* Ideal Brand Fit Grid */
+.brand-fit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(16px,2.2vw,24px)}
+.bf-card{padding:28px 26px;background:linear-gradient(180deg,#fff,#FCF9F4);border:1px solid var(--ln);transition:.45s cubic-bezier(.22,.7,.28,1)}
+.bf-card:hover{transform:translateY(-4px);border-color:rgba(166,118,60,.55);box-shadow:0 24px 48px -36px rgba(35,27,22,.45)}
+.bf-cat{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:8px}
+.bf-title{font-family:'Cormorant Garamond',serif;font-size:1.42rem;font-weight:500;margin-bottom:8px;color:var(--es)}
+.bf-desc{font-size:.9rem;color:var(--mu);line-height:1.7}
+
+/* Reels & YouTube Grids */
+.reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;justify-items:center;margin-top:30px}
+.reel-card{position:relative;width:100%;max-width:320px;aspect-ratio:9/16;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:#E8DFD3}
+.reel-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.reel-fallback{position:absolute;bottom:10px;right:10px;z-index:3;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(26,18,13,.82);color:#FAF7F2;text-decoration:none;border:1px solid rgba(201,165,116,.45);transition:.3s}
+.reel-fallback:hover{background:var(--gd);color:#fff}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:20px}
+.yt-video-wrapper{width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;border:1px solid var(--ln);box-shadow:0 20px 40px -20px rgba(0,0,0,0.12);background:#1A120D}
+.yt-video-wrapper iframe{width:100%;height:100%;border:none}
+
+/* Past Brands CSS */
+.brands-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;align-items:center;margin-top:32px}
+.brand-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.brand-item img{max-height:54px;max-width:150px;object-fit:contain;filter:grayscale(100%) opacity(0.6);transition:all 0.4s ease}
+.brand-item img:hover{filter:grayscale(0%) opacity(1);transform:scale(1.05)}
+.brand-item span{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mu)}
+
+/* Partnership Tiers */
 .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(18px,2.4vw,26px)}
 .tier{position:relative;padding:clamp(32px,4vw,46px) clamp(26px,3.4vw,38px);background:linear-gradient(180deg,#fff,#FBF7F1);border:1px solid var(--ln);display:flex;flex-direction:column;transition:.6s cubic-bezier(.22,.7,.28,1)}
 .tier:hover{transform:translateY(-6px);border-color:rgba(184,134,75,.55);box-shadow:0 34px 60px -44px rgba(35,27,22,.5)}
@@ -86,409 +134,510 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .tier-list{list-style:none;display:flex;flex-direction:column;gap:14px}
 .tier-list li{position:relative;padding-left:22px;font-size:.93rem;line-height:1.7;color:var(--mu)}
 .tier-list li::before{content:'';position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--gd)}
+.tiers-addons{margin-top:28px;text-align:center;font-size:.82rem;letter-spacing:.08em;color:var(--mu);padding:14px 20px;border:1px dashed var(--ln);background:rgba(255,255,255,.55)}
+.tiers-addons strong{color:var(--es);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;margin-right:6px}
 
-  .cta{background:var(--es);color:var(--iv);text-align:center;padding:clamp(80px,11vw,136px) 0 clamp(52px,7vw,72px);position:relative;overflow:hidden}
+/* FAQ CSS */
+.faq-list{max-width:800px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--ln)}
+.faq-question{padding:22px 0;font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:500;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color 0.3s}
+.faq-question:hover{color:var(--gd)}
+.faq-question::after{content:'+';font-family:'Jost',sans-serif;font-size:1.5rem;color:var(--gd);transition:transform 0.3s;flex-shrink:0}
+.faq-item.active .faq-question::after{content:'−'}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;color:var(--mu);font-size:0.95rem;line-height:1.8;padding-right:30px}
+.faq-item.active .faq-answer{padding-bottom:22px}
+
+.cta{background:var(--es);color:var(--iv);text-align:center;padding:clamp(80px,11vw,136px) 0 clamp(52px,7vw,72px);position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:min(900px,130%);height:800px;background:radial-gradient(ellipse at center,rgba(184,134,75,.24),rgba(35,27,22,0) 68%);pointer-events:none}
 .cta .eyebrow{color:var(--gs)}
 .cta-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.06;margin:18px auto 20px;max-width:14ch}
 .cta-title em{font-style:italic;color:var(--gs)}
-.cta-sub{max-width:520px;margin:0 auto 42px;color:rgba(250,247,242,.62);font-size:.98rem}
+.cta-sub{max-width:540px;margin:0 auto 42px;color:rgba(250,247,242,.66);font-size:.98rem}
 .cta .rule i{background:linear-gradient(90deg,transparent,var(--gs))}
 .cta .rule i:last-child{background:linear-gradient(90deg,var(--gs),transparent)}
 .cta .rule b{color:var(--gs)}
-.cta-email{display:inline-block;margin-top:26px;font-size:.8rem;letter-spacing:.16em;color:rgba(250,247,242,.66);text-decoration:none;border-bottom:1px solid rgba(214,185,140,.35);padding-bottom:3px;transition:.4s}
+.cta-email{display:inline-block;margin-top:26px;font-size:.8rem;letter-spacing:.16em;color:rgba(250,247,242,.72);text-decoration:none;border-bottom:1px solid rgba(214,185,140,.35);padding-bottom:3px;transition:.4s}
 .cta-email:hover{color:var(--gs);border-color:var(--gs)}
 .cta-socials{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:44px}
-.cta-socials a{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,247,242,.6);text-decoration:none;transition:.4s}
+.cta-socials a{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,247,242,.62);text-decoration:none;transition:.4s}
 .cta-socials a:hover{color:var(--gs)}
-.footer-bar{margin-top:clamp(60px,8vw,90px);padding-top:26px;border-top:1px solid rgba(250,247,242,.1);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.4)}
+.footer-bar{margin-top:clamp(60px,8vw,90px);padding-top:26px;border-top:1px solid rgba(250,247,242,.1);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,247,242,.45)}
+
 [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.22,.7,.28,1),transform .95s cubic-bezier(.22,.7,.28,1)}
 [data-reveal].in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
-@media(max-width:900px){.audience-grid{grid-template-columns:1fr;gap:44px}.aud-item+.aud-item::before{left:10%;right:10%;top:-22px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}}
 
-/* Logo Style */
-.brand-logo{height:38px;width:38px;border-radius:50%;object-fit:cover;border:1px solid var(--gd);display:none;margin-right:12px}
-.brand-wrap{display:flex;align-items:center}
-
-/* Luxury Motion Graph */
-.stat-card{position:relative;overflow:hidden;z-index:1}
-.stat-graph {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  z-index: 0;
-  opacity: 0.15;
-}
-.stat-graph path {
-  fill: none;
-  stroke: var(--gd);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-}
-.stat-card.in .stat-graph path {
-  animation: drawGraph 2s cubic-bezier(0.22, 0.7, 0.28, 1) forwards;
-}
-.stat-graph .area {
-  fill: url(#goldGradient);
-  stroke: none;
-  opacity: 0;
-}
-.stat-card.in .stat-graph .area {
-  animation: fadeArea 2s 0.5s forwards;
-}
-@keyframes drawGraph {
-  to { stroke-dashoffset: 0; }
-}
-@keyframes fadeArea {
-  to { opacity: 1; }
-}
-  
-  /* 🛠️ SECRET ADMIN PANEL */
-#admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.95);z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(5px)}
+/* 🛠️ IMPROVED ADMIN PANEL */
+#admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.92);z-index:99999;display:none;align-items:flex-start;justify-content:center;padding:36px 16px;overflow-y:auto;backdrop-filter:blur(6px)}
 #admin-panel.show{display:flex}
-.admin-box{background:var(--iv);padding:30px;border-radius:8px;max-width:450px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.5);position:relative}
-.admin-box h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:10px;color:var(--es)}
-.admin-box label{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-top:15px;margin-bottom:5px}
-.admin-box input{width:100%;padding:10px;border:1px solid var(--ln);border-radius:4px;font-family:Jost,sans-serif;background:#fff;color:var(--es)}
-.admin-actions{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}
-.admin-actions button{flex:1;padding:12px;border:none;border-radius:4px;font-family:Jost,sans-serif;font-weight:500;letter-spacing:.1em;text-transform:uppercase;font-size:.75rem;cursor:pointer}
+.admin-box{background:var(--iv);padding:32px;border-radius:10px;max-width:640px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.55);position:relative;border:1px solid var(--ln)}
+.admin-box h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:6px;color:var(--es)}
+.admin-sub{font-size:.86rem;color:var(--mu);margin-bottom:18px}
+.admin-group{margin-top:22px;padding-top:18px;border-top:1px solid var(--lns)}
+.admin-group-title{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);font-weight:500;margin-bottom:10px}
+.admin-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.admin-box label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-top:10px;margin-bottom:5px}
+.admin-box input[type="text"],.admin-box input[type="password"],.admin-box input[type="file"],.admin-box textarea{width:100%;padding:10px 12px;border:1px solid var(--ln);border-radius:5px;font-family:Jost,sans-serif;font-size:.9rem;background:#fff;color:var(--es)}
+.admin-box textarea{resize:vertical;line-height:1.5}
+.admin-hint{font-size:.75rem;color:var(--mu);margin-top:4px;opacity:.85}
+.admin-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#fff;border:1px solid var(--ln);border-radius:5px;margin-top:10px}
+.admin-toggle-row span{font-size:.82rem;color:var(--es);font-weight:400}
+.admin-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.admin-actions button{flex:1;padding:13px 18px;border:none;border-radius:6px;font-family:Jost,sans-serif;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;cursor:pointer;transition:.3s}
 .btn-save{background:var(--es);color:var(--iv)}
-.btn-close{position:absolute;top:15px;right:20px;font-size:1.5rem;cursor:pointer;color:var(--mu);background:none;border:none}
-  
-  /* Reels Embed CSS */
-.reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;justify-items:center;margin-top:30px}
-.reel-card{position:relative;width:100%;max-width:320px;aspect-ratio:9/16;border:1px solid var(--ln);border-radius:8px;overflow:hidden;background:#E8DFD3}
-.reel-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.btn-save:hover{background:var(--gd);color:#fff}
+.btn-cancel{background:transparent;border:1px solid var(--ln)!important;color:var(--mu)}
+.btn-cancel:hover{border-color:var(--es)!important;color:var(--es)}
+.btn-close{position:absolute;top:16px;right:20px;font-size:1.4rem;cursor:pointer;color:var(--mu);background:none;border:none;line-height:1}
+.admin-status{margin-top:14px;padding:10px 14px;border-radius:5px;font-size:.84rem;display:none}
+.admin-status.ok{display:block;background:#E8F3EA;color:#1D5E2A;border:1px solid #B7DEC0}
+.admin-status.err{display:block;background:#FCEAEA;color:#8B1E1E;border:1px solid #F0BDBD}
 
 /* Toggle Switch Style */
-.switch { position: relative; display: inline-block; width: 46px; height: 24px; margin-left: auto;}
-.switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-input:checked + .slider { background-color: var(--gd); }
-input:checked + .slider:before { transform: translateX(22px); }
+.switch{position:relative;display:inline-block;width:46px;height:24px;flex-shrink:0}
+.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;cursor:pointer;inset:0;background-color:#ccc;transition:.4s;border-radius:34px}
+.slider:before{position:absolute;content:"";height:16px;width:16px;left:4px;bottom:4px;background-color:#fff;transition:.4s;border-radius:50%}
+input:checked+.slider{background-color:var(--gd)}
+input:checked+.slider:before{transform:translateX(22px)}
 
-/* YouTube Video Embed */
-.yt-video-wrapper { max-width: 800px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden; border: 1px solid var(--ln); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1); }
-.yt-video-wrapper iframe { width: 100%; height: 100%; border: none; }
-  
-/* Past Brands CSS */
-.brands-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; margin-top: 40px; }
-.brand-item img { max-height: 50px; max-width: 140px; object-fit: contain; filter: grayscale(100%) opacity(0.5); transition: all 0.4s ease; }
-.brand-item img:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
-
-/* FAQ CSS */
-.faq-list { max-width: 800px; margin: 0 auto; }
-.faq-item { border-bottom: 1px solid var(--ln); }
-.faq-question { padding: 24px 0; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s; }
-.faq-question:hover { color: var(--gd); }
-.faq-question::after { content: '+'; font-family: 'Jost', sans-serif; font-size: 1.5rem; color: var(--gd); transition: transform 0.3s; }
-.faq-item.active .faq-question::after { content: '−'; transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; color: var(--mu); font-size: 0.95rem; line-height: 1.8; padding-right: 30px; }
-.faq-item.active .faq-answer { padding-bottom: 24px; }
-  
-@media(max-width:600px){body{font-size:15px}.hdr .container{padding:18px 0}.brandmark{font-size:.82rem;letter-spacing:.22em}.hdr-handle{font-size:.6rem}.hero-actions .btn{width:100%}.stat-grid{grid-template-columns:1fr;gap:20px}.stat-num{font-size:2.4rem}.footer-bar{justify-content:center;text-align:center}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}[data-reveal]{opacity:1;transform:none}}
+@media(max-width:900px){
+  .audience-grid{grid-template-columns:1fr;gap:44px}
+  .aud-item+.aud-item::before{left:10%;right:10%;top:-22px;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--ln),transparent)}
+  .reach-highlight{grid-template-columns:1fr;gap:14px}
+  .rh-item+.rh-item{border-left:none;border-top:1px solid var(--lns);padding-top:14px}
+}
+@media(max-width:600px){
+  body{font-size:15px}
+  .hdr .container{padding:18px 0}
+  .brandmark{font-size:.82rem;letter-spacing:.22em}
+  .hdr-handle{font-size:.6rem}
+  .hero-actions .btn{width:100%}
+  .stat-grid{grid-template-columns:1fr;gap:20px}
+  .stat-num{font-size:2.4rem}
+  .admin-grid-2{grid-template-columns:1fr}
+  .admin-box{padding:22px 18px}
+  .footer-bar{justify-content:center;text-align:center}
+}
 </style>
 </head>
 <body>
 
 <header class="hdr">
-<div class="container">
-<div class="brandmark brand-wrap">
-  <img id="site-logo" class="brand-logo" src="" alt="Logo">
-  Mother<em>&nbsp;</em>Insides
-</div>
-</div>
-</header>
-<section class="hero">
-<div class="container">
-<span class="pill"><i class="dot"></i>Available for Brand Collaborations · 2026</span>
-<h1 class="hero-title">Mother <em>Insides</em></h1>
-<p class="hero-tag" data-txt="tagline"></p>
-<div class="rule" aria-hidden="true"><i></i><b>◆</b><i></i></div>
-<div class="creator">
-<span class="creator-name" data-txt="name"></span>
-<span class="creator-handle" data-txt="handle"></span>
-</div>
-
-  <p class="hero-bio" data-txt="bio"></p>
-<div class="hero-actions">
-<a class="btn btn-primary" data-href="emailCta">✉ Direct Collab Email</a>
-<a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener">Instagram Profile</a>
-<a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener">Facebook Page</a>
-  <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube Channel</a>
-</div>
-</div>
-</section>
-<section class="sec" id="reach">
-<div class="container">
-<div class="sec-head" data-reveal>
-<p class="eyebrow">02 — Reach &amp; Performance</p>
-<h2 class="sec-title">Live Performance <em>&amp;</em> Reach</h2>
-<p class="sec-sub">Real numbers, real mothers. A high-intent, high-trust community built on medical accuracy and honest recommendations.</p>
-</div>
-<div class="stats-grid">
-<article class="stat-card" data-reveal>
-
-<!-- Instagram Graph -->
-<svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
-  <defs>
-    <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="var(--gd)" stop-opacity="1"/>
-      <stop offset="100%" stop-color="var(--gd)" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-  <path class="area" d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20 L200,60 L0,60 Z"/>
-  <path d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20"/>
-</svg>
-  
-<div class="stat-top"><span class="stat-plat">Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
-<div class="stat-grid">
-<div><span class="stat-num" data-stat="igFollowers"></span><span class="stat-label">Followers</span></div>
-<div><span class="stat-num" data-stat="igViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
-</div>
-<p class="stat-note">Engagement: <em>High-intent mom audience</em> — saves, shares and DMs driven by practical, trustworthy guidance.</p>
-</article>
-<article class="stat-card" data-reveal>
-
-<!-- Facebook Graph -->
-<svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
-  <path class="area" d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
-  <path d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
-</svg>
-  
-<div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
-<div class="stat-grid">
-<div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Followers</span></div>
-<div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
-</div>
-<p class="stat-note">Engagement: <em>Active community engagement</em> — comments, shares and repeat viewers across Tier 1 &amp; Tier 2 cities.</p>
-</article>
-
-<!-- YouTube Card (Initially Hidden) -->
-<article class="stat-card" id="yt-card" data-reveal style="display:none;">
-  <svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
-    <path class="area" d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
-    <path d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
-  </svg>
-  <div class="stat-top"><span class="stat-plat">YouTube</span><span class="stat-handle">Mother Insides</span></div>
-  <div class="stat-grid">
-    <div><span class="stat-num" data-stat="ytFollowers"></span><span class="stat-label">Subscribers</span></div>
-    <div><span class="stat-num" data-stat="ytViews"></span><span class="stat-label">Total Views</span></div>
+  <div class="container">
+    <div class="brandmark brand-wrap">
+      <img id="site-logo" class="brand-logo" src="" alt="Mother Insides Logo">
+      Mother<em>&nbsp;</em>Insides
+    </div>
   </div>
-  <p class="stat-note">Engagement: <em>In-depth video guides</em> and detailed product reviews.</p>
-</article>
-</div>
-</div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="pill"><i class="dot"></i>Available for Brand Collaborations · 2026</span>
+    <h1 class="hero-title">Mother <em>Insides</em></h1>
+    <p class="hero-tag" data-txt="tagline"></p>
+    <div class="rule" aria-hidden="true"><i></i><b>◆</b><i></i></div>
+    <div class="creator">
+      <span class="creator-name" data-txt="name"></span>
+      <span class="creator-handle" data-txt="handle"></span>
+    </div>
+    <p class="hero-bio" data-txt="bio"></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" data-href="emailCta">✉ Direct Collab Email</a>
+      <a class="btn btn-ghost" data-href="igUrl" target="_blank" rel="noopener">Instagram Profile</a>
+      <a class="btn btn-ghost" data-href="fbUrl" target="_blank" rel="noopener">Facebook Page</a>
+      <a class="btn btn-ghost" id="yt-hero-btn" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube Channel</a>
+    </div>
+  </div>
 </section>
 
-  <section class="sec" id="audience" style="background:linear-gradient(180deg,rgba(243,234,221,0) 0%,rgba(243,234,221,.55) 50%,rgba(243,234,221,0) 100%)">
-<div class="container">
-<div class="sec-head" data-reveal>
-<p class="eyebrow">03 — Audience</p>
-<h2 class="sec-title">Who Is <em>Watching</em></h2>
-<p class="sec-sub">A focused, decision-making audience of mothers actively researching products for themselves and their babies.</p>
-</div>
-<div class="audience-grid">
-<div class="aud-item" data-reveal>
-<p class="eyebrow">Primary Audience</p>
-<h3 class="aud-title">Expecting &amp; New Mothers</h3>
-<p class="aud-text">Women aged <strong>21–38</strong> navigating pregnancy, the fourth trimester and early motherhood.</p>
-</div>
-<div class="aud-item" data-reveal>
-<p class="eyebrow">Top Locations</p>
-<h3 class="aud-title">Tier 1 &amp; Tier 2 India</h3>
-<p class="aud-text">Metro and emerging-city households with strong purchase intent in maternity and baby care.</p>
-</div>
-<div class="aud-item" data-reveal>
-<p class="eyebrow">Niche Categories</p>
-<h3 class="aud-title">Where I Create Impact</h3>
-<p class="aud-text">Content themes that convert attention into consideration.</p>
-<div class="aud-tags">
-<span class="tag">Maternity Care</span>
-<span class="tag">Baby Skincare</span>
-<span class="tag">Infant Nutrition</span>
-<span class="tag">Safe Home Remedies</span>
-<span class="tag">Medicine Awareness</span>
-</div>
-</div>
-</div>
-</div>
-  </section>
-
-  <!-- Ye Reels ka naya section hai -->
-<section class="sec" id="reels">
+<!-- 01 — REACH & PERFORMANCE -->
+<section class="sec" id="reach">
   <div class="container">
     <div class="sec-head" data-reveal>
-      <p class="eyebrow">03.5 — Top Performing Reels</p>
-      <h2 class="sec-title">Most <em>Viewed</em> Reels</h2>
-      <p class="sec-sub">A snapshot of the content that resonated most with our mom community.</p>
+      <p class="eyebrow">01 — Reach &amp; Performance</p>
+      <h2 class="sec-title">Live Performance <em>&amp;</em> Reach</h2>
+      <p class="sec-sub">Real numbers, real mothers. A high-intent, high-trust community built on research-backed parenting insights and honest recommendations.</p>
     </div>
-    <div class="reels-grid" id="reelsGrid">
-      <p style="color:var(--mu); font-size:0.9rem; text-align:center; grid-column:1/-1;">Reels will load here once you publish them from Admin Panel.</p>
+
+    <div class="reach-highlight" data-reveal>
+      <div class="rh-item">
+        <span class="rh-val" id="combined-views">532K<em>+</em></span>
+        <span class="rh-lbl">Combined 30-Day Views</span>
+      </div>
+      <div class="rh-item">
+        <span class="rh-val">High <em>Organic</em></span>
+        <span class="rh-lbl">Non-Follower Discovery Reach</span>
+      </div>
+      <div class="rh-item">
+        <span class="rh-val">Tier 1 <em>&amp;</em> 2</span>
+        <span class="rh-lbl">Indian Mom Households</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <article class="stat-card" data-reveal>
+        <svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--gd)" stop-opacity="1"/>
+              <stop offset="100%" stop-color="var(--gd)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path class="area" d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20 L200,60 L0,60 Z"/>
+          <path d="M0,50 C30,40 50,20 80,30 C120,45 150,10 200,20"/>
+        </svg>
+        <div class="stat-top"><span class="stat-plat">Instagram</span><span class="stat-handle" data-txt="handle"></span></div>
+        <div class="stat-grid">
+          <div><span class="stat-num" data-stat="igFollowers"></span><span class="stat-label">Followers</span></div>
+          <div><span class="stat-num" data-stat="igViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
+        </div>
+        <p class="stat-note">Engagement: <em>High-intent mom audience</em> — saves, shares, and DMs driven by practical, relatable parenting guidance.</p>
+      </article>
+
+      <article class="stat-card" data-reveal>
+        <svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path class="area" d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
+          <path d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
+        </svg>
+        <div class="stat-top"><span class="stat-plat">Facebook</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-grid">
+          <div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Followers</span></div>
+          <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
+        </div>
+        <p class="stat-note">Engagement: <em>Active community engagement</em> — comments, shares, and repeat viewers across Tier 1 &amp; Tier 2 cities.</p>
+      </article>
+
+      <article class="stat-card" id="yt-card" data-reveal style="display:none;">
+        <svg class="stat-graph" viewBox="0 0 200 60" preserveAspectRatio="none">
+          <path class="area" d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
+          <path d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
+        </svg>
+        <div class="stat-top"><span class="stat-plat">YouTube</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-grid">
+          <div><span class="stat-num" data-stat="ytFollowers"></span><span class="stat-label">Subscribers</span></div>
+          <div><span class="stat-num" data-stat="ytViews"></span><span class="stat-label">Total Views</span></div>
+        </div>
+        <p class="stat-note">Engagement: <em>In-depth video guides</em> and detailed product reviews for expecting &amp; new moms.</p>
+      </article>
     </div>
   </div>
 </section>
 
-  <!-- YouTube Video Section -->
+<!-- 02 — AUDIENCE -->
+<section class="sec sec-alt" id="audience">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">02 — Audience</p>
+      <h2 class="sec-title">Who Is <em>Watching</em></h2>
+      <p class="sec-sub">A focused, decision-making audience of mothers actively researching safe products for themselves and their babies.</p>
+    </div>
+    <div class="audience-grid">
+      <div class="aud-item" data-reveal>
+        <p class="eyebrow">Primary Audience</p>
+        <h3 class="aud-title">Expecting &amp; New Mothers</h3>
+        <p class="aud-text">Women aged <strong>21–38</strong> navigating pregnancy, the fourth trimester, and early motherhood.</p>
+      </div>
+      <div class="aud-item" data-reveal>
+        <p class="eyebrow">Top Locations</p>
+        <h3 class="aud-title">Tier 1 &amp; Tier 2 India</h3>
+        <p class="aud-text">Metro and emerging-city households with strong purchase intent in maternity and baby care.</p>
+      </div>
+      <div class="aud-item" data-reveal>
+        <p class="eyebrow">Niche Categories</p>
+        <h3 class="aud-title">Where I Create Impact</h3>
+        <p class="aud-text">Content themes that convert attention into genuine product consideration.</p>
+        <div class="aud-tags">
+          <span class="tag">Maternity Care</span>
+          <span class="tag">Baby Skincare</span>
+          <span class="tag">Infant Nutrition</span>
+          <span class="tag">Natural Home Care</span>
+          <span class="tag">Postpartum Wellness</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 — IDEAL BRAND FIT (NEW SECTION) -->
+<section class="sec" id="brand-fit">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">03 — Ideal Brand Fit</p>
+      <h2 class="sec-title">Brands That Align <em>With My Niche</em></h2>
+      <p class="sec-sub">D2C and consumer categories where Mother Insides drives high organic discovery, parent trust, and purchase intent.</p>
+    </div>
+    <div class="brand-fit-grid">
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 01</p>
+        <h3 class="bf-title">Baby Skincare &amp; Bath</h3>
+        <p class="bf-desc">Gentle baby washes, moisturizers, diaper rash creams, massage oils, and newborn-safe daily essentials.</p>
+      </article>
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 02</p>
+        <h3 class="bf-title">Maternity &amp; Postpartum Care</h3>
+        <p class="bf-desc">Stretch mark oils, nursing wear, maternity pillows, postpartum recovery kits, and comfort essentials.</p>
+      </article>
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 03</p>
+        <h3 class="bf-title">Infant Nutrition &amp; Feeding</h3>
+        <p class="bf-desc">Clean baby food brands, organic purees, feeding bottles, breast pumps, sterilizers, and weaning gear.</p>
+      </article>
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 04</p>
+        <h3 class="bf-title">Baby Gear &amp; Nursery</h3>
+        <p class="bf-desc">Ergonomic baby carriers, strollers, cribs, swaddles, baby monitors, and travel-friendly essentials.</p>
+      </article>
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 05</p>
+        <h3 class="bf-title">Clean Home &amp; Baby Laundry</h3>
+        <p class="bf-desc">Plant-based baby laundry detergents, bottle cleansers, gentle disinfectants, and nursery hygiene products.</p>
+      </article>
+      <article class="bf-card" data-reveal>
+        <p class="bf-cat">Category 06</p>
+        <h3 class="bf-title">Mom Wellness &amp; Lifestyle</h3>
+        <p class="bf-desc">Prenatal &amp; postnatal nutrition, lactation-friendly snacks, skincare for moms, and parenting apps.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 04 — TOP PERFORMING REELS (IG + FB) -->
+<section class="sec sec-alt" id="reels">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">04 — Featured Reels</p>
+      <h2 class="sec-title">Most <em>Viewed</em> Reels</h2>
+      <p class="sec-sub">A snapshot of the short-form content on Instagram &amp; Facebook that resonated most with our mom community.</p>
+    </div>
+    <div class="reels-grid" id="reelsGrid">
+      <p style="color:var(--mu); font-size:0.9rem; text-align:center; grid-column:1/-1;">Reels will appear here once published from the Admin Panel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — FEATURED YOUTUBE VIDEOS (UP TO 3) -->
 <section class="sec" id="youtube-video" style="display:none;">
   <div class="container">
     <div class="sec-head" data-reveal>
-      <p class="eyebrow">03.6 — Featured Video</p>
+      <p class="eyebrow">05 — YouTube Showcase</p>
       <h2 class="sec-title">Watch on <em>YouTube</em></h2>
+      <p class="sec-sub">Long-form parenting guides, product walkthroughs, and honest mom-tested reviews.</p>
     </div>
-    <div class="yt-video-wrapper" id="ytVideoContainer" data-reveal></div>
+    <div class="yt-grid" id="ytVideoContainer" data-reveal></div>
   </div>
 </section>
 
-<!-- Past Brands Section -->
-<section class="sec" id="brands">
+<!-- 06 — PAST COLLABORATIONS (CONTROLLED BY ADMIN TOGGLE) -->
+<section class="sec" id="brands" style="display:none;">
   <div class="container">
     <div class="sec-head" data-reveal>
-      <p class="eyebrow">03.8 — Trusted By</p>
+      <p class="eyebrow">06 — Trusted By</p>
       <h2 class="sec-title">Past <em>Collaborations</em></h2>
-      <p class="sec-sub">Brands that have trusted Mother Insides for authentic storytelling.</p>
+      <p class="sec-sub">Brands that have partnered with Mother Insides for authentic, high-trust storytelling.</p>
     </div>
     <div class="brands-grid" id="brandsGrid"></div>
   </div>
 </section>
 
-<!-- FAQ Section -->
-<section class="sec" id="faq" style="background:linear-gradient(180deg,rgba(243,234,221,0) 0%,rgba(243,234,221,.55) 50%,rgba(243,234,221,0) 100%)">
+<!-- 07 — PARTNERSHIP TIERS -->
+<section class="sec sec-alt" id="partnerships">
   <div class="container">
     <div class="sec-head" data-reveal>
-      <p class="eyebrow">04.5 — Questions</p>
+      <p class="eyebrow">07 — Collaborations</p>
+      <h2 class="sec-title">Partnership <em>Tiers</em></h2>
+      <p class="sec-sub">Transparent, flexible formats designed for D2C mom, baby, skincare, and wellness brands.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier" data-reveal>
+        <span class="tier-num">01</span>
+        <h3 class="tier-title">Reel Collaboration</h3>
+        <p class="tier-sub">Dedicated / Integrated</p>
+        <ul class="tier-list">
+          <li>1x High-retention short-form video (30–60s) on Instagram &amp; Facebook</li>
+          <li>Tailored script blending product benefits with relatable everyday mom care tips</li>
+          <li>Hook-first storytelling + 1 round of edits with a 5–7 day turnaround</li>
+        </ul>
+      </article>
+      <article class="tier" data-reveal>
+        <span class="tier-num">02</span>
+        <h3 class="tier-title">Story Series</h3>
+        <p class="tier-sub">Product Showcase</p>
+        <ul class="tier-list">
+          <li>3–4 part interactive Instagram &amp; Facebook story sequence</li>
+          <li>Direct link sticker &amp; custom promo code integration</li>
+          <li>Ideal for product launches, seasonal offers, and unboxing demos</li>
+        </ul>
+      </article>
+      <article class="tier" data-reveal>
+        <span class="tier-num">03</span>
+        <h3 class="tier-title">Brand Ambassadorship</h3>
+        <p class="tier-sub">Long-Term Partnership</p>
+        <ul class="tier-list">
+          <li>Monthly recurring package (2 Reels + 4 Story sets)</li>
+          <li>Built for D2C mom &amp; baby brands scaling parent trust over time</li>
+          <li>Consistent brand presence across reels, stories, and community posts</li>
+        </ul>
+      </article>
+    </div>
+    <div class="tiers-addons" data-reveal>
+      <strong>Available Add-ons:</strong> 30/90-Day Paid Ad Usage Rights (Whitelisting) · Raw High-Res Footage · Link-in-Bio Placement
+    </div>
+  </div>
+</section>
+
+<!-- 08 — BRAND FAQ -->
+<section class="sec" id="faq">
+  <div class="container">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">08 — Questions</p>
       <h2 class="sec-title">Brand <em>FAQ</em></h2>
+      <p class="sec-sub">Quick answers on turnaround, deliverables, usage rights, and booking a campaign.</p>
     </div>
     <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
-<!-- Yahan se aapka Partnership section shuru hota hai -->
-  <section class="sec" id="partnerships">
-<div class="container">
-<div class="sec-head" data-reveal>
-<p class="eyebrow">04 — Collaborations</p>
-<h2 class="sec-title">Partnership <em>Tiers</em></h2>
-<p class="sec-sub">Transparent, flexible formats designed for D2C mom, baby, skincare and wellness brands.</p>
-</div>
-<div class="tiers">
-<article class="tier" data-reveal>
-<span class="tier-num">01</span>
-<h3 class="tier-title">Reel Collaboration</h3>
-<p class="tier-sub">Dedicated / Integrated</p>
-<ul class="tier-list">
-<li>High-retention short-form video on Instagram &amp; Facebook</li>
-<li>Tailored script focusing on product benefits + safe home / medicine tips</li>
-<li>Delivered with hook-first storytelling for maximum watch time</li>
-</ul>
-</article>
-<article class="tier" data-reveal>
-<span class="tier-num">02</span>
-<h3 class="tier-title">Story Series</h3>
-<p class="tier-sub">Product Showcase</p>
-<ul class="tier-list">
-<li>3-part interactive Instagram / Facebook story series</li>
-<li>Direct swipe-up / link sticker integration</li>
-<li>Ideal for launches, offers and product education</li>
-</ul>
-</article>
-<article class="tier" data-reveal>
-<span class="tier-num">03</span>
-<h3 class="tier-title">Brand Ambassadorship</h3>
-<p class="tier-sub">Long-Term Partnership</p>
-<ul class="tier-list">
-<li>Monthly recurring content integration</li>
-<li>Built for D2C mom &amp; baby brands scaling trust over time</li>
-<li>Consistent brand presence across reels, stories and posts</li>
-</ul>
-</article>
-</div>
-</div>
-</section>
+<!-- 09 — LET'S TALK / FOOTER -->
 <section class="cta" id="contact">
-<div class="container">
-<p class="eyebrow" data-reveal>05 — Let's Talk</p>
-<h2 class="cta-title" data-reveal>Let's Build Something <em>Together</em></h2>
-<div class="rule" aria-hidden="true" data-reveal><i></i><b>◆</b><i></i></div>
-<p class="cta-sub" data-reveal>For collaborations, rates and availability — write directly to the inbox below. Media kit and past performance available on request.</p>
-<div data-reveal>
-<a class="btn btn-gold" data-href="emailCta">Let's Build Something Together</a>
-<br><br>
-<a class="cta-email" data-href="email" data-txt="email"></a>
-</div>
-<div class="cta-socials" data-reveal>
-<a data-href="igUrl" target="_blank" rel="noopener">Instagram</a>
-<a data-href="fbUrl" target="_blank" rel="noopener">Facebook</a>
-  <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube</a>
-<a data-href="xUrl" target="_blank" rel="noopener">X (Twitter)</a>
-<a data-href="email">Email</a>
-</div>
-<div class="footer-bar">
-<span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
-<span data-txt="name"></span> · <span data-txt="handle"></span>
-</div>
-</div>
+  <div class="container">
+    <p class="eyebrow" data-reveal>09 — Let's Talk</p>
+    <h2 class="cta-title" data-reveal>Let's Build Something <em>Together</em></h2>
+    <div class="rule" aria-hidden="true" data-reveal><i></i><b>◆</b><i></i></div>
+    <p class="cta-sub" data-reveal>For collaborations, rate card, and availability — write directly to the inbox below. Detailed audience demographics and reel insights available on request.</p>
+    <div data-reveal>
+      <a class="btn btn-gold" data-href="emailCta">Let's Build Something Together</a>
+      <br><br>
+      <a class="cta-email" data-href="email" data-txt="email"></a>
+    </div>
+    <div class="cta-socials" data-reveal>
+      <a data-href="igUrl" target="_blank" rel="noopener">Instagram</a>
+      <a data-href="fbUrl" target="_blank" rel="noopener">Facebook</a>
+      <a id="yt-footer-link" style="display:none;" data-href="ytUrl" target="_blank" rel="noopener">YouTube</a>
+      <a data-href="xUrl" target="_blank" rel="noopener">X (Twitter)</a>
+      <a data-href="email">Email</a>
+    </div>
+    <div class="footer-bar">
+      <span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
+      <span><span data-txt="name"></span> · <span data-txt="handle"></span></span>
+    </div>
+  </div>
 </section>
 
-  <!-- 🛠️ SECRET ADMIN PANEL -->
-<div id="admin-panel">
+<!-- 🛠️ IMPROVED SECRET ADMIN PANEL -->
+<div id="admin-panel" role="dialog" aria-modal="true" aria-label="Owner Settings">
   <div class="admin-box">
-    <button class="btn-close" onclick="document.getElementById('admin-panel').classList.remove('show')">✕</button>
-    <h3>Owner Settings</h3>
-    <p style="font-size:0.85rem; color:var(--mu); margin-bottom:15px;">Publish karte hi sabhi brands ko naya data dikhne lagega.</p>
+    <button class="btn-close" id="admin-close-btn" aria-label="Close Admin Panel">✕</button>
 
-<label>Upload Logo (Optional)</label>
-<input type="file" id="set-logo" accept="image/*" style="padding:8px; background:#fff; border:1px dashed var(--gd);">
+    <!-- In-Page PIN Gate -->
+    <div id="admin-auth">
+      <h3>Owner Access</h3>
+      <p class="admin-sub">Enter your 4-digit Admin PIN to manage live stats, reels, and visibility toggles.</p>
+      <label for="admin-pin-input">Admin PIN</label>
+      <input type="password" id="admin-pin-input" placeholder="Enter PIN" autocomplete="off">
+      <div class="admin-status" id="auth-status"></div>
+      <div class="admin-actions">
+        <button class="btn-save" id="admin-unlock-btn" type="button">Unlock Panel</button>
+        <button class="btn-cancel" id="admin-auth-cancel" type="button">Cancel</button>
+      </div>
+    </div>
 
-    
-    <label>Instagram Followers</label>
-    <input type="text" id="set-igFollowers" placeholder="e.g. 850+">
-    
-    <label>Instagram Views (30d)</label>
-    <input type="text" id="set-igViews" placeholder="e.g. 185K+">
-    
-    <label>Facebook Followers</label>
-    <input type="text" id="set-fbFollowers" placeholder="e.g. 1.3K+">
-    
-    <label>Facebook Views (30d)</label>
-    <input type="text" id="set-fbViews" placeholder="e.g. 48K+">
-    
-    <label>Top 3 Instagram Reels</label>
-<input type="text" id="set-reel1" placeholder="Instagram URL">
-<input type="text" id="set-reel2" placeholder="Instagram URL" style="margin-top:5px">
-<input type="text" id="set-reel3" placeholder="Instagram URL" style="margin-top:5px">
+    <!-- Main Admin Form -->
+    <div id="admin-form" style="display:none;">
+      <h3>Owner Settings</h3>
+      <p class="admin-sub">Publish karte hi sabhi brands ko naya data live dikhne lagega.</p>
 
-<label>Top 3 Facebook Reels</label>
-<input type="text" id="set-fbreel1" placeholder="Facebook Video URL">
-<input type="text" id="set-fbreel2" placeholder="Facebook Video URL" style="margin-top:5px">
-<input type="text" id="set-fbreel3" placeholder="Facebook Video URL" style="margin-top:5px">
+      <div class="admin-group">
+        <p class="admin-group-title">Brand Logo &amp; Platform Stats</p>
+        <label for="set-logo">Upload Logo (Optional)</label>
+        <input type="file" id="set-logo" accept="image/*">
+        <div class="admin-grid-2">
+          <div>
+            <label for="set-igFollowers">Instagram Followers</label>
+            <input type="text" id="set-igFollowers" placeholder="e.g. 836">
+          </div>
+          <div>
+            <label for="set-igViews">Instagram Views (30d)</label>
+            <input type="text" id="set-igViews" placeholder="e.g. 176K+">
+          </div>
+          <div>
+            <label for="set-fbFollowers">Facebook Followers</label>
+            <input type="text" id="set-fbFollowers" placeholder="e.g. 1.1K+">
+          </div>
+          <div>
+            <label for="set-fbViews">Facebook Views (30d)</label>
+            <input type="text" id="set-fbViews" placeholder="e.g. 356K+">
+          </div>
+        </div>
+      </div>
 
-    <!-- YouTube Toggle & Stats -->
-<label style="display:flex; align-items:center; justify-content:space-between; margin-top:15px;">
-  Show YouTube Section?
-  <label class="switch">
-    <input type="checkbox" id="set-yt-show">
-    <span class="slider"></span>
-  </label>
-</label>
-<input type="text" id="set-ytFollowers" placeholder="YouTube Subscribers" style="margin-bottom:5px;">
-<input type="text" id="set-ytViews" placeholder="YouTube Views" style="margin-bottom:5px;">
-<input type="text" id="set-yt-video" placeholder="YouTube Video URL (for Embed)" style="margin-bottom:15px;">
+      <div class="admin-group">
+        <p class="admin-group-title">Instagram Reels (Up to 3)</p>
+        <input type="text" id="set-reel1" placeholder="https://www.instagram.com/reel/...">
+        <input type="text" id="set-reel2" placeholder="Instagram Reel URL 2" style="margin-top:8px">
+        <input type="text" id="set-reel3" placeholder="Instagram Reel URL 3" style="margin-top:8px">
+      </div>
 
-    <label>Past Brands (Format: Brand Name | Image URL)</label>
-<textarea id="set-brands" rows="3" style="width:100%; padding:10px; border:1px solid var(--ln); border-radius:4px; font-family:Jost,sans-serif; background:#fff; color:var(--es); margin-bottom:10px;" placeholder="Mamaearth | https://logo-url.png"></textarea>
+      <div class="admin-group">
+        <p class="admin-group-title">Facebook Reels / Videos (Up to 3)</p>
+        <input type="text" id="set-fbreel1" placeholder="https://www.facebook.com/reel/123456... or /watch/?v=...">
+        <input type="text" id="set-fbreel2" placeholder="Facebook Reel / Video URL 2" style="margin-top:8px">
+        <input type="text" id="set-fbreel3" placeholder="Facebook Reel / Video URL 3" style="margin-top:8px">
+        <p class="admin-hint">Tip: Facebook <code>/share/r/...</code> links embed nahi hote. Reel ko browser mein kholkar address bar se <code>facebook.com/reel/123456...</code> ya <code>facebook.com/watch/?v=123456...</code> wala direct link paste karein.</p>
+      </div>
 
-<label>FAQs (Format: Question | Answer)</label>
-<textarea id="set-faqs" rows="4" style="width:100%; padding:10px; border:1px solid var(--ln); border-radius:4px; font-family:Jost,sans-serif; background:#fff; color:var(--es); margin-bottom:10px;" placeholder="TAT? | 3-5 days"></textarea>
+      <div class="admin-group">
+        <p class="admin-group-title">YouTube Section &amp; 3 Videos</p>
+        <div class="admin-toggle-row">
+          <span>Show YouTube Section &amp; Links</span>
+          <label class="switch">
+            <input type="checkbox" id="set-yt-show">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="admin-grid-2" style="margin-top:8px">
+          <div>
+            <label for="set-ytFollowers">YouTube Subscribers</label>
+            <input type="text" id="set-ytFollowers" placeholder="e.g. 500+">
+          </div>
+          <div>
+            <label for="set-ytViews">YouTube Total Views</label>
+            <input type="text" id="set-ytViews" placeholder="e.g. 25K+">
+          </div>
+        </div>
+        <label>Top 3 YouTube Video URLs</label>
+        <input type="text" id="set-yt-video1" placeholder="https://www.youtube.com/watch?v=... or youtu.be/...">
+        <input type="text" id="set-yt-video2" placeholder="YouTube Video URL 2" style="margin-top:8px">
+        <input type="text" id="set-yt-video3" placeholder="YouTube Video URL 3" style="margin-top:8px">
+      </div>
 
-    <div class="admin-actions">
-      <button class="btn-save" onclick="saveAdminData()">Publish Updates</button>
+      <div class="admin-group">
+        <p class="admin-group-title">Past Collaborations (Toggle On/Off)</p>
+        <div class="admin-toggle-row">
+          <span>Show Past Collaborations Section</span>
+          <label class="switch">
+            <input type="checkbox" id="set-brands-show">
+            <span class="slider"></span>
+          </label>
+        </div>
+        <label for="set-brands">Brand Logos (Format: Brand Name | Logo Image URL)</label>
+        <textarea id="set-brands" rows="3" placeholder="Mamaearth | https://logo-url.png"></textarea>
+      </div>
+
+      <div class="admin-group">
+        <p class="admin-group-title">Brand FAQs</p>
+        <label for="set-faqs">FAQs (Format: Question | Answer — one per line)</label>
+        <textarea id="set-faqs" rows="4" placeholder="What is your typical turnaround time? | 5–7 business days from product delivery."></textarea>
+        <p class="admin-hint">Khali chhodne par default professional Brand FAQs automatically dikhenge.</p>
+      </div>
+
+      <div class="admin-status" id="save-status"></div>
+
+      <div class="admin-actions">
+        <button class="btn-save" id="admin-save-btn" type="button">Publish Updates</button>
+        <button class="btn-cancel" id="admin-cancel-btn" type="button">Close</button>
+      </div>
     </div>
   </div>
 </div>
@@ -499,322 +648,479 @@ const cfg = {
   name: "Deepika Sharma",
   handle: "@mothers_inside",
   tagline: "Pregnancy · Newborn · Mom Life Insights",
-  bio: "Helping mothers navigate pregnancy, newborn care, and safe medical & home remedies with confidence.",
+  bio: "Guiding Indian expecting and new mothers (21–38) through pregnancy and early motherhood with practical, research-backed care tips and everyday home wisdom that build genuine trust.",
   email: "deepreacts0@gmail.com",
   igUrl: "https://www.instagram.com/mothers_inside",
   fbUrl: "https://www.facebook.com/share/1A4pG5oqd1/",
-ytUrl: "https://youtube.com/@mothers_inside", // Apna YouTube channel link dalein
-xUrl: "https://x.com/mothers_inside",         // Apna X (Twitter) link dalein
+  ytUrl: "https://youtube.com/@mothers_inside",
+  xUrl: "https://x.com/mothers_inside",
   year: "2026",
-  // 👇 Yahan apni JSONBin details ek baar daalein
   cloudBinId: "6afafe7dffd5d16053c58e33",
   cloudMasterKey: "$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS",
-  adminPin: "2367" // Apna secret PIN yahan set karein
+  adminPin: "2367"
 };
 
-/* ==================== 1) CONFIG → DOM ==================== */
-document.querySelectorAll('[data-txt]').forEach(el=>{
+const DEFAULT_FAQS = [
+  { q: "What is your typical turnaround time for a Reel collaboration?", a: "Standard turnaround is 5–7 business days after receiving the product and finalized brief, including 1 round of revisions." },
+  { q: "Do you cross-post Reels on both Instagram and Facebook?", a: "Yes. Every Reel collaboration is published natively on Instagram and cross-posted to the Mother Insides Facebook page for maximum organic reach." },
+  { q: "Are paid ad usage rights (whitelisting) or raw footage available?", a: "Yes, 30-day or 90-day paid ad usage rights and raw unedited clips can be added to any package on request." },
+  { q: "How do brands book a campaign or request the rate card?", a: "Click the Direct Collab Email button or write to deepreacts0@gmail.com with your product details, campaign timeline, and deliverables." }
+];
+
+/* ==================== SAFE STORAGE HELPERS ==================== */
+function getLocalStats() {
+  try { return JSON.parse(localStorage.getItem('mi_stats') || '{}'); }
+  catch(e) { return {}; }
+}
+function setLocalStats(obj) {
+  try { localStorage.setItem('mi_stats', JSON.stringify(obj)); }
+  catch(e) {}
+}
+
+/* ==================== 1) CONFIG -> DOM ==================== */
+document.querySelectorAll('[data-txt]').forEach(el => {
   el.textContent = cfg[el.dataset.txt] || '';
 });
-document.querySelectorAll('[data-href]').forEach(el=>{
+document.querySelectorAll('[data-href]').forEach(el => {
   const k = el.dataset.href;
-  if(k === 'email') el.href = 'mailto:' + cfg.email;
-  else if(k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
+  if (k === 'email') el.href = 'mailto:' + cfg.email;
+  else if (k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
   else el.href = cfg[k];
 });
 
 /* ==================== 2) ADMIN PANEL LOGIC ==================== */
 const adminPanel = document.getElementById('admin-panel');
-if(window.location.hash.toLowerCase() === '#admin') {
-  adminPanel.classList.add('show');
-  
-  if(!sessionStorage.getItem('mi_auth')) {
-    const pin = prompt("Enter Admin PIN:");
-    if(pin === cfg.adminPin) { sessionStorage.setItem('mi_auth', 'true'); } 
-    else { adminPanel.classList.remove('show'); alert('Wrong PIN!'); }
-  }
+const adminAuth = document.getElementById('admin-auth');
+const adminForm = document.getElementById('admin-form');
+const authStatus = document.getElementById('auth-status');
+const saveStatus = document.getElementById('save-status');
 
-  let d = JSON.parse(localStorage.getItem('mi_stats') || '{}');
-  if(d.igFollowers) document.getElementById('set-igFollowers').value = d.igFollowers;
-  if(d.igViews) document.getElementById('set-igViews').value = d.igViews;
-  if(d.fbFollowers) document.getElementById('set-fbFollowers').value = d.fbFollowers;
-  if(d.fbViews) document.getElementById('set-fbViews').value = d.fbViews;
-  if(d.reels && d.reels[0]) document.getElementById('set-reel1').value = d.reels[0];
-  if(d.reels && d.reels[1]) document.getElementById('set-reel2').value = d.reels[1];
-  if(d.reels && d.reels[2]) document.getElementById('set-reel3').value = d.reels[2];
-  if(d.fbReels && d.fbReels[0]) document.getElementById('set-fbreel1').value = d.fbReels[0];
-if(d.fbReels && d.fbReels[1]) document.getElementById('set-fbreel2').value = d.fbReels[1];
-if(d.fbReels && d.fbReels[2]) document.getElementById('set-fbreel3').value = d.fbReels[2];
-  if(d.ytShow) document.getElementById('set-yt-show').checked = d.ytShow;
-if(d.ytFollowers) document.getElementById('set-ytFollowers').value = d.ytFollowers;
-if(d.ytViews) document.getElementById('set-ytViews').value = d.ytViews;
-if(d.ytVideo) document.getElementById('set-yt-video').value = d.ytVideo;
-  if(d.brands) document.getElementById('set-brands').value = d.brands;
-if(d.faqs) document.getElementById('set-faqs').value = d.faqs;
+function showStatus(el, msg, isErr) {
+  el.textContent = msg;
+  el.className = 'admin-status ' + (isErr ? 'err' : 'ok');
 }
 
-  
+function closeAdminPanel() {
+  adminPanel.classList.remove('show');
+}
 
-window.saveAdminData = async function() {
-  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
-  
-  // Logo file read karna (With Auto-Resize)
-const logoFile = document.getElementById('set-logo').files[0];
-let base64Logo = '';
-if (logoFile) {
-  base64Logo = await new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        const MAX_WIDTH = 200; // Max 200px wide
-        const MAX_HEIGHT = 200;
-        let width = img.width;
-        let height = img.height;
-        
-        if (width > height) {
-          if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
-        } else {
-          if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
-        }
-        canvas.width = width; canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL('image/jpeg', 0.8)); // Compressed
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(logoFile);
-  });
+function populateAdminForm(d) {
+  document.getElementById('set-igFollowers').value = d.igFollowers || '';
+  document.getElementById('set-igViews').value = d.igViews || '';
+  document.getElementById('set-fbFollowers').value = d.fbFollowers || '';
+  document.getElementById('set-fbViews').value = d.fbViews || '';
+
+  const reels = Array.isArray(d.reels) ? d.reels : [];
+  document.getElementById('set-reel1').value = reels[0] || '';
+  document.getElementById('set-reel2').value = reels[1] || '';
+  document.getElementById('set-reel3').value = reels[2] || '';
+
+  const fbReels = Array.isArray(d.fbReels) ? d.fbReels : [];
+  document.getElementById('set-fbreel1').value = fbReels[0] || '';
+  document.getElementById('set-fbreel2').value = fbReels[1] || '';
+  document.getElementById('set-fbreel3').value = fbReels[2] || '';
+
+  document.getElementById('set-yt-show').checked = Boolean(d.ytShow);
+  document.getElementById('set-ytFollowers').value = d.ytFollowers || '';
+  document.getElementById('set-ytViews').value = d.ytViews || '';
+
+  const ytVids = Array.isArray(d.ytVideos) ? d.ytVideos : (d.ytVideo ? [d.ytVideo] : []);
+  document.getElementById('set-yt-video1').value = ytVids[0] || '';
+  document.getElementById('set-yt-video2').value = ytVids[1] || '';
+  document.getElementById('set-yt-video3').value = ytVids[2] || '';
+
+  document.getElementById('set-brands-show').checked = Boolean(d.brandsShow);
+  document.getElementById('set-brands').value = d.brands || '';
+  document.getElementById('set-faqs').value = d.faqs || '';
+}
+
+function openAdminIfHash() {
+  if (window.location.hash.toLowerCase() !== '#admin') return;
+  adminPanel.classList.add('show');
+  let authed = false;
+  try { authed = sessionStorage.getItem('mi_auth') === 'true'; } catch(e) {}
+  if (authed) {
+    adminAuth.style.display = 'none';
+    adminForm.style.display = 'block';
+    populateAdminForm(window.__miLatestData || getLocalStats());
+  } else {
+    adminAuth.style.display = 'block';
+    adminForm.style.display = 'none';
   }
-    // ... (aapka purana data){
-  const data = {
-  igFollowers: document.getElementById('set-igFollowers').value,
-  igViews: document.getElementById('set-igViews').value,
-  fbFollowers: document.getElementById('set-fbFollowers').value,
-  fbViews: document.getElementById('set-fbViews').value,
-  reels: [
-    document.getElementById('set-reel1').value,
-    document.getElementById('set-reel2').value,
-    document.getElementById('set-reel3').value
-  ].filter(Boolean),
-  fbReels: [
-    document.getElementById('set-fbreel1').value,
-    document.getElementById('set-fbreel2').value,
-    document.getElementById('set-fbreel3').value
-  ].filter(Boolean),
-    ytShow: document.getElementById('set-yt-show').checked,
-ytFollowers: document.getElementById('set-ytFollowers').value,
-ytViews: document.getElementById('set-ytViews').value,
-ytVideo: document.getElementById('set-yt-video').value,
-    brands: document.getElementById('set-brands').value,
-    faqs: document.getElementById('set-faqs').value,
-  logoUrl: base64Logo || JSON.parse(localStorage.getItem('mi_stats') || '{}').logoUrl || ''
-};
-  
-  localStorage.setItem('mi_stats', JSON.stringify(data));
+}
 
+document.getElementById('admin-close-btn').addEventListener('click', closeAdminPanel);
+document.getElementById('admin-auth-cancel').addEventListener('click', closeAdminPanel);
+document.getElementById('admin-cancel-btn').addEventListener('click', closeAdminPanel);
+
+document.getElementById('admin-unlock-btn').addEventListener('click', () => {
+  const pin = document.getElementById('admin-pin-input').value.trim();
+  if (pin === cfg.adminPin) {
+    try { sessionStorage.setItem('mi_auth', 'true'); } catch(e) {}
+    authStatus.className = 'admin-status';
+    adminAuth.style.display = 'none';
+    adminForm.style.display = 'block';
+    populateAdminForm(window.__miLatestData || getLocalStats());
+  } else {
+    showStatus(authStatus, 'Wrong PIN. Please try again.', true);
+  }
+});
+
+document.getElementById('admin-save-btn').addEventListener('click', async () => {
+  const prev = getLocalStats();
+  const logoFile = document.getElementById('set-logo').files[0];
+  let base64Logo = '';
+
+  if (logoFile) {
+    base64Logo = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX = 200;
+          let w = img.width, h = img.height;
+          if (w > h && w > MAX) { h *= MAX / w; w = MAX; }
+          else if (h >= w && h > MAX) { w *= MAX / h; h = MAX; }
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', 0.8));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(logoFile);
+    });
+  }
+
+  const data = {
+    igFollowers: document.getElementById('set-igFollowers').value.trim(),
+    igViews: document.getElementById('set-igViews').value.trim(),
+    fbFollowers: document.getElementById('set-fbFollowers').value.trim(),
+    fbViews: document.getElementById('set-fbViews').value.trim(),
+    reels: [
+      document.getElementById('set-reel1').value.trim(),
+      document.getElementById('set-reel2').value.trim(),
+      document.getElementById('set-reel3').value.trim()
+    ].filter(Boolean),
+    fbReels: [
+      document.getElementById('set-fbreel1').value.trim(),
+      document.getElementById('set-fbreel2').value.trim(),
+      document.getElementById('set-fbreel3').value.trim()
+    ].filter(Boolean),
+    ytShow: document.getElementById('set-yt-show').checked,
+    ytFollowers: document.getElementById('set-ytFollowers').value.trim(),
+    ytViews: document.getElementById('set-ytViews').value.trim(),
+    ytVideos: [
+      document.getElementById('set-yt-video1').value.trim(),
+      document.getElementById('set-yt-video2').value.trim(),
+      document.getElementById('set-yt-video3').value.trim()
+    ].filter(Boolean),
+    brandsShow: document.getElementById('set-brands-show').checked,
+    brands: document.getElementById('set-brands').value.trim(),
+    faqs: document.getElementById('set-faqs').value.trim(),
+    logoUrl: base64Logo || prev.logoUrl || ''
+  };
+
+  setLocalStats(data);
+  window.__miLatestData = data;
+  applyMediaKitData(data);
+
+  const saveBtn = document.getElementById('admin-save-btn');
   if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
     try {
-      document.querySelector('.btn-save').textContent = 'Publishing...';
+      saveBtn.textContent = 'Publishing...';
       const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'X-Master-Key': cfg.cloudMasterKey },
         body: JSON.stringify(data)
       });
-      if(res.ok) { alert('Success! Live update ho gaya.'); window.location.reload(); }
-      else { alert('Cloud Error: Check Bin ID/Key.'); document.querySelector('.btn-save').textContent = 'Publish Updates'; }
-    } catch(e) { alert('Network error. Saved locally only.'); document.querySelector('.btn-save').textContent = 'Publish Updates'; }
+      saveBtn.textContent = 'Publish Updates';
+      if (res.ok) showStatus(saveStatus, 'Success! Live updates published.', false);
+      else showStatus(saveStatus, 'Saved locally, but cloud sync failed. Check Bin ID/Key.', true);
+    } catch(e) {
+      saveBtn.textContent = 'Publish Updates';
+      showStatus(saveStatus, 'Network error. Saved locally only.', true);
+    }
   } else {
-    alert('Local save success! Cloud ID missing hai (sirf aapko dikhega).');
-    window.location.reload();
+    showStatus(saveStatus, 'Saved locally!', false);
   }
-};
+});
 
-/* ==================== 3) FETCH LIVE STATS ==================== */
-function renderStat(el, val){
-  let s = String(val || '').trim();
-  if(!s) return;
-  
-  // Commas hata kar aur numbers extract karne ke liye
-  let cleanS = s.replace(/,/g, '');
-  const numMatch = cleanS.match(/^([\d.]+)\s*([KMB]?)\s*(\+?)$/i);
-  
-  if (!numMatch) { 
-    el.innerHTML = s; 
-    return; 
+window.addEventListener('hashchange', openAdminIfHash);
+openAdminIfHash();
+
+/* ==================== 3) EMBED PARSERS ==================== */
+function makeIGEmbed(url) {
+  if (!url) return '';
+  const match = url.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
+  return match ? { embed: `https://www.instagram.com/reel/${match[1]}/embed/`, raw: url } : null;
+}
+
+function makeFBEmbed(url) {
+  if (!url) return null;
+  const raw = url.trim();
+  const reelMatch = raw.match(/\/reel\/(\d+)/);
+  const vidMatch = raw.match(/\/videos\/(\d+)/);
+  const watchMatch = raw.match(/[?&]v=(\d+)/);
+  const numMatch = reelMatch || vidMatch || watchMatch;
+
+  if (raw.includes('/share/') && !numMatch) {
+    return { embed: '', raw, isShareLink: true };
   }
-  
-  let target = parseFloat(numMatch[1]);
-  let suffix = (numMatch[2] || '') + (numMatch[3] || '');
-  let start = 0;
-  let duration = 2000; 
+
+  let canonical = raw;
+  if (reelMatch) {
+    canonical = `https://www.facebook.com/reel/${reelMatch[1]}`;
+  } else if (vidMatch || watchMatch) {
+    const id = (vidMatch || watchMatch)[1];
+    canonical = `https://www.facebook.com/watch/?v=${id}`;
+  } else {
+    try {
+      const u = new URL(raw);
+      canonical = 'https://www.facebook.com' + u.pathname;
+    } catch(e) {}
+  }
+
+  return {
+    embed: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(canonical)}&show_text=false&width=320&t=0`,
+    raw
+  };
+}
+
+function extractYTId(url) {
+  if (!url) return '';
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|shorts\/|v\/|watch\?v=|watch\?.+&v=))([A-Za-z0-9_-]{11})/);
+  return match ? match[1] : '';
+}
+
+/* ==================== 4) RENDER STATS & SECTIONS ==================== */
+function renderStat(el, val) {
+  const s = String(val || '').trim();
+  if (!s) return;
+  const cleanS = s.replace(/,/g, '');
+  const numMatch = cleanS.match(/^([\d.]+)\s*([KMB]?)\s*(\+?)$/i);
+  if (!numMatch) { el.innerHTML = s; return; }
+
+  const target = parseFloat(numMatch[1]);
+  const suffix = (numMatch[2] || '') + (numMatch[3] || '');
+  const duration = 1800;
   let startTime = null;
 
-  function step(timestamp) {
-    if (!startTime) startTime = timestamp;
-    let progress = Math.min((timestamp - startTime) / duration, 1);
-    let easeProgress = 1 - Math.pow(1 - progress, 3); 
-    let current = start + (target - start) * easeProgress;
-    
-    let formatted = Number.isInteger(target) ? Math.floor(current) : current.toFixed(1);
-    let finalSuffix = suffix.replace('+', '<span class="plus">+</span>');
-    el.innerHTML = formatted + finalSuffix;
-    
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    const progress = Math.min((ts - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = target * ease;
+    const formatted = Number.isInteger(target) ? Math.floor(current) : current.toFixed(1);
+    el.innerHTML = formatted + suffix.replace('+', '<span class="plus">+</span>');
     if (progress < 1) window.requestAnimationFrame(step);
   }
   window.requestAnimationFrame(step);
 }
 
-async function loadStats(){
-  let data = { igFollowers: '830+', igViews: '183.8K+', fbFollowers: '1.2K+', fbViews: '45K+' };
-  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
-
-  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
-    try {
-      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, {
-  headers: { 'X-Master-Key': cfg.cloudMasterKey }
-});
-      if (res.ok) {
-        const json = await res.json();
-        data = Object.assign(data, json.record, localData);
-      }
-    } catch(e) { data = Object.assign(data, localData); }
-  } else {
-    data = Object.assign(data, localData);
-  }
-
-// Logo Load karein
-const logoEl = document.getElementById('site-logo');
-if(data.logoUrl) {
-  logoEl.src = data.logoUrl;
-  logoEl.style.display = 'block';
+function parseKValue(str) {
+  if (!str) return 0;
+  const m = String(str).replace(/,/g, '').match(/([\d.]+)\s*([KMB]?)/i);
+  if (!m) return 0;
+  const n = parseFloat(m[1]);
+  const unit = (m[2] || '').toUpperCase();
+  if (unit === 'K') return n * 1000;
+  if (unit === 'M') return n * 1000000;
+  return n;
 }
-  
-  document.querySelectorAll('[data-stat]').forEach(el=>{
-  const v = data[el.dataset.stat];
-  if(v !== undefined && v !== null) {
-    el.dataset.target = v; 
-    // Agar card pehle se screen par visible hai, toh turant animate karo
-    let card = el.closest('.stat-card');
-    if(card && card.classList.contains('in') && !el.dataset.animated) {
-      el.textContent = '0+';
-      renderStat(el, v);
-      el.dataset.animated = "true";
-    }
-  }
-});
-// YouTube Toggle & Video & Links
-const ytHeroBtn = document.getElementById('yt-hero-btn');
-const ytFooterLink = document.getElementById('yt-footer-link');
-const ytCard = document.getElementById('yt-card');
-const ytSection = document.getElementById('youtube-video');
-const ytContainer = document.getElementById('ytVideoContainer');
 
-if (data.ytShow) {
-  // Agar toggle ON hai, toh sab kuch dikhao
-  if(ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
-  if(ytFooterLink) ytFooterLink.style.display = 'inline-block';
-  if(ytCard) ytCard.style.display = 'block';
-
-  if(ytCard) {
-  ytCard.style.display = 'block';
-  ytCard.classList.add('in'); // Animation ke liye
-  // YouTube numbers ko animate karo
-  ytCard.querySelectorAll('[data-stat]').forEach(el => {
-    if (el.dataset.target && !el.dataset.animated) {
-      el.textContent = '0+';
-      renderStat(el, el.dataset.target);
-      el.dataset.animated = "true";
-    }
-  });
-  }
-  
-  if (ytSection && ytContainer && data.ytVideo) {
-    ytSection.style.display = 'block';
-    let vidId = data.ytVideo.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/);
-    if(vidId && vidId[1]) {
-      ytContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${vidId[1]}" allowfullscreen></iframe>`;
-    }
-  }
-} else {
-  // Agar toggle OFF hai, toh sab kuch chhupa do
-  if(ytHeroBtn) ytHeroBtn.style.display = 'none';
-  if(ytFooterLink) ytFooterLink.style.display = 'none';
-  if(ytCard) ytCard.style.display = 'none';
-  if(ytSection) ytSection.style.display = 'none';
-}
-  
-// Render Past Brands
-function renderBrands(brandText) {
+function renderBrands(brandText, showToggle) {
+  const sec = document.getElementById('brands');
   const grid = document.getElementById('brandsGrid');
-  if(!grid || !brandText) return;
+  if (!sec || !grid) return;
+  if (!showToggle || !brandText) {
+    sec.style.display = 'none';
+    return;
+  }
   const brands = brandText.split('\n').map(line => {
-     const [name, url] = line.split('|').map(s => s.trim());
-     return { name, url };
+    const parts = line.split('|').map(s => s.trim());
+    return { name: parts[0] || '', url: parts[1] || '' };
   }).filter(b => b.url);
 
-  if(brands.length === 0) return;
+  if (brands.length === 0) {
+    sec.style.display = 'none';
+    return;
+  }
+  sec.style.display = 'block';
   grid.innerHTML = brands.map(b => `
     <div class="brand-item" title="${b.name}">
-      <img src="${b.url}" alt="${b.name}" loading="lazy">
+      <img src="${b.url}" alt="${b.name || 'Partner Brand'}" loading="lazy">
+      ${b.name ? `<span>${b.name}</span>` : ''}
     </div>
   `).join('');
 }
 
-// Render FAQs
 function renderFAQs(faqText) {
   const list = document.getElementById('faqList');
-  if(!list || !faqText) return;
-  const faqs = faqText.split('\n').map(line => {
-     const [q, a] = line.split('|').map(s => s.trim());
-     return { q, a };
-  }).filter(f => f.q && f.a);
+  if (!list) return;
+  let faqs = [];
+  if (faqText && faqText.trim()) {
+    faqs = faqText.split('\n').map(line => {
+      const idx = line.indexOf('|');
+      if (idx === -1) return null;
+      return { q: line.slice(0, idx).trim(), a: line.slice(idx + 1).trim() };
+    }).filter(f => f && f.q && f.a);
+  }
+  if (faqs.length === 0) faqs = DEFAULT_FAQS;
 
-  if(faqs.length === 0) return;
-  list.innerHTML = faqs.map((f) => `
+  list.innerHTML = faqs.map(f => `
     <div class="faq-item">
-      <div class="faq-question" onclick="toggleFaq(this)">${f.q}</div>
+      <div class="faq-question">${f.q}</div>
       <div class="faq-answer">${f.a}</div>
     </div>
   `).join('');
+
+  list.querySelectorAll('.faq-question').forEach(qEl => {
+    qEl.addEventListener('click', () => {
+      const item = qEl.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isActive = item.classList.contains('active');
+      list.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
 }
 
-// FAQ Click Toggle Function
-window.toggleFaq = function(el) {
-  const item = el.parentElement;
-  const answer = item.querySelector('.faq-answer');
-  const isActive = item.classList.contains('active');
-  
-  // Baaki sab close karo
-  document.querySelectorAll('.faq-item').forEach(i => {
-    i.classList.remove('active');
-    i.querySelector('.faq-answer').style.maxHeight = null;
+function renderReels(data) {
+  const grid = document.getElementById('reelsGrid');
+  if (!grid) return;
+  const igItems = (data.reels || []).map(makeIGEmbed).filter(Boolean);
+  const fbItems = (data.fbReels || []).map(makeFBEmbed).filter(Boolean);
+  const allItems = [...igItems, ...fbItems];
+
+  if (allItems.length === 0) return;
+  grid.innerHTML = allItems.map(item => {
+    if (item.isShareLink || !item.embed) {
+      return `
+        <div class="reel-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:linear-gradient(180deg,#fff,#F3EADD);">
+          <p style="font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gd);margin-bottom:10px;">Facebook Reel</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--es);margin-bottom:18px;line-height:1.3;">Watch on Facebook</p>
+          <a class="btn btn-primary" href="${item.raw}" target="_blank" rel="noopener" style="padding:12px 22px;font-size:.68rem;">Open Reel ↗</a>
+        </div>
+      `;
+    }
+    return `
+      <div class="reel-card">
+        <iframe src="${item.embed}" loading="lazy" scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true"></iframe>
+        <a class="reel-fallback" href="${item.raw}" target="_blank" rel="noopener">Open Post ↗</a>
+      </div>
+    `;
+  }).join('');
+}
+
+function applyMediaKitData(data) {
+  // Logo
+  const logoEl = document.getElementById('site-logo');
+  if (logoEl && data.logoUrl) {
+    logoEl.src = data.logoUrl;
+    logoEl.style.display = 'block';
+  }
+
+  // Combined 30d views highlight (also animated)
+  const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews);
+  const combEl = document.getElementById('combined-views');
+  if (combEl && totalV > 0) {
+    const kVal = Math.round(totalV / 1000) + 'K+';
+    combEl.dataset.target = kVal;
+    const rhBox = combEl.closest('.reach-highlight');
+    if (rhBox && rhBox.classList.contains('in')) {
+      renderStat(combEl, kVal);
+      combEl.dataset.animated = "true";
+    } else {
+      combEl.innerHTML = '0K<span class="plus">+</span>';
+    }
+  }
+
+  // Stats (IG, FB, YT - animate when card is in view or upon scroll)
+  document.querySelectorAll('[data-stat]').forEach(el => {
+    const v = data[el.dataset.stat];
+    if (v !== undefined && v !== null && v !== '') {
+      el.dataset.target = v;
+      const card = el.closest('.stat-card');
+      if (card && card.classList.contains('in')) {
+        renderStat(el, v);
+        el.dataset.animated = "true";
+      } else if (!el.dataset.animated) {
+        el.textContent = '0';
+      }
+    }
   });
 
-  // Agar pehle se open nahi tha, toh open karo
-  if (!isActive) {
-    item.classList.add('active');
-    answer.style.maxHeight = answer.scrollHeight + 'px';
+  // YouTube (Toggle + Card + up to 3 Videos)
+  const ytHeroBtn = document.getElementById('yt-hero-btn');
+  const ytFooterLink = document.getElementById('yt-footer-link');
+  const ytCard = document.getElementById('yt-card');
+  const ytSection = document.getElementById('youtube-video');
+  const ytContainer = document.getElementById('ytVideoContainer');
+
+  if (data.ytShow) {
+    if (ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
+    if (ytFooterLink) ytFooterLink.style.display = 'inline-block';
+    if (ytCard) {
+      ytCard.style.display = 'block';
+      const rect = ytCard.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        ytCard.classList.add('in');
+        ytCard.querySelectorAll('[data-stat]').forEach(el => {
+          if (el.dataset.target) {
+            renderStat(el, el.dataset.target);
+            el.dataset.animated = "true";
+          }
+        });
+      }
+    }
+    const ytList = Array.isArray(data.ytVideos) && data.ytVideos.length
+      ? data.ytVideos
+      : (data.ytVideo ? [data.ytVideo] : []);
+    const validIds = ytList.map(extractYTId).filter(Boolean).slice(0, 3);
+    if (ytSection && ytContainer && validIds.length > 0) {
+      ytSection.style.display = 'block';
+      ytContainer.innerHTML = validIds.map(id => `
+        <div class="yt-video-wrapper">
+          <iframe src="https://www.youtube.com/embed/${id}" loading="lazy" allowfullscreen></iframe>
+        </div>
+      `).join('');
+    } else if (ytSection) {
+      ytSection.style.display = 'none';
+    }
+  } else {
+    if (ytHeroBtn) ytHeroBtn.style.display = 'none';
+    if (ytFooterLink) ytFooterLink.style.display = 'none';
+    if (ytCard) ytCard.style.display = 'none';
+    if (ytSection) ytSection.style.display = 'none';
   }
-};
 
-// Data call karo
-renderBrands(data.brands);
-renderFAQs(data.faqs);
-  
+  renderReels(data);
+  renderBrands(data.brands, data.brandsShow);
+  renderFAQs(data.faqs);
 }
-loadStats();
 
-  /* ==================== 3.5) FETCH REELS ==================== */
-async function loadReels(){
-  const grid = document.getElementById('reelsGrid');
-  if(!grid) return;
-  
-  let data = { reels: [], fbReels: [] }; // Dono ke liye array banaya
-  let localData = JSON.parse(localStorage.getItem('mi_stats') || '{}');
-  
+/* ==================== 5) SINGLE UNIFIED FETCH ==================== */
+async function loadMediaKitData() {
+  let data = {
+    igFollowers: '836',
+    igViews: '176K+',
+    fbFollowers: '1120',
+    fbViews: '356K+',
+    reels: [],
+    fbReels: [],
+    ytVideos: [],
+    brandsShow: false,
+    ytShow: false
+  };
+  const localData = getLocalStats();
+
   if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
     try {
       const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, {
@@ -822,78 +1128,59 @@ async function loadReels(){
       });
       if (res.ok) {
         const json = await res.json();
-        data = Object.assign(data, json.record, localData);
+        data = Object.assign(data, json.record || {}, localData);
+      } else {
+        data = Object.assign(data, localData);
       }
-    } catch(e) { data = Object.assign(data, localData); }
+    } catch(e) {
+      data = Object.assign(data, localData);
+    }
   } else {
     data = Object.assign(data, localData);
   }
 
-  if((!data.reels || data.reels.length === 0) && (!data.fbReels || data.fbReels.length === 0)) return;
-
-  // Instagram link parser
-  const makeIGEmbed = (url) => {
-    if(!url) return '';
-    let match = url.match(/(?:reel|p)\/([A-Za-z0-9_-]+)/);
-    return match ? `https://www.instagram.com/reel/${match[1]}/embed/` : '';
-  };
-
-// Facebook link parser
-const makeFBEmbed = (url) => {
-  if(!url) return '';
-  let match = url.match(/(\d{10,})/); 
-  let videoId = match ? match[1] : null;
-  if(!videoId) return '';
-
-  let finalUrl = `https://www.facebook.com/reel/${videoId}`;
-  
-  return `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(finalUrl)}&show_text=false&width=320`;
-};
-
-  const igEmbeds = (data.reels || []).map(makeIGEmbed).filter(Boolean);
-  const fbEmbeds = (data.fbReels || []).map(makeFBEmbed).filter(Boolean);
-  
-  // Dono platforms ke links mila kar ek grid mein dikhao
-  const allEmbeds = [...igEmbeds, ...fbEmbeds];
-
-  if(allEmbeds.length > 0) {
-    grid.innerHTML = allEmbeds.map(link => `
-      <div class="reel-card">
-        <iframe src="${link}" loading="lazy" scrolling="no" allowtransparency="true" allowfullscreen="true"></iframe>
-      </div>
-    `).join('');
-  }
+  window.__miLatestData = data;
+  applyMediaKitData(data);
 }
-loadReels();
+loadMediaKitData();
 
-/* ==================== 4) SCROLL REVEAL ==================== */
-try{
-  if('IntersectionObserver' in window){
-    const obs = new IntersectionObserver((es)=>{
-      es.forEach(e=>{ 
-        if(e.isIntersecting){ 
-          e.target.classList.add('in'); 
-          // Agar ye stat card hai, toh numbers ko 0 se animate karo
-if(e.target.classList.contains('stat-card')) {
-  e.target.querySelectorAll('[data-stat]').forEach(el => {
-     if (el.dataset.target && !el.dataset.animated) {
-       el.textContent = '0+'; // Start from 0
-       renderStat(el, el.dataset.target);
-       el.dataset.animated = "true";
-     }
-  });
-  }
-          obs.unobserve(e.target); 
+/* ==================== 6) SCROLL REVEAL ==================== */
+try {
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          if (e.target.classList.contains('reach-highlight')) {
+            const combEl = document.getElementById('combined-views');
+            if (combEl && combEl.dataset.target && !combEl.dataset.animated) {
+              renderStat(combEl, combEl.dataset.target);
+              combEl.dataset.animated = "true";
+            }
+          }
+          if (e.target.classList.contains('stat-card')) {
+            e.target.querySelectorAll('[data-stat]').forEach(el => {
+              if (el.dataset.target && !el.dataset.animated) {
+                renderStat(el, el.dataset.target);
+                el.dataset.animated = "true";
+              }
+            });
+          }
+          obs.unobserve(e.target);
         }
       });
     }, { threshold: .12, rootMargin: '0px 0px -60px 0px' });
-    
-    document.querySelectorAll('[data-reveal]').forEach((el,i)=>{
+
+    document.querySelectorAll('[data-reveal]').forEach((el, i) => {
       el.style.transitionDelay = (Math.min(i, 6) * 70) + 'ms';
       obs.observe(el);
     });
-  } else { document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in')); }
-} catch(e) { document.querySelectorAll('[data-reveal]').forEach(el=>el.classList.add('in')); }
+  } else {
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+  }
+} catch(e) {
+  document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+}
 </script>
 </body>
 </html>
