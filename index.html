@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mother Insides — Media Kit</title>
+<title>Mothers Inside — Media Kit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -161,10 +161,12 @@ body{background:var(--iv);color:var(--es);font-family:Jost,system-ui,sans-serif;
 .quote-banner{max-width:760px;margin:0 auto 28px;padding:14px 22px;border:1px solid var(--gd);background:linear-gradient(135deg,rgba(201,165,116,.14),rgba(20,17,12,.9));text-align:center;font-size:.86rem;color:var(--es);letter-spacing:.04em}
 .quote-banner strong{color:var(--gd);font-weight:500}
 .quote-banner.expired{border-color:#A85454;background:rgba(168,84,84,.12);color:#F5EFE6}
-.quote-full-link{display:inline-block;margin-top:10px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);text-decoration:none;border-bottom:1px solid var(--ln);padding-bottom:2px}
+.quote-full-link{display:inline-block;margin-top:10px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gd);text-decoration:none;background:none;border:none;border-bottom:1px solid var(--ln);padding:0 0 3px;cursor:pointer;font-family:Jost,sans-serif}
 .quote-full-link:hover{color:var(--es);border-color:var(--es)}
-body.quote-only-mode .hero,body.quote-only-mode #reach,body.quote-only-mode #audience,body.quote-only-mode #brand-fit,body.quote-only-mode #reels,body.quote-only-mode #youtube-video,body.quote-only-mode #brands,body.quote-only-mode #faq{display:none!important}
-body.quote-only-mode #partnerships{padding-top:clamp(42px,6vw,72px)}
+html.quote-only-mode .hero,html.quote-only-mode #reach,html.quote-only-mode #audience,html.quote-only-mode #brand-fit,html.quote-only-mode #reels,html.quote-only-mode #youtube-video,html.quote-only-mode #brands,html.quote-only-mode #faq{display:none!important}
+html.quote-only-mode #partnerships{padding-top:clamp(42px,6vw,72px)}
+.quote-bottom-nav{display:none;text-align:center;margin-top:34px}
+html.quote-only-mode .quote-bottom-nav{display:block}
 .btn-outline-gold{background:transparent;border:1px solid var(--gd)!important;color:var(--gd)!important}
 .btn-outline-gold:hover{background:var(--gd)!important;color:#14110D!important}
 .scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,26px);margin-top:26px}
@@ -210,6 +212,9 @@ body.quote-only-mode #partnerships{padding-top:clamp(42px,6vw,72px)}
 /* 🛠️ IMPROVED ADMIN PANEL */
 #admin-panel{position:fixed;inset:0;background:rgba(26,18,13,.92);z-index:99999;display:none;align-items:flex-start;justify-content:center;padding:36px 16px;overflow-y:auto;backdrop-filter:blur(6px)}
 #admin-panel.show{display:flex}
+#wa-modal,#email-modal{position:fixed;inset:0;background:rgba(20,17,13,.9);z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}
+#wa-modal.show,#email-modal.show{display:flex}
+.wa-preview{margin-top:14px;padding:12px 14px;background:#14110D;border:1px dashed var(--ln);border-radius:6px;font-size:.86rem;color:var(--es);line-height:1.6}
 .admin-box{background:#1C1712;padding:32px;border-radius:10px;max-width:640px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.65);position:relative;border:1px solid var(--ln);color:var(--es)}
 .admin-box h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:6px;color:var(--es)}
 .admin-sub{font-size:.86rem;color:var(--mu);margin-bottom:18px}
@@ -264,6 +269,10 @@ input:checked+.slider:before{transform:translateX(22px)}
 </style>
 <script>
 try{
+  var _sp=new URLSearchParams(window.location.search);
+  if((_sp.get('q')||_sp.get('quote')) && _sp.get('full')!=='1'){
+    document.documentElement.classList.add('quote-only-mode');
+  }
   var _cached=JSON.parse(localStorage.getItem('mi_stats')||'{}');
   window.__miPrefetch=fetch('https://api.jsonbin.io/v3/b/6afafe7dffd5d16053c58e33/latest',{
     headers:{'X-Master-Key':'$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS'}
@@ -276,9 +285,9 @@ try{
 <header class="hdr">
   <div class="container">
     <div class="brandmark brand-wrap">
-      <img id="site-logo" class="brand-logo" src="" alt="Mother Insides Logo">
+      <img id="site-logo" class="brand-logo" src="" alt="Mothers Inside Logo">
       <script>try{var _l=localStorage.getItem('mi_logo_cache')||(JSON.parse(localStorage.getItem('mi_stats')||'{}').logoUrl);if(_l){var _el=document.getElementById('site-logo');_el.src=_l;_el.style.display='block';}}catch(e){}</script>
-      Mother<em>&nbsp;</em>Insides
+      Mothers<em>&nbsp;</em>Inside
     </div>
   </div>
 </header>
@@ -286,7 +295,7 @@ try{
 <section class="hero">
   <div class="container">
     <span class="pill"><i class="dot"></i>Available for Brand Collaborations · 2026</span>
-    <h1 class="hero-title">Mother <em>Insides</em></h1>
+    <h1 class="hero-title">Mothers <em>Inside</em></h1>
     <p class="hero-tag" data-txt="tagline"></p>
     <div class="rule" aria-hidden="true"><i></i><b>◆</b><i></i></div>
     <div class="creator">
@@ -353,7 +362,7 @@ try{
           <path class="area" d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
           <path d="M0,40 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
         </svg>
-        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Facebook</span><span class="stat-handle">Mothers Inside</span></div>
         <div class="stat-grid">
           <div><span class="stat-num" data-stat="fbFollowers"></span><span class="stat-label">Followers</span></div>
           <div><span class="stat-num" data-stat="fbViews"></span><span class="stat-label">Views · Last 30 Days</span></div>
@@ -366,7 +375,7 @@ try{
           <path class="area" d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15 L200,60 L0,60 Z"/>
           <path d="M0,30 C40,50 70,10 110,20 C150,30 180,5 200,15"/>
         </svg>
-        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</span><span class="stat-handle">Mother Insides</span></div>
+        <div class="stat-top"><span class="stat-plat"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</span><span class="stat-handle">Mothers Inside</span></div>
         <div class="stat-grid">
           <div><span class="stat-num" data-stat="ytFollowers"></span><span class="stat-label">Subscribers</span></div>
           <div><span class="stat-num" data-stat="ytViews"></span><span class="stat-label">Total Views</span></div>
@@ -432,7 +441,7 @@ try{
     <div class="sec-head" data-reveal>
       <p class="eyebrow">03 — Ideal Brand Fit</p>
       <h2 class="sec-title">Brands That Align <em>With My Niche</em></h2>
-      <p class="sec-sub">D2C and consumer categories where Mother Insides drives high organic discovery, parent trust, and purchase intent.</p>
+      <p class="sec-sub">D2C and consumer categories where Mothers Inside drives high organic discovery, parent trust, and purchase intent.</p>
     </div>
     <div class="brand-fit-grid">
       <article class="bf-card" data-reveal>
@@ -530,7 +539,7 @@ try{
     <div class="sec-head" data-reveal>
       <p class="eyebrow">06 — Trusted By</p>
       <h2 class="sec-title">Past <em>Collaborations</em></h2>
-      <p class="sec-sub">Brands that have partnered with Mother Insides for authentic, high-trust storytelling.</p>
+      <p class="sec-sub">Brands that have partnered with Mothers Inside for authentic, high-trust storytelling.</p>
     </div>
     <div class="brands-grid" id="brandsGrid"></div>
   </div>
@@ -619,6 +628,9 @@ try{
         </ul>
       </div>
     </div>
+    <div class="quote-bottom-nav">
+      <button type="button" class="quote-full-link" id="quote-full-kit-btn">View Full Media Kit &amp; Performance ↗</button>
+    </div>
   </div>
 </section>
 
@@ -655,12 +667,53 @@ try{
       <a id="wa-footer-link" style="display:none;" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
     </div>
     <div class="footer-bar">
-      <span>© <span data-txt="year"></span> Mother Insides. All Rights Reserved.</span>
+      <span>© <span data-txt="year"></span> Mothers Inside. All Rights Reserved.</span>
       <span><span data-txt="name"></span> · <span data-txt="handle"></span></span>
     </div>
-    <p class="footer-disc">Disclaimer: Content on Mother Insides is for informational and parenting awareness purposes only and is not a substitute for professional medical advice. Sponsored collaborations follow standard ASCI disclosure guidelines.</p>
+    <p class="footer-disc">Disclaimer: Content on Mothers Inside is for informational and parenting awareness purposes only and is not a substitute for professional medical advice. Sponsored collaborations follow standard ASCI disclosure guidelines.</p>
   </div>
 </section>
+
+<!-- 💬 WHATSAPP COLLAB MODAL -->
+<div id="wa-modal" role="dialog" aria-modal="true" aria-label="WhatsApp Collaboration Inquiry">
+  <div class="admin-box" style="max-width:480px;">
+    <button class="btn-close" id="wa-close-btn" aria-label="Close WhatsApp Modal">✕</button>
+    <h3>Collab on WhatsApp</h3>
+    <p class="admin-sub">Enter your name and brand name to send a quick collaboration message.</p>
+    <label for="wa-user-name">Your Name</label>
+    <input type="text" id="wa-user-name" placeholder="e.g. Riya Mehta">
+    <label for="wa-brand-name">Brand Name</label>
+    <input type="text" id="wa-brand-name" placeholder="e.g. Mamaearth">
+    <label>Message Preview</label>
+    <div class="wa-preview" id="wa-msg-preview"></div>
+    <div class="admin-status" id="wa-modal-status"></div>
+    <div class="admin-actions">
+      <button class="btn-save" id="wa-send-btn" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Open WhatsApp</button>
+      <button class="btn-cancel" id="wa-cancel-btn" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✉️ EMAIL COLLAB MODAL -->
+<div id="email-modal" role="dialog" aria-modal="true" aria-label="Email Collaboration Inquiry">
+  <div class="admin-box" style="max-width:500px;">
+    <button class="btn-close" id="em-close-btn" aria-label="Close Email Modal">✕</button>
+    <h3>Collab via Email</h3>
+    <p class="admin-sub">Enter your name and brand name to prepare a ready-to-send collaboration email.</p>
+    <label for="em-user-name">Your Name</label>
+    <input type="text" id="em-user-name" placeholder="e.g. Riya Mehta">
+    <label for="em-brand-name">Brand Name</label>
+    <input type="text" id="em-brand-name" placeholder="e.g. Mamaearth">
+    <label>Email Preview</label>
+    <div class="wa-preview" id="em-msg-preview" style="white-space:pre-line;"></div>
+    <div class="admin-status" id="em-modal-status"></div>
+    <div class="admin-actions">
+      <button class="btn-save" id="em-send-btn" type="button"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Open Email App</button>
+      <button class="btn-outline-gold" id="em-copy-btn" type="button">Copy Message</button>
+      <button class="btn-cancel" id="em-cancel-btn" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
 
 <!-- 🛠️ IMPROVED SECRET ADMIN PANEL -->
 <div id="admin-panel" role="dialog" aria-modal="true" aria-label="Owner Settings">
@@ -747,7 +800,7 @@ try{
           </div>
           <div>
             <label for="set-ytUrl">YouTube Channel URL</label>
-            <input type="text" id="set-ytUrl" placeholder="https://youtube.com/@mothers_inside">
+            <input type="text" id="set-ytUrl" placeholder="https://www.youtube.com/@mothers_inside">
           </div>
           <div>
             <label for="set-xUrl">X (Twitter) URL</label>
@@ -920,7 +973,7 @@ const cfg = {
   email: "deepreacts0@gmail.com",
   igUrl: "https://www.instagram.com/mothers_inside",
   fbUrl: "https://www.facebook.com/share/1A4pG5oqd1/",
-  ytUrl: "https://youtube.com/@mothers_inside",
+  ytUrl: "https://www.youtube.com/@mothers_inside",
   xUrl: "https://x.com/mothers_inside",
   year: "2026",
   cloudBinId: "6afafe7dffd5d16053c58e33",
@@ -930,7 +983,7 @@ const cfg = {
 
 const DEFAULT_FAQS = [
   { q: "What is your typical turnaround time for a Reel collaboration?", a: "Standard turnaround is 5–7 business days after receiving the product and finalized brief, including 1 round of revisions." },
-  { q: "Do you cross-post Reels on both Instagram and Facebook?", a: "Yes. Every Reel collaboration is published natively on Instagram and cross-posted to the Mother Insides Facebook page for maximum organic reach." },
+  { q: "Do you cross-post Reels on both Instagram and Facebook?", a: "Yes. Every Reel collaboration is published natively on Instagram and cross-posted to the Mothers Inside Facebook page for maximum organic reach." },
   { q: "Are paid ad usage rights (whitelisting) or raw footage available?", a: "Yes, 30-day or 90-day paid ad usage rights and raw unedited clips can be added to any package on request." },
   { q: "What are your payment and reshoot terms?", a: "Standard bookings require 50% advance before production and 50% prior to publishing (Net 30 available for registered agencies). Full concept reshoots after script approval are billed separately, and campaign products are non-returnable." },
   { q: "How do brands book a campaign or request the rate card?", a: "Click the Direct Collab Email button or write to deepreacts0@gmail.com with your product details, campaign timeline, and deliverables." }
@@ -953,7 +1006,7 @@ document.querySelectorAll('[data-txt]').forEach(el => {
 document.querySelectorAll('[data-href]').forEach(el => {
   const k = el.dataset.href;
   if (k === 'email') el.href = 'mailto:' + cfg.email;
-  else if (k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
+  else if (k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mothers%20Inside';
   else el.href = cfg[k];
 });
 
@@ -1300,7 +1353,7 @@ table{width:100%;border-collapse:collapse;margin:16px 0}th,td{text-align:left;pa
 th{color:#C9A574;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
 .link-box{margin-top:18px;padding:12px;background:#191610;border:1px dashed rgba(201,165,116,.35);word-break:break-all;font-size:.82rem;color:#B8AC9B}
 .terms{margin-top:18px;font-size:.85rem;color:#B8AC9B}</style></head><body><div class="card">
-<h1>Mother Insides — Official Rate Quote Record</h1>
+<h1>Mothers Inside — Official Rate Quote Record</h1>
 <p class="meta"><strong>Brand:</strong> ${escapeHtml(q.brand)} · <strong>Quoted On:</strong> ${escapeHtml(q.dateStr)} · <strong>Valid Until:</strong> ${escapeHtml(expText)}</p>
 <table><tr><th>Deliverable / Format</th><th>Quoted Price</th></tr>
 <tr><td>Single Platform (IG / FB / YT Short) — Integrated</td><td>${escapeHtml(q.rates.pSingleInt)}</td></tr>
@@ -1323,12 +1376,121 @@ th{color:#C9A574;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `Mother-Insides-Quote-${safeBrand}-${dateSlug}.html`;
+  a.download = `Mothers-Inside-Quote-${safeBrand}-${dateSlug}.html`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
   showStatus(qStatus, `Quote record for "${q.brand}" downloaded!`, false);
+});
+
+const waModal = document.getElementById('wa-modal');
+const waUserIn = document.getElementById('wa-user-name');
+const waBrandIn = document.getElementById('wa-brand-name');
+const waPreview = document.getElementById('wa-msg-preview');
+const waModalStatus = document.getElementById('wa-modal-status');
+
+function buildWaMessage() {
+  const uName = (waUserIn.value || '').trim() || '[Your Name]';
+  const bName = (waBrandIn.value || '').trim() || '[Brand Name]';
+  return `Hi Deepika, I'm ${uName} from ${bName}. We reviewed the Mothers Inside media kit and would love to discuss a brand collaboration.`;
+}
+
+function updateWaPreview() {
+  waPreview.textContent = buildWaMessage();
+}
+
+function openWaModal(e) {
+  e.preventDefault();
+  waModalStatus.className = 'admin-status';
+  updateWaPreview();
+  waModal.classList.add('show');
+}
+
+document.getElementById('wa-hero-btn').addEventListener('click', openWaModal);
+document.getElementById('wa-footer-link').addEventListener('click', openWaModal);
+document.getElementById('wa-close-btn').addEventListener('click', () => waModal.classList.remove('show'));
+document.getElementById('wa-cancel-btn').addEventListener('click', () => waModal.classList.remove('show'));
+waUserIn.addEventListener('input', updateWaPreview);
+waBrandIn.addEventListener('input', updateWaPreview);
+
+document.getElementById('wa-send-btn').addEventListener('click', () => {
+  const uName = waUserIn.value.trim();
+  const bName = waBrandIn.value.trim();
+  if (!uName || !bName) {
+    showStatus(waModalStatus, 'Please enter both your name and brand name.', true);
+    return;
+  }
+  const digits = window.__miWaDigits || '';
+  if (!digits) return;
+  const text = encodeURIComponent(buildWaMessage());
+  const ua = navigator.userAgent || '';
+  waModal.classList.remove('show');
+  if (/Android|iPhone|iPad|iPod/i.test(ua)) {
+    window.location.href = `https://wa.me/${digits}?text=${text}`;
+  } else {
+    window.open(`https://web.whatsapp.com/send?phone=${digits}&text=${text}`, '_blank', 'noopener');
+  }
+});
+
+const emModal = document.getElementById('email-modal');
+const emUserIn = document.getElementById('em-user-name');
+const emBrandIn = document.getElementById('em-brand-name');
+const emPreview = document.getElementById('em-msg-preview');
+const emModalStatus = document.getElementById('em-modal-status');
+
+function buildEmailParts() {
+  const uName = (emUserIn.value || '').trim() || '[Your Name]';
+  const bName = (emBrandIn.value || '').trim() || '[Brand Name]';
+  const subject = `Brand Collaboration — ${bName} × Mothers Inside`;
+  const body = `Hi Deepika,\n\nI'm ${uName} from ${bName}. We reviewed the Mothers Inside media kit and would love to discuss a brand collaboration with you.\n\nLooking forward to hearing from you.`;
+  return { subject, body };
+}
+
+function updateEmPreview() {
+  const { subject, body } = buildEmailParts();
+  emPreview.textContent = `Subject: ${subject}\n\n${body}`;
+}
+
+function openEmailModal(e) {
+  e.preventDefault();
+  emModalStatus.className = 'admin-status';
+  updateEmPreview();
+  emModal.classList.add('show');
+}
+
+document.querySelectorAll('[data-href="emailCta"], [data-href="email"]').forEach(el => {
+  el.addEventListener('click', openEmailModal);
+});
+document.getElementById('em-close-btn').addEventListener('click', () => emModal.classList.remove('show'));
+document.getElementById('em-cancel-btn').addEventListener('click', () => emModal.classList.remove('show'));
+emUserIn.addEventListener('input', updateEmPreview);
+emBrandIn.addEventListener('input', updateEmPreview);
+
+document.getElementById('em-send-btn').addEventListener('click', () => {
+  const uName = emUserIn.value.trim();
+  const bName = emBrandIn.value.trim();
+  if (!uName || !bName) {
+    showStatus(emModalStatus, 'Please enter both your name and brand name.', true);
+    return;
+  }
+  const to = window.__miActiveEmail || cfg.email;
+  const { subject, body } = buildEmailParts();
+  emModal.classList.remove('show');
+  window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
+
+document.getElementById('em-copy-btn').addEventListener('click', async () => {
+  const uName = emUserIn.value.trim();
+  const bName = emBrandIn.value.trim();
+  if (!uName || !bName) {
+    showStatus(emModalStatus, 'Please enter both your name and brand name.', true);
+    return;
+  }
+  const to = window.__miActiveEmail || cfg.email;
+  const { subject, body } = buildEmailParts();
+  await copyTextSafe(`To: ${to}\nSubject: ${subject}\n\n${body}`);
+  showStatus(emModalStatus, `Email & message copied! Paste it in your email app to ${to}.`, false);
 });
 
 window.addEventListener('hashchange', openAdminIfHash);
@@ -1523,21 +1685,50 @@ function renderReels(data) {
 function applyMediaKitData(data) {
   // Update Social Links & Email dynamically for all visitors
   const activeEmail = data.email || cfg.email;
+  window.__miActiveEmail = activeEmail;
+  const normYt = (u) => String(u || '').replace(/^https?:\/\/youtube\.com/i, 'https://www.youtube.com');
   const activeLinks = {
     igUrl: data.igUrl || cfg.igUrl,
     fbUrl: data.fbUrl || cfg.fbUrl,
-    ytUrl: data.ytUrl || cfg.ytUrl,
+    ytUrl: normYt(data.ytUrl || cfg.ytUrl),
     xUrl: data.xUrl || cfg.xUrl,
     email: activeEmail
   };
   document.querySelectorAll('[data-href]').forEach(el => {
     const k = el.dataset.href;
     if (k === 'email') el.href = 'mailto:' + activeEmail;
-    else if (k === 'emailCta') el.href = 'mailto:' + activeEmail + '?subject=Brand%20Collaboration%20%E2%80%94%20Mother%20Insides';
+    else if (k === 'emailCta') el.href = 'mailto:' + activeEmail + '?subject=Brand%20Collaboration%20%E2%80%94%20Mothers%20Inside';
     else if (activeLinks[k]) el.href = activeLinks[k];
   });
   document.querySelectorAll('[data-txt="email"]').forEach(el => {
     el.textContent = activeEmail;
+  });
+
+  // Smart Mobile App-Link Opener (IG, FB, YT, X open in native app on phone, browser on desktop)
+  const appPackages = {
+    igUrl: 'com.instagram.android',
+    fbUrl: 'com.facebook.katana',
+    ytUrl: 'com.google.android.youtube',
+    xUrl: 'com.twitter.android'
+  };
+  document.querySelectorAll('[data-href]').forEach(el => {
+    const k = el.dataset.href;
+    const pkg = appPackages[k];
+    if (!pkg || el.dataset.appBound) return;
+    el.dataset.appBound = '1';
+    el.addEventListener('click', (e) => {
+      const targetUrl = el.getAttribute('href');
+      if (!targetUrl || targetUrl === '#') return;
+      const ua = navigator.userAgent || '';
+      if (/Android/i.test(ua)) {
+        e.preventDefault();
+        const noProto = targetUrl.replace(/^https?:\/\//i, '');
+        window.location.href = `intent://${noProto}#Intent;package=${pkg};scheme=https;S.browser_fallback_url=${encodeURIComponent(targetUrl)};end`;
+      } else if (/iPhone|iPad|iPod/i.test(ua)) {
+        e.preventDefault();
+        window.location.href = targetUrl;
+      }
+    });
   });
 
   // Logo
@@ -1548,54 +1739,14 @@ function applyMediaKitData(data) {
     try { localStorage.setItem('mi_logo_cache', data.logoUrl); } catch(e) {}
   }
 
-  // Audience % Breakdown
-  const gEl = document.getElementById('aud-gender');
-  const aEl = document.getElementById('aud-age');
-  const cEl = document.getElementById('aud-cities');
-  if (gEl) gEl.textContent = data.audGender || '88% Women';
-  if (aEl) aEl.textContent = data.audAge || '68% (25–34)';
-  if (cEl) cEl.textContent = data.audCities || 'Delhi · Mumbai · Pune';
-
-  // Combined views highlight (IG + FB + YouTube when enabled)
-  const totalV = parseKValue(data.igViews) + parseKValue(data.fbViews) + (data.ytShow ? parseKValue(data.ytViews) : 0);
-  const combEl = document.getElementById('combined-views');
-  if (combEl && totalV > 0) {
-    const fmtTotal = totalV >= 1000000
-      ? (totalV / 1000000).toFixed(1).replace(/\.0$/, '') + 'M+'
-      : Math.round(totalV / 1000) + 'K+';
-    combEl.dataset.target = fmtTotal;
-    const rhBox = combEl.closest('.reach-highlight');
-    if (rhBox && rhBox.classList.contains('in')) {
-      renderStat(combEl, fmtTotal);
-      combEl.dataset.animated = "true";
-    } else {
-      combEl.innerHTML = (totalV >= 1000000 ? '0M' : '0K') + '<span class="plus">+</span>';
-    }
-  }
-
-  // Stats (IG, FB, YT - animate when card is in view or upon scroll)
-  document.querySelectorAll('[data-stat]').forEach(el => {
-    const v = data[el.dataset.stat];
-    if (v !== undefined && v !== null && v !== '') {
-      el.dataset.target = v;
-      const card = el.closest('.stat-card');
-      if (card && card.classList.contains('in')) {
-        renderStat(el, v);
-        el.dataset.animated = "true";
-      } else if (!el.dataset.animated) {
-        el.textContent = '0';
-      }
-    }
-  });
-
-  // WhatsApp Collab Button (Admin-Controlled)
+  // WhatsApp Collab Button & Interactive Name/Brand Modal
   const waHero = document.getElementById('wa-hero-btn');
   const waFoot = document.getElementById('wa-footer-link');
   const waDigits = String(data.waNum || '').replace(/[^0-9]/g, '');
+  window.__miWaDigits = waDigits;
   if (data.waShow && waDigits.length >= 8) {
-    const waHref = `https://wa.me/${waDigits}?text=${encodeURIComponent("Hi Deepika, we'd love to collaborate with Mother Insides!")}`;
-    if (waHero) { waHero.href = waHref; waHero.style.display = 'inline-flex'; }
-    if (waFoot) { waFoot.href = waHref; waFoot.style.display = 'inline-flex'; }
+    if (waHero) waHero.style.display = 'inline-flex';
+    if (waFoot) waFoot.style.display = 'inline-flex';
   } else {
     if (waHero) waHero.style.display = 'none';
     if (waFoot) waFoot.style.display = 'none';
@@ -1610,7 +1761,7 @@ function applyMediaKitData(data) {
 
   if (data.ytShow) {
     if (ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
-    if (ytFooterLink) ytFooterLink.style.display = 'inline-block';
+    if (ytFooterLink) ytFooterLink.style.display = 'inline-flex';
     if (ytCard) {
       ytCard.style.display = 'block';
       const rect = ytCard.getBoundingClientRect();
@@ -1651,27 +1802,36 @@ function applyMediaKitData(data) {
   let activeQuoteRates = null;
   let showPrices = false;
 
-  const forceFull = new URLSearchParams(window.location.search).get('full') === '1';
+  const sp = new URLSearchParams(window.location.search);
+  const forceFull = sp.get('full') === '1';
   if (urlQuote && !forceFull) {
-    document.body.classList.add('quote-only-mode');
+    document.documentElement.classList.add('quote-only-mode');
   } else {
-    document.body.classList.remove('quote-only-mode');
+    document.documentElement.classList.remove('quote-only-mode');
+  }
+
+  const fullKitBtn = document.getElementById('quote-full-kit-btn');
+  if (fullKitBtn && !fullKitBtn.dataset.bound) {
+    fullKitBtn.dataset.bound = '1';
+    fullKitBtn.addEventListener('click', () => {
+      document.documentElement.classList.remove('quote-only-mode');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
   if (urlQuote) {
-    const fullKitHref = window.location.pathname + '?q=' + encodeURIComponent(new URLSearchParams(window.location.search).get('q') || '') + '&full=1';
     const now = Date.now();
     if (urlQuote.exp && urlQuote.exp > 0 && now > urlQuote.exp) {
       showPrices = false;
       if (bannerSlot) {
-        bannerSlot.innerHTML = `<div class="quote-banner expired">This custom rate card${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} has expired. Please write to <strong>${escapeHtml(cfg.email)}</strong> for an updated quote.<br><a class="quote-full-link" href="${fullKitHref}">View Full Media Kit ↗</a></div>`;
+        bannerSlot.innerHTML = `<div class="quote-banner expired">This custom rate card${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} has expired. Please write to <strong>${escapeHtml(cfg.email)}</strong> for an updated quote.</div>`;
       }
     } else {
       showPrices = true;
       activeQuoteRates = urlQuote.r || {};
       if (bannerSlot) {
         const expText = urlQuote.exp ? ` · Valid until ${new Date(urlQuote.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}` : '';
-        bannerSlot.innerHTML = `<div class="quote-banner">Official Rate Card prepared exclusively${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} · Quoted on ${escapeHtml(urlQuote.d || '')}${expText}<br><a class="quote-full-link" href="${fullKitHref}">View Full Media Kit &amp; Performance ↗</a></div>`;
+        bannerSlot.innerHTML = `<div class="quote-banner">Official Rate Card prepared exclusively${urlQuote.b ? ' for <strong>' + escapeHtml(urlQuote.b) + '</strong>' : ''} · Quoted on ${escapeHtml(urlQuote.d || '')}${expText}</div>`;
       }
     }
   } else if (bannerSlot) {
