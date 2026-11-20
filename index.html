@@ -24,7 +24,7 @@
   "alternateName": ["Mothers Inside", "mothersinside", "@mothersinside"],
   "url": "https://mothersinside.github.io/in/",
   "sameAs": [
-    "https://www.instagram.com/mothers_inside",
+    "https://www.instagram.com/mothersinside",
     "https://www.facebook.com/share/1A4pG5oqd1/",
     "https://www.youtube.com/@mothersinside",
     "https://x.com/mothersinside"
@@ -304,9 +304,9 @@ try{
     document.documentElement.classList.add('quote-only-mode');
   }
   var _cached=JSON.parse(localStorage.getItem('mi_stats')||'{}');
-  window.__miPrefetch=fetch('https://api.jsonbin.io/v3/b/6afafe7dffd5d16053c58e33/latest',{
-    headers:{'X-Master-Key':'$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS'}
-  }).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+  var _rk=$2a$10$BY1RtYMjnMaR9r3XN1ySO.mT1jd0flmCmJ1flWmLTAW2.tu07jnYC;
+  var _hdr=(_rk && _rk.indexOf('YAHAN_')!==0)?{'X-Access-Key':_rk}:{};
+  window.__miPrefetch=fetch('https://api.jsonbin.io/v3/b/6afafe7dffd5d16053c58e33/latest',{headers:_hdr}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
 }catch(e){}
 </script>
 </head>
@@ -732,269 +732,6 @@ try{
   </div>
 </div>
 
-<!-- 🛠️ IMPROVED SECRET ADMIN PANEL -->
-<div id="admin-panel" role="dialog" aria-modal="true" aria-label="Owner Settings">
-  <div class="admin-box">
-    <button class="btn-close" id="admin-close-btn" aria-label="Close Admin Panel">✕</button>
-
-    <!-- In-Page PIN Gate -->
-    <div id="admin-auth">
-      <h3>Owner Access</h3>
-      <p class="admin-sub">Enter your 4-digit Admin PIN to manage live stats, reels, and visibility toggles.</p>
-      <label for="admin-pin-input">Admin PIN</label>
-      <input type="password" id="admin-pin-input" placeholder="Enter PIN" autocomplete="off">
-      <div class="admin-status" id="auth-status"></div>
-      <div class="admin-actions">
-        <button class="btn-save" id="admin-unlock-btn" type="button">Unlock Panel</button>
-        <button class="btn-cancel" id="admin-auth-cancel" type="button">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Main Admin Form -->
-    <div id="admin-form" style="display:none;">
-      <h3>Owner Settings</h3>
-      <p class="admin-sub">Publish karte hi sabhi brands ko naya data live dikhne lagega.</p>
-
-      <div class="admin-group">
-        <p class="admin-group-title">Brand Logo &amp; Platform Stats</p>
-        <label for="set-logo">Upload Logo (Optional)</label>
-        <input type="file" id="set-logo" accept="image/*">
-        <div class="admin-grid-2">
-          <div>
-            <label for="set-igFollowers">Instagram Followers</label>
-            <input type="text" id="set-igFollowers" placeholder="e.g. 836">
-          </div>
-          <div>
-            <label for="set-igViews">Instagram Views (30d)</label>
-            <input type="text" id="set-igViews" placeholder="e.g. 176K+">
-          </div>
-          <div>
-            <label for="set-fbFollowers">Facebook Followers</label>
-            <input type="text" id="set-fbFollowers" placeholder="e.g. 1.1K+">
-          </div>
-          <div>
-            <label for="set-fbViews">Facebook Views (30d)</label>
-            <input type="text" id="set-fbViews" placeholder="e.g. 356K+">
-          </div>
-        </div>
-        <div class="admin-grid-2" style="margin-top:8px">
-          <div>
-            <label for="set-audGender">Audience Gender %</label>
-            <input type="text" id="set-audGender" placeholder="e.g. 88% Women">
-          </div>
-          <div>
-            <label for="set-audAge">Top Age Group %</label>
-            <input type="text" id="set-audAge" placeholder="e.g. 68% (25–34)">
-          </div>
-        </div>
-        <label for="set-audCities">Top Cities</label>
-        <input type="text" id="set-audCities" placeholder="e.g. Delhi · Mumbai · Pune">
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">WhatsApp Collab Button (Optional)</p>
-        <div class="admin-toggle-row">
-          <span>Show WhatsApp Collab Button</span>
-          <label class="switch">
-            <input type="checkbox" id="set-wa-show">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <label for="set-wa-num">WhatsApp Business Number (with country code)</label>
-        <input type="text" id="set-wa-num" placeholder="e.g. 919876543210">
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">Main Social Links &amp; Contact Email</p>
-        <div class="admin-grid-2">
-          <div>
-            <label for="set-igUrl">Instagram Profile URL</label>
-            <input type="text" id="set-igUrl" placeholder="https://www.instagram.com/mothers_inside">
-          </div>
-          <div>
-            <label for="set-fbUrl">Facebook Page URL</label>
-            <input type="text" id="set-fbUrl" placeholder="https://www.facebook.com/...">
-          </div>
-          <div>
-            <label for="set-ytUrl">YouTube Channel URL</label>
-            <input type="text" id="set-ytUrl" placeholder="https://www.youtube.com/@mothersinside">
-          </div>
-          <div>
-            <label for="set-xUrl">X (Twitter) URL</label>
-            <input type="text" id="set-xUrl" placeholder="https://x.com/mothers_inside">
-          </div>
-        </div>
-        <label for="set-email">Collab Email</label>
-        <input type="text" id="set-email" placeholder="deepreacts0@gmail.com">
-      </div>
-
-      <div class="admin-group">
-  <p class="admin-group-title">Top Content Cards (Stats)</p>
-  
-  <!-- Card 1 -->
-  <div class="admin-grid-2">
-    <div><label>Card 1: Platform</label><input type="text" id="tp1-plat" placeholder="Instagram Reel"></div>
-    <div><label>Card 1: Title</label><input type="text" id="tp1-title" placeholder="8th Month Pregnancy Prep"></div>
-    <div><label>Card 1: Views</label><input type="text" id="tp1-views" placeholder="176K+"></div>
-    <div><label>Card 1: Likes</label><input type="text" id="tp1-likes" placeholder="5,791"></div>
-    <div><label>Card 1: Engagement</label><input type="text" id="tp1-eng" placeholder="High Saves"></div>
-    <div><label>Card 1: Post URL</label><input type="text" id="tp1-url" placeholder="https://..."></div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="admin-grid-2" style="margin-top:10px; border-top:1px dashed var(--lns); padding-top:10px;">
-    <div><label>Card 2: Platform</label><input type="text" id="tp2-plat" placeholder="Facebook Reel"></div>
-    <div><label>Card 2: Title</label><input type="text" id="tp2-title" placeholder="Newborn Care & Mom Tips"></div>
-    <div><label>Card 2: Views</label><input type="text" id="tp2-views" placeholder="356K+"></div>
-    <div><label>Card 2: Likes</label><input type="text" id="tp2-likes" placeholder="4,200+"></div>
-    <div><label>Card 2: Engagement</label><input type="text" id="tp2-eng" placeholder="High Shares"></div>
-    <div><label>Card 2: Post URL</label><input type="text" id="tp2-url" placeholder="https://..."></div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="admin-grid-2" style="margin-top:10px; border-top:1px dashed var(--lns); padding-top:10px;">
-    <div><label>Card 3: Platform</label><input type="text" id="tp3-plat" placeholder="YouTube Short"></div>
-    <div><label>Card 3: Title</label><input type="text" id="tp3-title" placeholder="Baby Skincare Routine"></div>
-    <div><label>Card 3: Views</label><input type="text" id="tp3-views" placeholder="25K+"></div>
-    <div><label>Card 3: Likes</label><input type="text" id="tp3-likes" placeholder="1,200+"></div>
-    <div><label>Card 3: Engagement</label><input type="text" id="tp3-eng" placeholder="High Watch Time"></div>
-    <div><label>Card 3: Post URL</label><input type="text" id="tp3-url" placeholder="https://..."></div>
-  </div>
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">YouTube Section &amp; 3 Videos</p>
-        <div class="admin-toggle-row">
-          <span>Show YouTube Section &amp; Links</span>
-          <label class="switch">
-            <input type="checkbox" id="set-yt-show">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <div class="admin-grid-2" style="margin-top:8px">
-          <div>
-            <label for="set-ytFollowers">YouTube Subscribers</label>
-            <input type="text" id="set-ytFollowers" placeholder="e.g. 500+">
-          </div>
-          <div>
-            <label for="set-ytViews">YouTube Total Views</label>
-            <input type="text" id="set-ytViews" placeholder="e.g. 25K+">
-          </div>
-        </div>
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">Partnership Pricing — All Platforms &amp; Formats</p>
-        <div class="admin-grid-2" style="margin-top:8px">
-          <div>
-            <label for="set-pSingleInt">Single Platform · Integrated</label>
-            <input type="text" id="set-pSingleInt" placeholder="Starting at ₹3,000">
-          </div>
-          <div>
-            <label for="set-pSingleDed">Single Platform · Dedicated</label>
-            <input type="text" id="set-pSingleDed" placeholder="Starting at ₹5,000">
-          </div>
-          <div>
-            <label for="set-pDualInt">IG + FB · Integrated</label>
-            <input type="text" id="set-pDualInt" placeholder="₹4,000">
-          </div>
-          <div>
-            <label for="set-pDualDed">IG + FB · Dedicated</label>
-            <input type="text" id="set-pDualDed" placeholder="₹7,000">
-          </div>
-          <div>
-            <label for="set-pTriInt">All 3 (IG+FB+YT) · Integrated</label>
-            <input type="text" id="set-pTriInt" placeholder="₹5,500">
-          </div>
-          <div>
-            <label for="set-pTriDed">All 3 (IG+FB+YT) · Dedicated</label>
-            <input type="text" id="set-pTriDed" placeholder="₹9,500">
-          </div>
-          <div>
-            <label for="set-pYtLongInt">YouTube Long · Integration</label>
-            <input type="text" id="set-pYtLongInt" placeholder="Starting at ₹5,000">
-          </div>
-          <div>
-            <label for="set-pYtLongDed">YouTube Long · Dedicated</label>
-            <input type="text" id="set-pYtLongDed" placeholder="Starting at ₹10,000">
-          </div>
-          <div>
-            <label for="set-pStory">Story Series (3–4 Stories)</label>
-            <input type="text" id="set-pStory" placeholder="Starting at ₹1,500">
-          </div>
-          <div>
-            <label for="set-pAmb">Brand Ambassadorship (Monthly)</label>
-            <input type="text" id="set-pAmb" placeholder="Starting at ₹15,000 / mo">
-          </div>
-          <div>
-            <label for="set-pAddonAd">Add-on · Paid Ad Rights (30d)</label>
-            <input type="text" id="set-pAddonAd" placeholder="+30% to +50%">
-          </div>
-          <div>
-            <label for="set-pAddonRaw">Add-on · Raw Footage</label>
-            <input type="text" id="set-pAddonRaw" placeholder="+25% to +40%">
-          </div>
-        </div>
-        <label for="set-pAddonLink">Add-on · Link-in-Bio (7 Days)</label>
-        <input type="text" id="set-pAddonLink" placeholder="₹500 – ₹1,000">
-        <p class="admin-hint">YouTube Long-Form card tabhi dikhega jab upar "Show YouTube Section" toggle ON hoga.</p>
-
-        <div style="margin-top:18px;padding:16px;border:1px dashed var(--gd);border-radius:6px;background:rgba(201,165,116,.05);">
-          <p class="admin-group-title" style="margin-bottom:6px;">Private Brand Quote Link &amp; Record</p>
-          <p class="admin-hint" style="margin-bottom:10px;">Upar ke rates is brand ke hisaab se adjust karein, phir private link copy karein aur record apne paas download kar lein.</p>
-          <div class="admin-grid-2">
-            <div>
-              <label for="q-brand">Brand Name</label>
-              <input type="text" id="q-brand" placeholder="e.g. Mamaearth">
-            </div>
-            <div>
-              <label for="q-expiry">Link Validity</label>
-              <select id="q-expiry" style="width:100%;padding:10px 12px;border:1px solid var(--ln);border-radius:5px;font-family:Jost,sans-serif;font-size:.9rem;background:#14110D;color:var(--es);">
-                <option value="7">7 Days</option>
-                <option value="14">14 Days</option>
-                <option value="30">30 Days</option>
-                <option value="0">No Expiry</option>
-              </select>
-            </div>
-          </div>
-          <div class="admin-actions" style="margin-top:14px;">
-            <button class="btn-save" id="btn-copy-quote" type="button">Copy Private Link</button>
-            <button class="btn-outline-gold" id="btn-dl-quote" type="button">Download Brand Quote Record</button>
-          </div>
-          <div class="admin-status" id="quote-gen-status"></div>
-        </div>
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">Past Collaborations (Toggle On/Off)</p>
-        <div class="admin-toggle-row">
-          <span>Show Past Collaborations Section</span>
-          <label class="switch">
-            <input type="checkbox" id="set-brands-show">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <label for="set-brands">Brand Logos (Format: Brand Name | Logo Image URL)</label>
-        <textarea id="set-brands" rows="3" placeholder="Mamaearth | https://logo-url.png"></textarea>
-      </div>
-
-      <div class="admin-group">
-        <p class="admin-group-title">Brand FAQs</p>
-        <label for="set-faqs">FAQs (Format: Question | Answer — one per line)</label>
-        <textarea id="set-faqs" rows="4" placeholder="What is your typical turnaround time? | 5–7 business days from product delivery."></textarea>
-        <p class="admin-hint">Khali chhodne par default professional Brand FAQs automatically dikhenge.</p>
-      </div>
-
-      <div class="admin-status" id="save-status"></div>
-
-      <div class="admin-actions">
-        <button class="btn-save" id="admin-save-btn" type="button">Publish Updates</button>
-        <button class="btn-cancel" id="admin-cancel-btn" type="button">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 /* ==================== CONFIGURATION ==================== */
 const cfg = {
@@ -1002,15 +739,14 @@ const cfg = {
   handle: "@mothersinside",
   tagline: "Pregnancy · Newborn · Mom Life Insights",
   bio: "Guiding Indian expecting and new mothers (21–38) through pregnancy and early motherhood with practical, research-backed care tips and everyday home wisdom that build genuine trust.",
-  email: "deepreacts0@gmail.com",
-  igUrl: "https://www.instagram.com/mothers_inside",
+  email: "mothersinside@gmail.com",
+  igUrl: "https://www.instagram.com/mothersinside",
   fbUrl: "https://www.facebook.com/share/1A4pG5oqd1/",
   ytUrl: "https://www.youtube.com/@mothersinside",
-  xUrl: "https://x.com/mothers_inside",
+  xUrl: "https://x.com/mothersinside",
   year: "2026",
   cloudBinId: "6afafe7dffd5d16053c58e33",
-  cloudMasterKey: "$2a$10$c.VQQrR6X0hekF.rIq4BXuBuLGzQfLGYAVyvZrsHsoro1tzF1nqMS",
-  adminPin: "2367"
+  cloudReadKey: $2a$10$BY1RtYMjnMaR9r3XN1ySO.mT1jd0flmCmJ1flWmLTAW2.tu07jnYC
 };
 
 const DEFAULT_FAQS = [
@@ -1018,7 +754,7 @@ const DEFAULT_FAQS = [
   { q: "Do you cross-post Reels on both Instagram and Facebook?", a: "Yes. Every Reel collaboration is published natively on Instagram and cross-posted to the Mothers Inside Facebook page for maximum organic reach." },
   { q: "Are paid ad usage rights (whitelisting) or raw footage available?", a: "Yes, 30-day or 90-day paid ad usage rights and raw unedited clips can be added to any package on request." },
   { q: "What are your payment and reshoot terms?", a: "Standard bookings require 50% advance before production and 50% prior to publishing (Net 30 available for registered agencies). Full concept reshoots after script approval are billed separately, and campaign products are non-returnable." },
-  { q: "How do brands book a campaign or request the rate card?", a: "Click the Direct Collab Email button or write to deepreacts0@gmail.com with your product details, campaign timeline, and deliverables." }
+  { q: "How do brands book a campaign or request the rate card?", a: "Click the Direct Collab Email button or write to mothersinside@gmail.com with your product details, campaign timeline, and deliverables." }
 ];
 
 /* ==================== SAFE STORAGE HELPERS ==================== */
@@ -1040,206 +776,6 @@ document.querySelectorAll('[data-href]').forEach(el => {
   if (k === 'email') el.href = 'mailto:' + cfg.email;
   else if (k === 'emailCta') el.href = 'mailto:' + cfg.email + '?subject=Brand%20Collaboration%20%E2%80%94%20Mothers%20Inside';
   else el.href = cfg[k];
-});
-
-/* ==================== 2) ADMIN PANEL LOGIC ==================== */
-const adminPanel = document.getElementById('admin-panel');
-const adminAuth = document.getElementById('admin-auth');
-const adminForm = document.getElementById('admin-form');
-const authStatus = document.getElementById('auth-status');
-const saveStatus = document.getElementById('save-status');
-
-function showStatus(el, msg, isErr) {
-  el.textContent = msg;
-  el.className = 'admin-status ' + (isErr ? 'err' : 'ok');
-}
-
-function closeAdminPanel() {
-  adminPanel.classList.remove('show');
-}
-
-function populateAdminForm(d) {
-  document.getElementById('set-igFollowers').value = d.igFollowers || '';
-  document.getElementById('set-igViews').value = d.igViews || '';
-  document.getElementById('set-fbFollowers').value = d.fbFollowers || '';
-  document.getElementById('set-fbViews').value = d.fbViews || '';
-  document.getElementById('set-audGender').value = d.audGender || '88% Women';
-  document.getElementById('set-audAge').value = d.audAge || '68% (25–34)';
-  document.getElementById('set-audCities').value = d.audCities || 'Delhi · Mumbai · Pune';
-
-  const tp = Array.isArray(d.topPosts) ? d.topPosts : [];
-const defaultTP = [
-  { plat: "Instagram Reel", title: "8th Month Pregnancy Prep", views: "176K+", likes: "5,791", engagement: "High Saves", url: "https://www.instagram.com/mothers_inside" },
-  { plat: "Facebook Reel", title: "Newborn Care & Mom Tips", views: "356K+", likes: "4,200+", engagement: "High Shares", url: "https://www.facebook.com/share/1A4pG5oqd1/" },
-  { plat: "YouTube Short", title: "Baby Skincare Routine", views: "25K+", likes: "1,200+", engagement: "High Watch Time", url: "https://www.youtube.com/@mothers_inside" }
-];
-
-for (let i = 0; i < 3; i++) {
-  const item = tp[i] || defaultTP[i];
-  document.getElementById(`tp${i+1}-plat`).value = item.plat || '';
-  document.getElementById(`tp${i+1}-title`).value = item.title || '';
-  document.getElementById(`tp${i+1}-views`).value = item.views || '';
-  document.getElementById(`tp${i+1}-likes`).value = item.likes || '';
-  document.getElementById(`tp${i+1}-eng`).value = item.engagement || '';
-  document.getElementById(`tp${i+1}-url`).value = item.url || '';
-    }
-
-  document.getElementById('set-wa-show').checked = Boolean(d.waShow);
-  document.getElementById('set-wa-num').value = d.waNum || '';
-  document.getElementById('set-igUrl').value = d.igUrl || cfg.igUrl;
-  document.getElementById('set-fbUrl').value = d.fbUrl || cfg.fbUrl;
-  document.getElementById('set-ytUrl').value = d.ytUrl || cfg.ytUrl;
-  document.getElementById('set-xUrl').value = d.xUrl || cfg.xUrl;
-  document.getElementById('set-email').value = d.email || cfg.email;
-  document.getElementById('set-yt-show').checked = Boolean(d.ytShow);
-  document.getElementById('set-ytFollowers').value = d.ytFollowers || '';
-  document.getElementById('set-ytViews').value = d.ytViews || '';
-
-  document.getElementById('set-pSingleInt').value = d.pSingleInt || 'Starting at ₹3,000';
-  document.getElementById('set-pSingleDed').value = d.pSingleDed || 'Starting at ₹5,000';
-  document.getElementById('set-pDualInt').value = d.pDualInt || '₹4,000';
-  document.getElementById('set-pDualDed').value = d.pDualDed || '₹7,000';
-  document.getElementById('set-pTriInt').value = d.pTriInt || '₹5,500';
-  document.getElementById('set-pTriDed').value = d.pTriDed || '₹9,500';
-  document.getElementById('set-pYtLongInt').value = d.pYtLongInt || 'Starting at ₹5,000';
-  document.getElementById('set-pYtLongDed').value = d.pYtLongDed || 'Starting at ₹10,000';
-  document.getElementById('set-pStory').value = d.pStory || 'Starting at ₹1,500';
-  document.getElementById('set-pAmb').value = d.pAmb || 'Starting at ₹15,000 / mo';
-  document.getElementById('set-pAddonAd').value = d.pAddonAd || '+30% to +50%';
-  document.getElementById('set-pAddonRaw').value = d.pAddonRaw || '+25% to +40%';
-  document.getElementById('set-pAddonLink').value = d.pAddonLink || '₹500 – ₹1,000';
-  document.getElementById('set-brands-show').checked = Boolean(d.brandsShow);
-  document.getElementById('set-brands').value = d.brands || '';
-  document.getElementById('set-faqs').value = d.faqs || '';
-}
-
-function openAdminIfHash() {
-  if (window.location.hash.toLowerCase() !== '#admin') return;
-  adminPanel.classList.add('show');
-  let authed = false;
-  try { authed = sessionStorage.getItem('mi_auth') === 'true'; } catch(e) {}
-  if (authed) {
-    adminAuth.style.display = 'none';
-    adminForm.style.display = 'block';
-    populateAdminForm(window.__miLatestData || getLocalStats());
-  } else {
-    adminAuth.style.display = 'block';
-    adminForm.style.display = 'none';
-  }
-}
-
-document.getElementById('admin-close-btn').addEventListener('click', closeAdminPanel);
-document.getElementById('admin-auth-cancel').addEventListener('click', closeAdminPanel);
-document.getElementById('admin-cancel-btn').addEventListener('click', closeAdminPanel);
-
-document.getElementById('admin-unlock-btn').addEventListener('click', () => {
-  const pin = document.getElementById('admin-pin-input').value.trim();
-  if (pin === cfg.adminPin) {
-    try { sessionStorage.setItem('mi_auth', 'true'); } catch(e) {}
-    authStatus.className = 'admin-status';
-    adminAuth.style.display = 'none';
-    adminForm.style.display = 'block';
-    populateAdminForm(window.__miLatestData || getLocalStats());
-  } else {
-    showStatus(authStatus, 'Wrong PIN. Please try again.', true);
-  }
-});
-
-document.getElementById('admin-save-btn').addEventListener('click', async () => {
-  const prev = getLocalStats();
-  const logoFile = document.getElementById('set-logo').files[0];
-  let base64Logo = '';
-
-  if (logoFile) {
-    base64Logo = await new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const MAX = 200;
-          let w = img.width, h = img.height;
-          if (w > h && w > MAX) { h *= MAX / w; w = MAX; }
-          else if (h >= w && h > MAX) { w *= MAX / h; h = MAX; }
-          canvas.width = w; canvas.height = h;
-          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-          resolve(canvas.toDataURL('image/jpeg', 0.8));
-        };
-        img.src = e.target.result;
-      };
-      reader.readAsDataURL(logoFile);
-    });
-  }
-
-  const data = {
-    igFollowers: document.getElementById('set-igFollowers').value.trim(),
-    igViews: document.getElementById('set-igViews').value.trim(),
-    fbFollowers: document.getElementById('set-fbFollowers').value.trim(),
-    fbViews: document.getElementById('set-fbViews').value.trim(),
-    audGender: document.getElementById('set-audGender').value.trim(),
-    audAge: document.getElementById('set-audAge').value.trim(),
-    audCities: document.getElementById('set-audCities').value.trim(),
-    topPosts: [0, 1, 2].map(i => ({
-  plat: document.getElementById(`tp${i+1}-plat`).value.trim(),
-  title: document.getElementById(`tp${i+1}-title`).value.trim(),
-  views: document.getElementById(`tp${i+1}-views`).value.trim(),
-  likes: document.getElementById(`tp${i+1}-likes`).value.trim(),
-  engagement: document.getElementById(`tp${i+1}-eng`).value.trim(),
-  url: document.getElementById(`tp${i+1}-url`).value.trim()
-})).filter(p => p.title),
-    waShow: document.getElementById('set-wa-show').checked,
-    waNum: document.getElementById('set-wa-num').value.trim(),
-    igUrl: document.getElementById('set-igUrl').value.trim() || cfg.igUrl,
-    fbUrl: document.getElementById('set-fbUrl').value.trim() || cfg.fbUrl,
-    ytUrl: document.getElementById('set-ytUrl').value.trim() || cfg.ytUrl,
-    xUrl: document.getElementById('set-xUrl').value.trim() || cfg.xUrl,
-    email: document.getElementById('set-email').value.trim() || cfg.email,
-    ytShow: document.getElementById('set-yt-show').checked,
-    ytFollowers: document.getElementById('set-ytFollowers').value.trim(),
-    ytViews: document.getElementById('set-ytViews').value.trim(),
-    pSingleInt: document.getElementById('set-pSingleInt').value.trim(),
-    pSingleDed: document.getElementById('set-pSingleDed').value.trim(),
-    pDualInt: document.getElementById('set-pDualInt').value.trim(),
-    pDualDed: document.getElementById('set-pDualDed').value.trim(),
-    pTriInt: document.getElementById('set-pTriInt').value.trim(),
-    pTriDed: document.getElementById('set-pTriDed').value.trim(),
-    pYtLongInt: document.getElementById('set-pYtLongInt').value.trim(),
-    pYtLongDed: document.getElementById('set-pYtLongDed').value.trim(),
-    pStory: document.getElementById('set-pStory').value.trim(),
-    pAmb: document.getElementById('set-pAmb').value.trim(),
-    pAddonAd: document.getElementById('set-pAddonAd').value.trim(),
-    pAddonRaw: document.getElementById('set-pAddonRaw').value.trim(),
-    pAddonLink: document.getElementById('set-pAddonLink').value.trim(),
-    brandsShow: document.getElementById('set-brands-show').checked,
-    brands: document.getElementById('set-brands').value.trim(),
-    faqs: document.getElementById('set-faqs').value.trim(),
-    quotes: (window.__miLatestData && window.__miLatestData.quotes) || prev.quotes || {},
-    logoUrl: base64Logo || prev.logoUrl || ''
-  };
-
-  setLocalStats(data);
-  window.__miLatestData = data;
-  applyMediaKitData(data);
-
-  const saveBtn = document.getElementById('admin-save-btn');
-  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
-    try {
-      saveBtn.textContent = 'Publishing...';
-      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json', 'X-Master-Key': cfg.cloudMasterKey },
-        body: JSON.stringify(data)
-      });
-      saveBtn.textContent = 'Publish Updates';
-      if (res.ok) showStatus(saveStatus, 'Success! Live updates published.', false);
-      else showStatus(saveStatus, 'Saved locally, but cloud sync failed. Check Bin ID/Key.', true);
-    } catch(e) {
-      saveBtn.textContent = 'Publish Updates';
-      showStatus(saveStatus, 'Network error. Saved locally only.', true);
-    }
-  } else {
-    showStatus(saveStatus, 'Saved locally!', false);
-  }
 });
 
 function escapeHtml(str) {
@@ -1271,145 +807,6 @@ function getUrlQuote(data) {
     return null;
   }
 }
-
-function makeShortQuoteId(brand) {
-  const slug = String(brand || 'brand').toLowerCase().replace(/[^a-z0-9]+/g, '').slice(0, 10) || 'brand';
-  const rand = Math.random().toString(36).slice(2, 6);
-  return `${slug}-${rand}`;
-}
-
-function collectCurrentQuotePayload(existingId) {
-  const brand = document.getElementById('q-brand').value.trim() || 'Brand Partner';
-  const days = parseInt(document.getElementById('q-expiry').value, 10) || 0;
-  const now = new Date();
-  const dateStr = now.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
-  const exp = days > 0 ? now.getTime() + days * 86400000 : 0;
-  const rates = {
-    pSingleInt: document.getElementById('set-pSingleInt').value.trim() || 'Starting at ₹3,000',
-    pSingleDed: document.getElementById('set-pSingleDed').value.trim() || 'Starting at ₹5,000',
-    pDualInt: document.getElementById('set-pDualInt').value.trim() || '₹4,000',
-    pDualDed: document.getElementById('set-pDualDed').value.trim() || '₹7,000',
-    pTriInt: document.getElementById('set-pTriInt').value.trim() || '₹5,500',
-    pTriDed: document.getElementById('set-pTriDed').value.trim() || '₹9,500',
-    pYtLongInt: document.getElementById('set-pYtLongInt').value.trim() || 'Starting at ₹5,000',
-    pYtLongDed: document.getElementById('set-pYtLongDed').value.trim() || 'Starting at ₹10,000',
-    pStory: document.getElementById('set-pStory').value.trim() || 'Starting at ₹1,500',
-    pAmb: document.getElementById('set-pAmb').value.trim() || 'Starting at ₹15,000 / mo',
-    pAddonAd: document.getElementById('set-pAddonAd').value.trim() || '+30% to +50%',
-    pAddonRaw: document.getElementById('set-pAddonRaw').value.trim() || '+25% to +40%',
-    pAddonLink: document.getElementById('set-pAddonLink').value.trim() || '₹500 – ₹1,000'
-  };
-  const id = existingId || makeShortQuoteId(brand);
-  const payload = { b: brand, d: dateStr, exp, r: rates };
-  const baseUrl = window.location.origin + window.location.pathname;
-  const shortLink = `${baseUrl}?q=${encodeURIComponent(id)}`;
-  return { id, brand, dateStr, days, exp, rates, payload, link: shortLink };
-}
-
-async function persistQuoteToCloud(q) {
-  const prev = getLocalStats();
-  const base = Object.assign({}, prev, window.__miLatestData || {});
-  if (!base.quotes || typeof base.quotes !== 'object') base.quotes = {};
-  base.quotes[q.id] = q.payload;
-  setLocalStats(base);
-  window.__miLatestData = base;
-
-  if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
-    const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'X-Master-Key': cfg.cloudMasterKey },
-      body: JSON.stringify(base)
-    });
-    if (!res.ok) throw new Error('Cloud sync failed');
-  }
-}
-
-function copyTextSafe(text) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
-  }
-  return Promise.resolve(fallbackCopy(text));
-}
-
-function fallbackCopy(text) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); } catch(e) {}
-  document.body.removeChild(ta);
-}
-
-let lastGeneratedQuote = null;
-
-document.getElementById('btn-copy-quote').addEventListener('click', async () => {
-  const qStatus = document.getElementById('quote-gen-status');
-  const btn = document.getElementById('btn-copy-quote');
-  const q = collectCurrentQuotePayload();
-  lastGeneratedQuote = q;
-  btn.textContent = 'Saving Link...';
-  try {
-    await persistQuoteToCloud(q);
-    await copyTextSafe(q.link);
-    showStatus(qStatus, `Short private link copied: ${q.link}`, false);
-  } catch(e) {
-    showStatus(qStatus, 'Cloud sync failed. Please check internet and try again.', true);
-  }
-  btn.textContent = 'Copy Private Link';
-});
-
-document.getElementById('btn-dl-quote').addEventListener('click', async () => {
-  const qStatus = document.getElementById('quote-gen-status');
-  const q = lastGeneratedQuote && lastGeneratedQuote.brand === (document.getElementById('q-brand').value.trim() || 'Brand Partner')
-    ? lastGeneratedQuote
-    : collectCurrentQuotePayload();
-  if (!lastGeneratedQuote) {
-    try { await persistQuoteToCloud(q); } catch(e) {}
-    lastGeneratedQuote = q;
-  }
-  const safeBrand = q.brand.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'Brand';
-  const dateSlug = new Date().toISOString().slice(0, 10);
-  const expText = q.exp ? new Date(q.exp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'No Expiry';
-  const receiptHtml = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Quote Record — ${escapeHtml(q.brand)}</title>
-<style>body{font-family:system-ui,sans-serif;background:#191610;color:#F5EFE6;padding:32px;max-width:720px;margin:0 auto;line-height:1.6}
-.card{background:#110E0B;border:1px solid rgba(201,165,116,.35);padding:28px;border-radius:8px}
-h1{font-size:1.6rem;color:#C9A574;margin:0 0 6px}p.meta{color:#B8AC9B;font-size:.9rem;margin:0 0 20px}
-table{width:100%;border-collapse:collapse;margin:16px 0}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(245,239,230,.12)}
-th{color:#C9A574;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
-.link-box{margin-top:18px;padding:12px;background:#191610;border:1px dashed rgba(201,165,116,.35);word-break:break-all;font-size:.82rem;color:#B8AC9B}
-.terms{margin-top:18px;font-size:.85rem;color:#B8AC9B}</style></head><body><div class="card">
-<h1>Mothers Inside — Official Rate Quote Record</h1>
-<p class="meta"><strong>Brand:</strong> ${escapeHtml(q.brand)} · <strong>Quoted On:</strong> ${escapeHtml(q.dateStr)} · <strong>Valid Until:</strong> ${escapeHtml(expText)}</p>
-<table><tr><th>Deliverable / Format</th><th>Quoted Price</th></tr>
-<tr><td>Single Platform (IG / FB / YT Short) — Integrated</td><td>${escapeHtml(q.rates.pSingleInt)}</td></tr>
-<tr><td>Single Platform (IG / FB / YT Short) — Dedicated</td><td>${escapeHtml(q.rates.pSingleDed)}</td></tr>
-<tr><td>IG + FB Bundle — Integrated</td><td>${escapeHtml(q.rates.pDualInt)}</td></tr>
-<tr><td>IG + FB Bundle — Dedicated</td><td>${escapeHtml(q.rates.pDualDed)}</td></tr>
-<tr><td>All 3 (IG + FB + YT Short) — Integrated</td><td>${escapeHtml(q.rates.pTriInt)}</td></tr>
-<tr><td>All 3 (IG + FB + YT Short) — Dedicated</td><td>${escapeHtml(q.rates.pTriDed)}</td></tr>
-<tr><td>YouTube Long-Form — Integration</td><td>${escapeHtml(q.rates.pYtLongInt)}</td></tr>
-<tr><td>YouTube Long-Form — Dedicated</td><td>${escapeHtml(q.rates.pYtLongDed)}</td></tr>
-<tr><td>Story Series (3–4 Interactive Stories)</td><td>${escapeHtml(q.rates.pStory)}</td></tr>
-<tr><td>Monthly Brand Ambassadorship</td><td>${escapeHtml(q.rates.pAmb)}</td></tr>
-<tr><td>Add-on: Paid Ad Usage Rights (30 Days)</td><td>${escapeHtml(q.rates.pAddonAd)}</td></tr>
-<tr><td>Add-on: Raw High-Res Footage</td><td>${escapeHtml(q.rates.pAddonRaw)}</td></tr>
-<tr><td>Add-on: Link-in-Bio (7 Days)</td><td>${escapeHtml(q.rates.pAddonLink)}</td></tr></table>
-<div class="terms"><strong>Standard Terms:</strong> 50% advance before production &amp; 50% prior to publishing. Includes 1 round of edits (5–7 business days turnaround).</div>
-<div class="link-box"><strong>Shared Private Link:</strong><br>${escapeHtml(q.link)}</div>
-</div></body></html>`;
-  const blob = new Blob([receiptHtml], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `Mothers-Inside-Quote-${safeBrand}-${dateSlug}.html`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showStatus(qStatus, `Quote record for "${q.brand}" downloaded!`, false);
-});
 
 const waModal = document.getElementById('wa-modal');
 const waUserIn = document.getElementById('wa-user-name');
@@ -1534,8 +931,6 @@ document.getElementById('em-copy-btn').addEventListener('click', async () => {
   showStatus(emModalStatus, `Email & message copied! Paste it in your email app to ${to}.`, false);
 });
 
-window.addEventListener('hashchange', openAdminIfHash);
-openAdminIfHash();
 
 /* ==================== 3) EMBED PARSERS ==================== */
 function splitUrlLabel(entry) {
@@ -1802,8 +1197,6 @@ function applyMediaKitData(data) {
   const ytHeroBtn = document.getElementById('yt-hero-btn');
   const ytFooterLink = document.getElementById('yt-footer-link');
   const ytCard = document.getElementById('yt-card');
-  const ytSection = document.getElementById('youtube-video');
-  const ytContainer = document.getElementById('ytVideoContainer');
 
   if (data.ytShow) {
     if (ytHeroBtn) ytHeroBtn.style.display = 'inline-flex';
@@ -1821,25 +1214,10 @@ function applyMediaKitData(data) {
         });
       }
     }
-    const ytList = Array.isArray(data.ytVideos) && data.ytVideos.length
-      ? data.ytVideos
-      : (data.ytVideo ? [data.ytVideo] : []);
-    const validIds = ytList.map(extractYTId).filter(Boolean).slice(0, 3);
-    if (ytSection && ytContainer && validIds.length > 0) {
-      ytSection.style.display = 'block';
-      ytContainer.innerHTML = validIds.map(id => `
-        <div class="yt-video-wrapper">
-          <iframe src="https://www.youtube.com/embed/${id}" loading="lazy" allowfullscreen></iframe>
-        </div>
-      `).join('');
-    } else if (ytSection) {
-      ytSection.style.display = 'none';
-    }
   } else {
     if (ytHeroBtn) ytHeroBtn.style.display = 'none';
     if (ytFooterLink) ytFooterLink.style.display = 'none';
     if (ytCard) ytCard.style.display = 'none';
-    if (ytSection) ytSection.style.display = 'none';
   }
 
   // Check if URL has a private ?quote= payload
@@ -1963,11 +1341,10 @@ async function loadMediaKitData() {
 
   if (cfg.cloudBinId && cfg.cloudBinId !== "YAHAN_BIN_ID_PASTE_KAREIN") {
     try {
+      const hdr = (cfg.cloudReadKey && !cfg.cloudReadKey.startsWith('YAHAN_')) ? { 'X-Access-Key': cfg.cloudReadKey } : {};
       const json = window.__miPrefetch
         ? await window.__miPrefetch
-        : await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, {
-            headers: { 'X-Master-Key': cfg.cloudMasterKey }
-          }).then(r => r.ok ? r.json() : null);
+        : await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, { headers: hdr }).then(r => r.ok ? r.json() : null);
       if (json && json.record) {
         data = Object.assign(data, json.record, localData);
       } else {
@@ -1991,9 +1368,9 @@ function renderTopPosts(data) {
   if (!grid) return;
 
   const defaultTP = [
-    { plat: "Instagram Reel", title: "8th Month Pregnancy Prep", views: "176K+", likes: "5,791", engagement: "High Saves", url: "https://www.instagram.com/mothers_inside" },
+    { plat: "Instagram Reel", title: "8th Month Pregnancy Prep", views: "176K+", likes: "5,791", engagement: "High Saves", url: "https://www.instagram.com/mothersinside" },
     { plat: "Facebook Reel", title: "Newborn Care & Mom Tips", views: "356K+", likes: "4,200+", engagement: "High Shares", url: "https://www.facebook.com/share/1A4pG5oqd1/" },
-    { plat: "YouTube Short", title: "Baby Skincare Routine", views: "25K+", likes: "1,200+", engagement: "High Watch Time", url: "https://www.youtube.com/@mothers_inside" }
+    { plat: "YouTube Short", title: "Baby Skincare Routine", views: "25K+", likes: "1,200+", engagement: "High Watch Time", url: "https://www.youtube.com/@mothersinside" }
   ];
 
   const posts = (data.topPosts && data.topPosts.length > 0) ? data.topPosts : defaultTP;
