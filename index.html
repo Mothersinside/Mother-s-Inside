@@ -1344,7 +1344,8 @@ async function loadMediaKitData() {
         ? await window.__miPrefetch
         : await fetch(`https://api.jsonbin.io/v3/b/${cfg.cloudBinId}/latest`, { headers: hdr }).then(r => r.ok ? r.json() : null);
       if (json && json.record) {
-        data = Object.assign(data, json.record, localData);
+  data = Object.assign(data, json.record);
+  setLocalStats(json.record);
       } else {
         data = Object.assign(data, localData);
       }
